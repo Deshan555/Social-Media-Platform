@@ -1,0 +1,14 @@
+body{
+    background-color: #F5F9F9;
+    /* background-size: cover; */
+}
+
+.login{
+    width:100vw;
+    height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
