@@ -50,6 +50,19 @@
     display: flex;
 
     align-items: center;
+
+    /* add scroll bar */
+
+    overflow: hidden;
+
+    overflow-x: auto;
+}
+
+/* add scroll bar hidden option */
+
+.status-wrapper::-webkit-scrollbar{
+
+    display: none;
 }
 
 .status-card{
