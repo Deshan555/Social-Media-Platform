@@ -45,7 +45,7 @@
 
     padding-right: 0;
 
-    border-radius: 2px;
+    border-radius: 10px;
 
     display: flex;
 
@@ -80,6 +80,8 @@
     overflow: hidden;
 
     padding: 3px;
+
+    background: linear-gradient(45deg, rgba(255, 230, 0), rgba(255, 0, 128) 80%);
 }
 
 .profile-pic img{
@@ -103,11 +105,13 @@
 
     text-align: center;
 
-    font-size: 12px;
+    font-size: 13px;
 
     margin-top: 5px;
 
-    color: rgba(0, 0, 0, 0.5) ;
+    text-transform: uppercase;
+
+    color: rgba(0, 0, 0, 0.5);
 }
 
 
