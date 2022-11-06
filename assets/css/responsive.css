@@ -1,0 +1,37 @@
+
+/* For medium displays */
+
+@media (max-width: 1100px)
+{
+    .right-col, .search-box
+    {
+        display: none;
+    }
+
+    .nav-wrapper, .wrapper
+    {
+        width: 90%;
+    }
+
+    .wrapper{
+
+        display: block;
+    }
+}
+
+
+/* For small displays*/
+
+@media (max-width: 500px)
+{
+    .nav-items .icon{
+
+        margin: 0 5px;
+    }
+
+    .post-img{
+
+        height: 300px;
+    }
+
+}
