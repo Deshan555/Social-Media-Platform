@@ -1,0 +1,114 @@
+
+*{
+    font-size: 14px;
+}
+
+.profile-header{
+
+    margin-top: 30px;
+}
+
+.profile-container{
+
+    max-width: 95.5rem;
+
+    margin: 0 auto;
+
+    padding: 0 2rem;
+}
+
+.profile-button{
+
+    display: inline-block;
+
+    font: inherit;
+
+    background: none;
+
+    border: none;
+
+    color: inherit;
+
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.profile-button:focus{
+
+    outline: 0.5rem auto #4d90fe;
+}
+
+.profile{
+
+    padding: 5rem 0;
+}
+
+.profile::after{
+
+    content: "";
+
+    display: block;
+
+    clear: both;
+}
+
+.profile-image{
+
+    float: left;
+
+    width: calc(33.333% - 1rem);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-right: 3rem;
+}
+
+.profile-image img{
+
+    border-radius: 50%;
+
+    width: 100px;
+
+    height: 100px;
+}
+
+.profile-user-settings, .profile-status, .profile-bi0{
+
+    float: left;
+
+    width: calc(66.666% - 2rem);
+}
+
+.profile-user-settings{
+
+    margin-top: 1.1rem;
+}
+
+.profile-user-name{
+
+    display: inline-block;
+
+    font-size: 3.2rem;
+
+    font-weight: 300;
+}
+
+.profile-edit-button{
+
+    font-size: 1.4rem;
+
+    line-height: 1.8;
+
+    border: .1rem solid #dbdbdb;
+
+    border-radius: 0.3rem;
+
+    padding: 0 2.4rem;
+
+    margin-left: 2rem;
+}
