@@ -4,7 +4,7 @@
     padding: 20px;
 }
 
-.profile_card{
+.profile_card, .suggestion_card{
 
     width: fit-content;
 
@@ -64,7 +64,7 @@
     margin-bottom: 0;
 }
 
-.logout-btn{
+.logout-btn, .fallow-btn{
 
     opacity: 1;
 
@@ -75,3 +75,67 @@
     color: #55B7F7;
 }
 
+.suggestion_card .suggestions-pic{
+
+    flex: 0 0 auto;
+
+    padding: 0;
+
+    background: none;
+
+    width: 50px;
+
+    height: 50px;
+
+    margin-right: 10px;
+}
+
+
+.suggestion_card .suggestions-pic img{
+
+    border: none;
+
+    width: 40px;
+
+    height: 40px;
+
+    border-radius: 50%;
+}
+
+.suggesting{
+
+    font-size: 14px;
+
+    color: #939393;
+
+    font-weight: 700;
+
+    margin-top: 20px;
+}
+
+
+.suggestion_card .username{
+
+    font-weight: bold;
+
+    font-size: 14px;
+
+    color: #262626;
+
+    text-transform: capitalize;
+
+    margin: 0;
+}
+
+.suggestion_card .sub-text{
+
+    color: #939393;
+
+    font-size: 13px;
+
+    font-weight: 500;
+
+    margin-top: 3px;
+
+    margin-bottom: 0;
+}
