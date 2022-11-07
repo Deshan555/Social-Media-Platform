@@ -248,3 +248,39 @@
 
     border-radius: 10px;
 }
+
+@media  screen and (max-width:800px) {
+
+    .profile{
+        display: flex;
+
+        flex-wrap: wrap;
+
+        padding: 4rem 0;
+    }
+
+    .profile::after{
+        display: none;
+    }
+
+    .profile-image, .profile-user-settings, .profile-bio, .profile-status{
+        float: none;
+
+        width: auto;
+
+        margin: 5px auto;
+    }
+
+    .profile-status{
+        display: block;
+    }
+
+    .profile-image{
+        margin: 0 auto;
+    }
+
+    .profile-user-name{
+
+        font-size: 20px;
+    }
+}
