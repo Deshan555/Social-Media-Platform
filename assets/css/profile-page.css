@@ -249,6 +249,41 @@ social{
     border-radius: 10px;
 }
 
+.fallow-btns{
+
+    display: inline-block;
+
+    background: rgb(0, 162, 255);
+
+    color: #fff;
+
+    font-size: 16px;
+
+    padding: 10px;
+
+    border: none;
+
+    width: 400px;
+
+    border-radius: 20px;
+
+    margin-top: 40px;
+}
+
+.gallery-banner{
+
+    display: inline-block;
+
+    font-size: 1.5rem;
+
+    font-weight: 300;
+
+    text-transform: uppercase;
+}
+
+
+
+
 @media  screen and (max-width:800px) {
 
     .profile{
