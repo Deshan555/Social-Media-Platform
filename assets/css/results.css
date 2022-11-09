@@ -1,0 +1,51 @@
+.search-component{
+
+    display: flex;
+
+    padding-top: 60px;
+}
+
+.search-button{
+
+    color: #4d90fe;
+
+    background: none;
+
+    outline: none;
+
+    border: none;
+
+    font-size: 14px;
+
+    margin-left: 10px;
+}
+
+.search-result-item{
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    align-items: flex-start;
+}
+
+.search-result-item img{
+
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+}
+
+.search-result-item-button{
+
+    width: 100%;
+
+    margin-top: 10px;
+}
+
+.search-result-item-button button{
+
+    float: right;
+}
