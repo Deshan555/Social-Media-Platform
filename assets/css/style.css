@@ -44,6 +44,8 @@ body{
     justify-content: center;
 
     padding: 5px 0;
+
+    z-index: 1;
 }
 
 .nav-wrapper{
@@ -111,4 +113,3 @@ body{
 
     border-radius: 50%;
 }
-

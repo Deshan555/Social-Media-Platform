@@ -1,0 +1,74 @@
+
+.form-group
+{
+    margin: 0 40px 6px;
+}
+
+.camara-container{
+
+    max-width: 93.5rem;
+
+    margin: 0 auto;
+
+    padding: 0 2rem;
+}
+
+.camara{
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    padding: 3rem;
+}
+
+.cam-image{
+
+    position: relative;
+
+    flex: 1 0 22rem;
+
+    margin: 1rem;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    width: 70px;
+
+    height: 50px;
+
+    border-radius: 200px;
+}
+
+.cam-form{
+
+    width: 50%;
+
+    margin: 5px auto;
+}
+
+.upload-button{
+
+    background: #4d90fe;
+
+    color: #fdfdfd;
+
+    width: 70px;
+
+    height: 100%;
+
+    font-size: 16px;
+
+    border: none;
+
+    display: block;
+
+    outline: none;
+
+    margin: 0 auto;
+
+    border-radius: 3px;
+}
