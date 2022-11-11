@@ -59,37 +59,31 @@
 
                     <div class="form-floating mt-1 col-6 text-muted h6" style="font-size:small;">
 
-                        <input type="text" name="first_name" value="<?=showFormData('first_name')?>" class="form-control form-control-lg0" placeholder="username/email">
+                        <input type="text" name="first_name" class="form-control form-control-lg0" placeholder="username/email">
 
-                        <label for="floatingInput">first name</label>
+                        <label for="floatingInput">Full Name</label>
 
                     </div>
 
                     <div class="form-floating mt-1 col-6 text-muted h6" style="font-size:small;">
 
-                        <input type="text" name="last_name" value="<?=showFormData('last_name')?>" class="form-control form-control-lg0" placeholder="username/email">
+                        <input type="text" name="last_name" class="form-control form-control-lg0" placeholder="username/email">
 
-                        <label for="floatingInput">last name</label>
+                        <label for="floatingInput">User Name</label>
 
                     </div>
 
                 </div>
 
-                <?=showError('first_name')?>
-                
-                <?=showError('last_name')?>
-
-                <div class="d-flex gap-3 my-3">
+                <div class="d-flex gap-5 my-3">
 
                     <div class="form-check text-muted h6" style="font-size:small;">
 
-                        <input class="form-check-input" type="radio" name="gender" id="exampleRadios1"
-
-                            value="1" <?=isset($_SESSION['formdata'])?'':'checked'?><?=showFormData('gender')==1?'checked':''?>>
+                        <input class="form-check-input" type="radio" name="gender" id="exampleRadios1">
 
                         <label class="form-check-label" for="exampleRadios1">
 
-                            Male
+                            Basic User
 
                         </label>
                     </div>
@@ -97,24 +91,12 @@
                     <div class="form-check text-muted h6" style="font-size:small;">
 
                         <input class="form-check-input" type="radio" name="gender" id="exampleRadios3"
-                            value="2" <?=showFormData('gender')==2?'checked':''?>>
+                            >
 
                         <label class="form-check-label" for="exampleRadios3">
 
-                            Female
+                            Club Or Organization 
 
-                        </label>
-
-                    </div>
-
-                    <div class="form-check text-muted h6" style="font-size:small;">
-
-                        <input class="form-check-input" type="radio" name="gender" id="exampleRadios2"
-                            value="0" <?=showFormData('gender')==0?'checked':''?>>
-
-                        <label class="form-check-label" for="exampleRadios2">
-
-                            Other
                         </label>
 
                     </div>
@@ -123,32 +105,33 @@
 
                 <div class="form-floating mt-2 text-muted h6" style="font-size:small;">
 
-                    <input type="email" name="email" value="<?=showFormData('email')?>" class="form-control form-control-lg0" placeholder="username/email">
+                    <input type="email" name="email" class="form-control form-control-lg0" placeholder="username/email">
+                    
                     <label for="floatingInput">email</label>
 
                 </div>
 
-                <?=showError('email')?>
+                <!--<?=showError('email')?>-->
 
                 <div class="form-floating mt-2 text-muted h6" style="font-size:small;">
 
-                    <input type="text" name="username" value="<?=showFormData('username')?>" class="form-control form-control-lg0" placeholder="username/email">
+                    <input type="password" name="password" class="form-control form-control-lg0" placeholder="Password">
 
-                    <label for="floatingInput">username</label>
+                    <label for="floatingInput">Password</label>
 
                 </div>
 
-                <?=showError('username')?>
+                <!--<?=showError('username')?>-->
 
                 <div class="form-floating mt-2 text-muted h6" style="font-size:small;">
 
-                    <input type="password" name="password" class="form-control form-control-lg0" id="floatingPassword" placeholder="Password">
+                    <input type="password" name="retype_password" class="form-control form-control-lg0" id="floatingPassword" placeholder="Retype Password">
 
-                    <label for="floatingPassword">password</label>
+                    <label for="floatingPassword">Retype password</label>
 
                 </div>
 
-                <?=showError('password')?>
+                <!--<?=showError('password')?>-->
 
                 <div class="pt-1 mb-4 mt-2">
 
