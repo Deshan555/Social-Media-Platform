@@ -43,7 +43,7 @@
                 
                 <div class="card-body p-4 p-lg-5 text-black">
 
-                  <form method="post" action="assets/php/actions.php?signup">
+                  <form method="post" id="signup_form" action="signup_action.php">
 
                 <div class="d-flex justify-content-center">
 
@@ -51,15 +51,21 @@
 
                 </div>
 
-                <h6 style="text-transform: uppercase; color: grey;" class="mt-2 mb-1"><b>Join With Us</b></h5>
+                <h6 style="text-transform: uppercase; color: grey;" class="mt-2 mb-1"><b>Join With Us</b></h6>
 
-                <!--<h1 class="h5 mb-3 fw-normal">Create new account</h1>-->
+                <?php if(isset($_GET['error_message'])){ ?>
+
+                  <p id="error_message" class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+
+                <?php }?>
+
+                
 
                 <div class="d-flex">
 
                     <div class="form-floating mt-1 col-6 text-muted h6" style="font-size:small;">
 
-                        <input type="text" name="first_name" class="form-control form-control-lg0" placeholder="username/email">
+                        <input type="text" name="full_name" class="form-control form-control-lg0" placeholder="username/email">
 
                         <label for="floatingInput">Full Name</label>
 
@@ -67,37 +73,9 @@
 
                     <div class="form-floating mt-1 col-6 text-muted h6" style="font-size:small;">
 
-                        <input type="text" name="last_name" class="form-control form-control-lg0" placeholder="username/email">
+                        <input type="text" name="user_name" class="form-control form-control-lg0" placeholder="username/email">
 
                         <label for="floatingInput">User Name</label>
-
-                    </div>
-
-                </div>
-
-                <div class="d-flex gap-5 my-3">
-
-                    <div class="form-check text-muted h6" style="font-size:small;">
-
-                        <input class="form-check-input" type="radio" name="gender" id="exampleRadios1">
-
-                        <label class="form-check-label" for="exampleRadios1">
-
-                            Basic User
-
-                        </label>
-                    </div>
-
-                    <div class="form-check text-muted h6" style="font-size:small;">
-
-                        <input class="form-check-input" type="radio" name="gender" id="exampleRadios3"
-                            >
-
-                        <label class="form-check-label" for="exampleRadios3">
-
-                            Club Or Organization 
-
-                        </label>
 
                     </div>
 
@@ -111,31 +89,25 @@
 
                 </div>
 
-                <!--<?=showError('email')?>-->
-
                 <div class="form-floating mt-2 text-muted h6" style="font-size:small;">
 
-                    <input type="password" name="password" class="form-control form-control-lg0" placeholder="Password">
+                    <input type="password" name="password" class="form-control form-control-lg0" placeholder="Password" id="pass" onchange="verify_len();">
 
                     <label for="floatingInput">Password</label>
 
                 </div>
 
-                <!--<?=showError('username')?>-->
-
                 <div class="form-floating mt-2 text-muted h6" style="font-size:small;">
 
-                    <input type="password" name="retype_password" class="form-control form-control-lg0" id="floatingPassword" placeholder="Retype Password">
+                    <input type="password" name="retype_password" class="form-control form-control-lg0" id="retype_pass" placeholder="Retype Password" onchange="verify_form();">
 
                     <label for="floatingPassword">Retype password</label>
 
                 </div>
 
-                <!--<?=showError('password')?>-->
-
                 <div class="pt-1 mb-4 mt-2">
 
-                    <button class="btn btn-dark btn-lg btn-block" type="submit">SIGNUP</button>
+                    <button class="btn btn-dark btn-lg btn-block" type="submit" name="signup_btn">SIGNUP</button>
 
                 </div>
 
@@ -155,7 +127,49 @@
 
   <script type="text/javascript" src="assets/js/mdb.min.js"></script>
 
-  <script type="text/javascript"></script>
+  <script type="text/javascript">
+
+    /*function verify_form()
+    {
+      var password = document.getElementById('pass').value;
+
+      var retype_password = document.getElementById('retype_pass').value;
+
+      if(password !== retype_password)
+      {
+        document.getElementById("error_message").innerHTML = "Password Not Match";
+
+        console.log('password missmatch');
+
+        return false;
+      }
+      else{
+        return true;
+      }
+    }*/
+
+
+    function verify_len()
+    {
+      var password = document.getElementById('pass').value;
+
+      if(password.length <= 8)
+      {
+        document.getElementById("error_message").innerHTML = 'password too short';
+      }
+      else{
+        document.getElementById("error_message").innerHTML = '';
+      }
+    }
+
+    /*document.getElementById('signup_btn').addEventListener('click'),(e)=>
+    {
+      e.preventDefault();
+
+      verify_form();
+    }*/
+
+  </script>
 
 </body>
 
