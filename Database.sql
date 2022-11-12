@@ -11,7 +11,7 @@ CREATE TABLE Users(
 
   USER_NAME varchar(50) NOT NULL,
   
-  USER_TYPE int(2) NOT NULL,
+  USER_TYPE varchar(2) NOT NULL,
 
   PASSWORD_S varchar(50) NOT NULL,
 
