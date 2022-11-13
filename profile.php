@@ -1,3 +1,16 @@
+<?php 
+
+session_start();
+
+if(!isset($_SESSION['id']))
+{
+  header('location: login.php');
+
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -63,13 +76,13 @@
 
       <div class="profile-image">
 
-        <img src="assets/images/default.png" alt="profile picture">
+        <img src="<?php echo $_SESSION['img_path'] ?>" alt="profile picture">
 
       </div>
 
       <div class="profile-user-settings">
 
-        <h1 class="profile-user-name">EventsWave Official</h1>
+        <h1 class="profile-user-name"><?php echo $_SESSION['username']; ?></h1>
 
         <button class="profile-button profile-edit-button">Edit Profile</button>
 
@@ -84,11 +97,11 @@
       <div class="profile-status">
 
         <ul>
-          <li><span class="profile-status-count">345</span> Posts</li>
+          <li><span class="profile-status-count"><?php echo $_SESSION['fallowers'] ?></span> Posts</li>
 
-          <li><span class="profile-status-count">345</span> Fallowing</li>
+          <li><span class="profile-status-count"><?php echo $_SESSION['fallowing'] ?></span> Fallowing</li>
 
-          <li><span class="profile-status-count">673</span> Followers</li>
+          <li><span class="profile-status-count"><?php echo $_SESSION['fallowers'] ?></span> Followers</li>
 
         </ul>
 
@@ -97,13 +110,11 @@
       <div class="social">
 
         <ul>
-          <li><i class="fas fa-envelope"></i> Email</li>
+          <li><i class="fas fa-envelope"></i><?php echo " ".$_SESSION['email'] ?></li>
 
-          <li><i class="fab fa-facebook-square"></i> Facebook</li>
+          <li><i class="fab fa-facebook-square"></i><?php echo " ".$_SESSION['facebook'] ?></li>
 
-          <li><i class="fas fa-link"></i> Join With Us</li>
-
-          <li><i class="fab fa-whatsapp-square"></i> Whatsapp</li>
+          <li><i class="fab fa-whatsapp-square"></i><?php echo " ".$_SESSION['whatsapp'] ?></li>
 
         </ul>
 
@@ -111,7 +122,7 @@
 
       <div class="profile-bio">
 
-        <p><span class="profile-real-name">EventsWave Official Page </span> I can feel the heat tonight Make me wanna say "Te quiero" </p>
+        <p><span class="profile-real-name"><?php echo $_SESSION['fullname']?></span> <?php echo " ".$_SESSION['bio']?> </p>
 
       </div>
 
