@@ -1,6 +1,8 @@
 
 <?php
 
+session_start();
+
 include('config.php');
 
 if(isset($_POST['signup_btn']))
@@ -9,7 +11,7 @@ if(isset($_POST['signup_btn']))
 
     $user_name= $_POST['user_name'];
 
-    $user_type = 1;
+    $user_type = "1";
 
     $email_address= $_POST['email'];
 

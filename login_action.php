@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include('config.php');
 
 if(isset($_POST['button']))
@@ -75,7 +77,7 @@ if(isset($_POST['button']))
 
         $_SESSION['img_path'] = $image;
 
-        header("location: index.html");
+        header("location: index.php");
     }
     else{
 
