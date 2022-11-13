@@ -307,7 +307,9 @@ if(!isset($_SESSION['id']))
 
                 </div>
 
-                <button class="logout-btn">LogOut</button>
+                <form method="GET" action="logout.php">
+                    <button class="logout-btn">LogOut</button>
+                </form>
 
             </div>
 
@@ -400,8 +402,6 @@ if(!isset($_SESSION['id']))
     </div>
 
 </section>
-
-
 
 </body>
 
