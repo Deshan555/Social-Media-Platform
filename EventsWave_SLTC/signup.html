@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventsWave : Log In</title>
+    <title>EventsWave : Sign Up</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
@@ -31,7 +31,7 @@
                         <div class="logo">
                             <img src="assets/images/logo.png" class="logo-img" alt="">
                         </div>
-                        <form class="login-form" id="login-form">
+                        <form class="login-form" id="signup-form">
 
                             <p id="error_message" class="text-center alert-danger"></p>
 
@@ -42,11 +42,21 @@
                             </div>
                             <div class="form-group">
                                 <div class="login-input">
+                                    <input type="text" name="username" placeholder="Type your username" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="login-input">
                                     <input type="password" name="password" id="password" placeholder="Type your password" required>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="login-input">
+                                    <input type="password" name="password_confirm" id="confirm_password" placeholder="Confirm your password" required>
+                                </div>
+                            </div>
                             <div class="btn-group">
-                                <button class="login-btn" id="login_btn" type="submit">Log In</button>
+                                <button class="login-btn" id="signup_btn" type="submit">Sign Up</button>
                             </div>
                         </form>
                         <div class="or">
@@ -55,7 +65,7 @@
                             <hr/>
                         </div>
                         <div class="goto">
-                            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                            <p>Already have an account? <a href="login.html">Log In</a></p>
                         </div>
                         <div class="site-powered">
                             <p>Powered By</p>
@@ -141,13 +151,13 @@
                     for(let i=0; i<footerLinks.length; i++){
                         footerLinks[i].classList.add('dark-mode-link');
                     }
-                }
-                    
+                }     
             }
 
             function verifyForm(){
 
                 var password = document.getElementById('password').value;
+                var confirm_password = document.getElementById('confirm_password').value;
                 var error_message = document.getElementById('error_message');
 
                 if(password.length < 6){
@@ -155,18 +165,21 @@
                     return false;
                 }
 
-                
+                if(password !== confirm_password){
+                    error_message.innerHTML = "Password doesn't match";
+                    return false;
+                }
 
                 return true;
 
-                }
+            }
 
         document.getElementById('dark-btn').addEventListener('click',(e)=>{
             e.preventDefault();
             changeMode();
         })
         
-        document.getElementById('login-form').addEventListener('submit',(e)=>{
+        document.getElementById('signup-form').addEventListener('submit',(e)=>{
             e.preventDefault();
 
             verifyForm();
