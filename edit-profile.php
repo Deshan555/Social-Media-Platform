@@ -103,6 +103,12 @@ if(!isset($_SESSION['id']))
 
             </div>
 
+            <?php if(isset($_GET['error_message'])){ ?>
+                  
+              <p id="error_message" class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+                  
+            <?php }?>
+
           </div>
 
         </div>
@@ -117,7 +123,7 @@ if(!isset($_SESSION['id']))
 
       <div class="card h-100">
 
-      <form>
+<form method="POST" action="update-profile.php" enctype="multipart/form-data">
       <div class="card-body">
 
 <div class="row gutters">
@@ -134,7 +140,7 @@ if(!isset($_SESSION['id']))
 
       <label for="fullName">Full Name</label>
 
-      <input type="text" class="form-control" id="fullName" placeholder="Enter full name/Organization Name">
+      <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name/Organization Name">
 
     </div>
 
@@ -147,7 +153,7 @@ if(!isset($_SESSION['id']))
 
       <label for="user_name">User Name</label>
 
-      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name">
+      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name" name="user_name">
 
     </div>
 
@@ -158,7 +164,7 @@ if(!isset($_SESSION['id']))
 
       <label for="formFile" style="padding-top: 5px;">Change Display Picture</label>
 
-      <input class="form-control" type="file" id="formFile">
+      <input class="form-control" type="file" id="formFile" name="image">
 
   </div>
 
@@ -167,7 +173,7 @@ if(!isset($_SESSION['id']))
 
     <label for="exampleFormControlTextarea1" class="form-label" style="padding-top: 5px;">Describe Your Self</label>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="little bit about you"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="little bit about you" name="bio"></textarea>
 
   </div>
 
@@ -186,25 +192,11 @@ if(!isset($_SESSION['id']))
 
       <label for="email">Email Address</label>
 
-      <input type="email" class="form-control" id="email" placeholder="Enter email address">
+      <input type="email" class="form-control" id="email" placeholder="Enter email address" name="email">
 
     </div>
 
   </div>
-
-
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-    <div class="form-group">
-
-      <label for="website">Invite Link</label>
-
-      <input type="url" class="form-control" id="website" placeholder="Enter Invite Url">
-
-    </div>
-
-  </div>
-
 
   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
@@ -212,7 +204,7 @@ if(!isset($_SESSION['id']))
 
       <label for="whatsapp" style="padding-top: 5px;">WhatsApp</label>
 
-      <input type="url" class="form-control" id="whatsapp" placeholder="Enter WhatsApp Link">
+      <input type="text" class="form-control" id="whatsapp" placeholder="Enter WhatsApp Link" name="wapp" value="sdfs">
 
     </div>
 
@@ -225,7 +217,7 @@ if(!isset($_SESSION['id']))
 
       <label for="facebook" style="padding-top: 5px;">Facebook</label>
 
-      <input type="url" class="form-control" id="facebook" placeholder="Enter Facebook Link">
+      <input type="text" class="form-control" id="facebook" placeholder="Enter Facebook Link" name="fbook">
 
     </div>
 
@@ -249,7 +241,7 @@ if(!isset($_SESSION['id']))
 
       <label for="current-password">Current Password</label>
 
-      <input type="password" class="form-control" id="current-password" placeholder="Enter current-password">
+      <input type="password" class="form-control" id="current-password" placeholder="Enter current-password" name="cpass">
 
     </div>
 
@@ -262,7 +254,7 @@ if(!isset($_SESSION['id']))
 
       <label for="new-password">New Password</label>
 
-      <input type="password" class="form-control" id="new-password" placeholder="Enter new-password">
+      <input type="password" class="form-control" id="new-password" placeholder="Enter new-password" name="npass">
 
     </div>
 
@@ -275,7 +267,7 @@ if(!isset($_SESSION['id']))
 
       <label for="retype-password" style="padding-top: 5px;">Retype New Password</label>
 
-      <input type="password" class="form-control" id="retype-password" placeholder="Enter retype-password">
+      <input type="password" class="form-control" id="retype-password" placeholder="Enter retype-password" name="ccpass">
 
     </div>
 
@@ -289,7 +281,7 @@ if(!isset($_SESSION['id']))
 
       <div class="text-right">
 
-        <br><button type="button" id="cancel" name="submit" class="btn btn-secondary">Cancel</button>
+        <br><button type="submit" id="cancel" name="submits" class="btn btn-secondary">Cancel</button>
 
         <button type="submit" id="submit-data" name="submit" class="btn btn-primary">Update</button>
 
