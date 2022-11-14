@@ -1,3 +1,17 @@
+
+<?php 
+
+session_start();
+
+if(!isset($_SESSION['id']))
+{
+  header('location: login.php');
+
+  exit;
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -71,13 +85,13 @@
 
               <div class="user-avatar">
 
-                <img src="assets/images/default.png" alt="profile-avatar">
+                <img src="<?php echo $_SESSION['img_path'] ?>" alt="profile-avatar">
 
               </div>
 
-              <h5 class="user-name">EventsWave Official</h5>
+              <h5 class="user-name"><?php echo $_SESSION['username']; ?></h5>
 
-              <h6 class="user-email">events_Wave555</h6>
+              <h6 class="user-email"><?php echo $_SESSION['fullname']?></h6>
 
             </div>
 
@@ -85,10 +99,7 @@
 
               <h5>Bio</h5>
 
-              <p>Loving and fighting, accusing, denying
-                I can't imagine a world with you gone
-                The joy and the chaos, the demons we're made of
-                I'd be so lost if you left me alone</p>
+              <p><?php echo $_SESSION['bio']?></p>
 
             </div>
 
@@ -106,191 +117,193 @@
 
       <div class="card h-100">
 
-        <div class="card-body">
+      <form>
+      <div class="card-body">
 
-          <div class="row gutters">
+<div class="row gutters">
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-              <h6 class="mb-2 text-primary">Personal/Organization Details</h6>
+    <h6 class="mb-2 text-primary">Personal/Organization Details</h6>
 
-            </div>
+  </div>
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="fullName">Full Name</label>
+      <label for="fullName">Full Name</label>
 
-                <input type="text" class="form-control" id="fullName" placeholder="Enter full name/Organization Name">
+      <input type="text" class="form-control" id="fullName" placeholder="Enter full name/Organization Name">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="user_name">User Name</label>
+      <label for="user_name">User Name</label>
 
-                <input type="text" class="form-control" id="user_name" placeholder="Enter User Name">
+      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="form-group">
+  <div class="form-group">
 
-                <label for="formFile" style="padding-top: 5px;">Change Display Picture</label>
+      <label for="formFile" style="padding-top: 5px;">Change Display Picture</label>
 
-                <input class="form-control" type="file" id="formFile">
+      <input class="form-control" type="file" id="formFile">
 
-            </div>
+  </div>
 
 
-            <div class="mb-3">
+  <div class="mb-3">
 
-              <label for="exampleFormControlTextarea1" class="form-label" style="padding-top: 5px;">Describe Your Self</label>
+    <label for="exampleFormControlTextarea1" class="form-label" style="padding-top: 5px;">Describe Your Self</label>
 
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="little bit about you"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="little bit about you"></textarea>
 
-            </div>
+  </div>
 
-            <div class="row gutters">
+  <div class="row gutters">
 
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                <h6 class="mt-3 mb-2 text-primary">Social</h6>
+      <h6 class="mt-3 mb-2 text-primary">Social</h6>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="email">Email Address</label>
+      <label for="email">Email Address</label>
 
-                <input type="email" class="form-control" id="email" placeholder="Enter email address">
+      <input type="email" class="form-control" id="email" placeholder="Enter email address">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="website">Invite Link</label>
+      <label for="website">Invite Link</label>
 
-                <input type="url" class="form-control" id="website" placeholder="Enter Invite Url">
+      <input type="url" class="form-control" id="website" placeholder="Enter Invite Url">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="whatsapp" style="padding-top: 5px;">WhatsApp</label>
+      <label for="whatsapp" style="padding-top: 5px;">WhatsApp</label>
 
-                <input type="url" class="form-control" id="whatsapp" placeholder="Enter WhatsApp Link">
+      <input type="url" class="form-control" id="whatsapp" placeholder="Enter WhatsApp Link">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="facebook" style="padding-top: 5px;">Facebook</label>
+      <label for="facebook" style="padding-top: 5px;">Facebook</label>
 
-                <input type="url" class="form-control" id="facebook" placeholder="Enter Facebook Link">
+      <input type="url" class="form-control" id="facebook" placeholder="Enter Facebook Link">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
-          </div>
+</div>
 
 
-          <div class="row gutters">
+<div class="row gutters">
 
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-              <h6 class="mt-3 mb-2 text-primary"><br>Account Security - Change Password</h6>
+    <h6 class="mt-3 mb-2 text-primary"><br>Account Security - Change Password</h6>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="current-password">Current Password</label>
+      <label for="current-password">Current Password</label>
 
-                <input type="password" class="form-control" id="current-password" placeholder="Enter current-password">
+      <input type="password" class="form-control" id="current-password" placeholder="Enter current-password">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="new-password">New Password</label>
+      <label for="new-password">New Password</label>
 
-                <input type="password" class="form-control" id="new-password" placeholder="Enter new-password">
+      <input type="password" class="form-control" id="new-password" placeholder="Enter new-password">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
 
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
-              <div class="form-group">
+    <div class="form-group">
 
-                <label for="retype-password" style="padding-top: 5px;">Retype New Password</label>
+      <label for="retype-password" style="padding-top: 5px;">Retype New Password</label>
 
-                <input type="password" class="form-control" id="retype-password" placeholder="Enter retype-password">
+      <input type="password" class="form-control" id="retype-password" placeholder="Enter retype-password">
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
-          </div>
+</div>
 
-            <div class="row gutters">
+  <div class="row gutters">
 
-              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-                <div class="text-right">
+      <div class="text-right">
 
-                  <br><button type="button" id="cancel" name="submit" class="btn btn-secondary">Cancel</button>
+        <br><button type="button" id="cancel" name="submit" class="btn btn-secondary">Cancel</button>
 
-                  <button type="submit" id="submit-data" name="submit" class="btn btn-primary">Update</button>
+        <button type="submit" id="submit-data" name="submit" class="btn btn-primary">Update</button>
 
-                </div>
+      </div>
 
-              </div>
+    </div>
 
-            </div>
+  </div>
 
-          </div>
+</div>
 
-        </div>
-
+</div>
+      </form>
+      
       </div>
 
     </div>
