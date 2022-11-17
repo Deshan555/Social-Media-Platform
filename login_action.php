@@ -34,7 +34,7 @@ if(isset($_POST['button']))
 
     $user_id = 000000;
 
-    $sql_query = "SELECT User_ID, FULL_NAME, USER_NAME, USER_TYPE, EMAIL, IMAGE, FACEBOOK, WHATSAPP, BIO, FALLOWERS, FALLOWING, POSTS  FROM USERS WHERE USER_NAME = '$fisrt_parm' AND PASSWORD_S = '$password';";
+    $sql_query = "SELECT User_ID, FULL_NAME, USER_NAME, USER_TYPE, EMAIL, IMAGE, FACEBOOK, WHATSAPP, BIO, FALLOWERS, FALLOWING, POSTS  FROM USERS WHERE (USER_NAME = '$fisrt_parm' OR EMAIL = '$fisrt_parm') AND PASSWORD_S = '$password';";
 
     $stmt = $conn->prepare($sql_query);
 
