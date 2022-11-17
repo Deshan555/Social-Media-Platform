@@ -1,8 +1,8 @@
-<?
+<?php
 
 $user = 'root';
 
-$password = 'root';
+$password = '';
 
 $db = 'EventsWave';
 
@@ -10,8 +10,11 @@ $host = 'localhost';
 
 $port = 3306;
 
-$link = mysqli_init();
+$conn = mysqli_connect($host, $user, $password, $db,$port) ;
 
-$success = mysqli_real_connect($link, $host, $user, $password, $db,$port)or die("couldn't connect to the database");
+if (!$conn)
+{
+echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
 ?>
