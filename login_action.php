@@ -72,7 +72,7 @@ if(isset($_POST['button']))
 
         $_SESSION['img_path'] = $image;
 
-        header("location: index.php");
+        header("location: home.php");
     }
     else{
 
