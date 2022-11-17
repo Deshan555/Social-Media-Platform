@@ -89,7 +89,7 @@ if(isset($_SESSION['id']))
 
                   <a class="small text-muted" href="#!">Forgot password?</a>
 
-                  <p class="mb-5 pb-lg-2" style="color: #19afd4;">Don't have an account? <a href="#!" style="color: #2696ca;">Register here</a></p>
+                  <p class="mb-5 pb-lg-2" style="color: #19afd4;">Don't have an account? <a href="signup.php" style="color: #2696ca;">Register here</a></p>
 
                   <a href="#!" class="small text-muted">Terms of use.</a>
 
