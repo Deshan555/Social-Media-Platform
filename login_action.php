@@ -34,10 +34,7 @@ if(isset($_POST['button']))
 
     $user_id = 000000;
 
-    $sql_query = "SELECT User_ID, FULL_NAME, USER_NAME, USER_TYPE, EMAIL, IMAGE, FACEBOOK, WHATSAPP, BIO, FALLOWERS, FALLOWING, POSTS  
-    FROM USERS WHERE USER_NAME = '$fisrt_parm' AND PASSWORD_S = '$password';";
-
-    //echo $sql_query;
+    $sql_query = "SELECT User_ID, FULL_NAME, USER_NAME, USER_TYPE, EMAIL, IMAGE, FACEBOOK, WHATSAPP, BIO, FALLOWERS, FALLOWING, POSTS  FROM USERS WHERE USER_NAME = '$fisrt_parm' AND PASSWORD_S = '$password';";
 
     $stmt = $conn->prepare($sql_query);
 
@@ -47,8 +44,6 @@ if(isset($_POST['button']))
 
     if($stmt->num_rows() > 0)
     {
-        //echo 'fail';
-
         $stmt->bind_result($user_id, $full_name, $user_name, $user_type, $email_address, $image, $facebook, $whatsapp, $bio, $fallowers, $fallowing, $post_count);
         
         $stmt->fetch();
@@ -81,7 +76,7 @@ if(isset($_POST['button']))
     }
     else{
 
-        //echo 'fail';
+        echo 'faild';
 
         header('location: login.php?error_message=Email/Password Incorrect');
 
@@ -90,7 +85,7 @@ if(isset($_POST['button']))
 }
 else{
 
-    //echo 'fail';
+    echo 'fails';
 
     header('location: login.php?error_message=Some Error Happend');
 
