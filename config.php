@@ -1,12 +1,12 @@
 <?php
 
-$user = 'root';
+$user = 'mdrh3o2xpg3uy0yv';
 
-$password = '';
+$password = 'gcdbv8exn60vo8t8';
 
-$db = 'EventsWave';
+$db = 'dvh4ff24tskwf150';
 
-$host = 'localhost';
+$host = 'ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
 
 $port = 3306;
 
