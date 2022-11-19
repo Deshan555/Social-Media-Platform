@@ -68,7 +68,7 @@
 
       <div class="mb-5">
 
-        <form method="post" action="post_uploader.php">
+        <form method="post" action="posting-img.php" enctype="multipart/form-data">
 
           <div class="form-group">
 
@@ -96,7 +96,7 @@
 
             <label for="tag-id">Add Media (Image Files Only Accept)</label>
 
-            <input class="form-control" type="file" id="formFile" onchange="preview()" name="cover-post">
+            <input class="form-control" type="file" id="formFile" onchange="preview()" name="image">
 
           </div>
 
@@ -116,9 +116,21 @@
 
     </div>
 
-    <div class="col">
+    <div class="col sm-hidden">
 
       <h1 class="profile-user-name" style="font-size: 2rem;font-weight: 300;">Preview Post</h1><br>
+
+      <?php if(isset($_GET['error_message'])){ ?>
+        
+        <p id="error_message" class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+        
+      <?php }?>
+
+      <?php if(isset($_GET['success_message'])){ ?>
+        
+        <p id="success_message" class="text-center alert-success"><?php echo $_GET['success_message'];?></p>
+        
+      <?php }?>
 
       <div class="post">
 
