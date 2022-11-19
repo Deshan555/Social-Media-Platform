@@ -86,13 +86,50 @@ if(!isset($_SESSION['id']))
 
         <button class="profile-button profile-edit-button">Edit Profile</button>
 
-        <button class="profile-button profile-settings-btn" aria-label="profile settings">
+        <button class="profile-button profile-settings-btn" aria-label="profile settings" data-bs-toggle="modal" data-bs-target="#exampleModal">
 
           <i class="icon fas fa-cog"></i>
 
         </button>
 
-      </div>
+
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+          <div class="modal-dialog">
+
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Quick Actions</h5>
+              </div>
+
+                <div class="modal-body">
+                  <ul style="list-style: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 10px; text-decoration: none;">
+                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-cog"></i></button><a href="edit-profile.php">Profile Edit<a></li>
+                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-calendar-week"></i></i></button><a href="">Post About New Event</a></li>
+                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-pen"></i></i></button><a href="">Create New Post</a></li>
+                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-video"></i></i></button><a href="">Publish New Short video</a></li>
+                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-sign-out-alt"></i></i></button><a href="">Log Out</a></li>
+                  </ul>
+                </div>
+    
+
+</div>
+
+</div>
+</div>
+      
+      <!--<div class="popup" id="popup">
+
+          <div class="popup-window">
+
+
+          </div>
+        
+        </div>
+
+      </div>-->
 
       <div class="profile-status">
 
