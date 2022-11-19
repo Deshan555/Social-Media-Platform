@@ -31,3 +31,26 @@ CREATE TABLE Users(
 
   POSTS int(11) DEFAULT 0
   );
+
+
+  CREATE TABLE Posts(
+  
+  Post_ID int(11) PRIMARY KEY AUTO_INCREMENT,
+  
+  User_ID int(11) NOT NULL,
+  
+  Likes int(11) NOT NULL,
+  
+  Img_Path text  NOT NULL,
+  
+  Caption varchar(250) NOT NULL,
+  
+  HashTags varchar(250) NOT NULL,
+  
+  Date_Upload DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  
+  USER_NAME varchar(50)  NOT NULL,
+  
+  Profile_Img text NOT NULL,
+  
+);
