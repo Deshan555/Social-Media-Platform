@@ -118,20 +118,20 @@
 
     <div class="col sm-hidden">
 
-      <h1 class="profile-user-name" style="font-size: 2rem;font-weight: 300;">Preview Post</h1><br>
-
+      <h1 class="profile-user-name" style="font-size: 2rem;font-weight: 300;">Preview Post</h1><br>  
+      
       <?php if(isset($_GET['error_message'])){ ?>
         
-        <p id="error_message" class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
+        <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
         
       <?php }?>
 
       <?php if(isset($_GET['success_message'])){ ?>
         
-        <p id="success_message" class="text-center alert-success"><?php echo $_GET['success_message'];?></p>
+        <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
         
       <?php }?>
-
+      
       <div class="post">
 
         <div class="info">

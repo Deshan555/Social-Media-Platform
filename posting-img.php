@@ -45,20 +45,20 @@ if(isset($_POST['posting']))
     {
         move_uploaded_file($tempname, $folder);
 
-        header("location: post-uploader.php?success_message?Post Successfully updated");
+        header("location: post-uploader.php?success_message=Post Successfully updated");
 
-        echo "done";
+        exit;
     }
     else
     {
-        header("location: post-uploader.php?error_message?Error Occured, try again");
+        header("location: post-uploader.php?error_message=Error Occured, try again");
 
         exit;
     }
 }
 else
 {
-    header("location: post-uploader.php?error_message?Error Occured, try again");
+    header("location: post-uploader.php?error_message=Error Occured, try again");
 
     exit;
 }
