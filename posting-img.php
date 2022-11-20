@@ -2,6 +2,13 @@
 
 session_start();
 
+if(!isset($_SESSION['id']))
+{
+  header('location: login.php');
+
+  exit;
+}
+
 include('config.php');
 
 if(isset($_POST['posting']))
@@ -51,14 +58,14 @@ if(isset($_POST['posting']))
     }
     else
     {
-        header("location: post-uploader.php?error_message=Error Occured, try again");
+        header("location: post-uploader.php?error_message=Error Occured, try again - ERROR #008");
 
         exit;
     }
 }
 else
 {
-    header("location: post-uploader.php?error_message=Error Occured, try again");
+    header("location: post-uploader.php?error_message=Error Occured, try again2 - ERROR #009");
 
     exit;
 }
