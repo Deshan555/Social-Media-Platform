@@ -54,3 +54,27 @@ CREATE TABLE Users(
   Profile_Img text NOT NULL,
   
 );
+
+  CREATE TABLE Videos(
+  
+  Video_ID int(11) PRIMARY KEY AUTO_INCREMENT,
+  
+  User_ID int(11) NOT NULL,
+  
+  Likes int(11) NOT NULL,
+  
+  Tumbnail_Path text  NOT NULL,
+
+  Video_Path text  NOT NULL,
+  
+  Caption varchar(250) NOT NULL,
+  
+  HashTags varchar(250) NOT NULL,
+  
+  Date_Upload DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  
+  USER_NAME varchar(50)  NOT NULL,
+  
+  Profile_Img text NOT NULL,
+  
+);
