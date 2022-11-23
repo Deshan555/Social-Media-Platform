@@ -63,8 +63,6 @@ CREATE TABLE Users(
   
   Likes int(11) NOT NULL,
   
-  Tumbnail_Path text  NOT NULL,
-
   Video_Path text  NOT NULL,
   
   Caption varchar(250) NOT NULL,
@@ -75,6 +73,6 @@ CREATE TABLE Users(
   
   USER_NAME varchar(50)  NOT NULL,
   
-  Profile_Img text NOT NULL,
+  Profile_Img text NOT NULL
   
 );
