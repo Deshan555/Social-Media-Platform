@@ -113,12 +113,10 @@ if(!isset($_SESSION['id']))
                     <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-sign-out-alt"></i></i></button><a href="logout.php">Log Out</a></li>
                   </ul>
                 </div>
-    
-
-</div>
-
-</div>
-</div>
+              </div>
+            </div>
+          </div>
+      </div>
       
       <!--<div class="popup" id="popup">
 
@@ -177,143 +175,37 @@ if(!isset($_SESSION['id']))
 
     <div class="gallery">
 
+    <?php include("get-posts.php"); ?>
+
+     <!--loop over the results-->
+
+    <?php foreach($posts as $post){ ?>
+
       <div class="gallery-items">
 
-        <img src="assets/images/posts/post_2.jpg" alt="post" class="gallery-img">
+        <img src="<?php echo "./assets/images/posts/".$post['Img_Path'];?>" alt="post" class="gallery-img">
 
         <div class="gallery-item-info">
 
           <ul>
 
-            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : </span>
+            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : <?php echo $post['Likes'];?></span>
 
               <i class="icon fas fa-thumbs-up"></i>
 
-            </li>
-
-            <li class="gallery-items-comments"><span class="hide-gallery-elements">Opinions : </span>
-
-              <i class="icon fas fa-comment"></i>
-
-            </li>
-
+            </li><br>
+            
           </ul>
 
         </div>
 
       </div>
 
-      <! More Testing samples -->
-
-      <div class="gallery-items">
-
-        <img src="assets/images/posts/post_1.jpg" alt="post" class="gallery-img">
-
-        <div class="gallery-item-info">
-
-          <ul>
-
-            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : </span>
-
-              <i class="icon fas fa-thumbs-up"></i>
-
-            </li>
-
-            <li class="gallery-items-comments"><span class="hide-gallery-elements">Opinions : </span>
-
-              <i class="icon fas fa-comment"></i>
-
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      <div class="gallery-items">
-
-        <img src="assets/images/posts/post_2.jpg" alt="post" class="gallery-img">
-
-        <div class="gallery-item-info">
-
-          <ul>
-
-            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : </span>
-
-              <i class="icon fas fa-thumbs-up"></i>
-
-            </li>
-
-            <li class="gallery-items-comments"><span class="hide-gallery-elements">Opinions : </span>
-
-              <i class="icon fas fa-comment"></i>
-
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      <div class="gallery-items">
-
-        <img src="assets/images/posts/post_1.jpg" alt="post" class="gallery-img">
-
-        <div class="gallery-item-info">
-
-          <ul>
-
-            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : </span>
-
-              <i class="icon fas fa-thumbs-up"></i>
-
-            </li>
-
-            <li class="gallery-items-comments"><span class="hide-gallery-elements">Opinions : </span>
-
-              <i class="icon fas fa-comment"></i>
-
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-
-      <div class="gallery-items">
-
-        <img src="assets/images/posts/post_2.jpg" alt="post" class="gallery-img">
-
-        <div class="gallery-item-info">
-
-          <ul>
-
-            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : </span>
-
-              <i class="icon fas fa-thumbs-up"></i>
-
-            </li>
-
-            <li class="gallery-items-comments"><span class="hide-gallery-elements">Opinions : </span>
-
-              <i class="icon fas fa-comment"></i>
-
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
+    <?php } ?>
 
     </div>
 
-  </div>
-
-</main>
+  </main>
 
 </body>
 
