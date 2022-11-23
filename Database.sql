@@ -76,3 +76,14 @@ CREATE TABLE Users(
   Profile_Img text NOT NULL
   
 );
+
+
+CREATE TABLE Fallowing(
+  
+  ID int(11) PRIMARY KEY AUTO_INCREMENT,
+
+  User_Id int(11) NOT NULL,
+
+  Other_user_id int(11) NOT NULL
+
+);
