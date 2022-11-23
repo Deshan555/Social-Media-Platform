@@ -67,7 +67,7 @@ if(isset($_SESSION['id']))
                   <h5 class="fw-normal mb-3 pb-3" style="text-transform: uppercase; color: grey;"><b>Sign in with your sltc id</b></h5>
 
                   
-                <?php if(isset($_GET['error_message'])){ ?>+
+                <?php if(isset($_GET['error_message'])){ ?>
                   
                   <p id="error_message" class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
                   
