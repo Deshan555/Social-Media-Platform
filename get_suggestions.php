@@ -22,8 +22,12 @@ while($row = $result->fetch_array(MYSQLI_NUM))
     }
 }
 
+if(empty($ids))
+{
+    $ids = [$user_id];
+}
 
-$fallowing_id = join("','",$ids);
+$fallowing_id = join(",",$ids);
 
 $sql_query_two = "SELECT * FROM Users WHERE User_Id NOT IN($fallowing_id) ORDER BY RAND() LIMIT 4;";
 
