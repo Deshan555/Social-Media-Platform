@@ -258,15 +258,19 @@ if(!isset($_SESSION['id']))
 
             <!-- Wrapper for posting -->
 
+            <?php include('get_latest_posts.php'); ?>
+
+            <?php foreach($posts as $post){ ?>
+            
             <div class="post">
 
                 <div class="info">
 
                     <div class="user">
 
-                        <div class="profile-pic"><img src="assets/images/default.png"></div>
+                        <div class="profile-pic"><img src="<?php echo "assets/images/posts/". $post['Profile_Img']; ?>"></div>
 
-                        <p class="username">SLTC Leo Club</p>
+                        <p class="username"><?php echo $post['USER_NAME'];?></p>
 
                     </div>
 
@@ -274,31 +278,25 @@ if(!isset($_SESSION['id']))
 
                 </div>
 
-                <img src="assets/images/posts/post.jpg" class="post-img">
+                <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
                 <div class="post-content">
 
                     <div class="reactions-wrapper">
-
                         <i class="icon fas fa-thumbs-up"></i>
-
                         <i class="icon fas fa-comment"></i>
-
                         <i class="icon fas fa-calendar-alt"></i>
-
                     </div>
 
-                    <p class="reactions">1,789 Reactions</p>
+                    <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
 
                     <p class="description">
-                        <span>Username Says : <br></span>
-                        I got my peaches out in Georgia (oh, yeah, shit)
-                        I get my weed from California (that's that shit)
-                        I took my chick up to the North, yeah (badass bitch)
-                        I get my light right from the source, yeah (yeah, that's it)
+                        <span><?php echo $post['USER_NAME'];?> Says :<br></span>
+
+                        <?php echo $post['Caption'];?>
                     </p>
 
-                    <p class="post-time">2022/11/5</p>
+                    <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
                 </div>
 
@@ -314,62 +312,7 @@ if(!isset($_SESSION['id']))
 
             </div>
 
-            <div class="post">
-
-                <div class="info">
-
-                    <div class="user">
-
-                        <div class="profile-pic"><img src="assets/images/default.png"></div>
-
-                        <p class="username">SLTC Leo Club</p>
-
-                    </div>
-
-                    <i class="fas fa-ellipsis-v options"></i>
-
-                </div>
-
-                <img src="assets/images/posts/post.jpg" class="post-img">
-
-                <div class="post-content">
-
-                    <div class="reactions-wrapper">
-
-                        <i class="icon fas fa-thumbs-up"></i>
-
-                        <i class="icon fas fa-comment"></i>
-
-                        <i class="icon fas fa-calendar-alt"></i>
-
-                    </div>
-
-                    <p class="reactions">1,789 Reactions</p>
-
-                    <p class="description">
-                        <span>Username Says : <br></span>
-                        I got my peaches out in Georgia (oh, yeah, shit)
-                        I get my weed from California (that's that shit)
-                        I took my chick up to the North, yeah (badass bitch)
-                        I get my light right from the source, yeah (yeah, that's it)
-                    </p>
-
-                    <p class="post-time">2022/11/5</p>
-
-                </div>
-
-                <div class="comments-section">
-
-                    <img src="assets/images/default.png" class="icon">
-
-                    <input type="text" class="comment-box" placeholder="Your Opinion">
-
-                    <button class="comment-button">WRITE</button>
-
-                </div>
-
-            </div>
-
+            <?php } ?>
         </div>
 
         <!-- Design for right column -->
@@ -443,7 +386,7 @@ if(!isset($_SESSION['id']))
                 
                 </div>
 
-                <?php }?>
+                <?php } ?>
 
             <?php }?>
 
