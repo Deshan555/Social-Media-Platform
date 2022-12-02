@@ -30,13 +30,13 @@ if(!isset($_SESSION['id']))
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="stylesheet" href="assets/css/section.css">
-
+    
     <link rel="stylesheet" href="assets/css/posting.css">
-
-    <link rel="stylesheet" href="assets/css/right_col.css">
 
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+    <link rel="stylesheet" href="assets/css/right_col.css">
+    
     <link rel="stylesheet" href="assets/css/profile-page.css">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -63,11 +63,8 @@ if(!isset($_SESSION['id']))
             align-items: center;
             
             overflow: hidden;
-            
-            overflow-x: auto;
-            
+                        
             border-radius: 10px;
-
         }
 
         .Events-wrapper{
@@ -381,7 +378,6 @@ if(!isset($_SESSION['id']))
 
             <!-- structure for profile card section-->
 
-            <div class="profile-wraapper">
             <div class="profile_card">
 
                 <div class="profile-pic">
@@ -391,18 +387,30 @@ if(!isset($_SESSION['id']))
                 </div>
 
                 <div>
+                    <style>
+                        .profile_users{
+                            font-size: 16px;
+                                                                                    
+                            color: #262626;;
 
-                    <p class="username">EventsWave Official</p>
+                            font-weight: bold;
+                        }
+
+                    </style>
+
+                    <p class="profile_users">EventsWave Official</p>
 
                     <p class="sub-text">Events with Elegance</p>
 
                 </div>
 
                 <form method="GET" action="logout.php">
+                    
                     <button class="logout-btn" style="margin-left: 30px;">LogOut</button>
+                
                 </form>
 
-            </div></div>
+            </div>
 
             <!-- structure for suggestions -->
 
@@ -442,6 +450,7 @@ if(!isset($_SESSION['id']))
             <img src="assets/images/pp3.jpg" class="card-img-top" alt="Event_Card" style="border-radius: 10px;">
             
             <div class="card-body">
+                
                 <h6 class="card-title">Card title</h6>
                 
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
