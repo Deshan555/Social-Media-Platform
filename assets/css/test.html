@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Scroll Automatically</title>
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+
+	<!-- jQuery code to show
+	the working of this method -->
+	<script>
+		$(document).ready(function() {
+			$("button").click(function() {
+				$("html, body").animate({
+					scrollTop: $(
+					'html, body').get(0).scrollHeight
+				}, 2000);
+			});
+		});
+	</script>
+	<style>
+		h1 {
+			color: green;
+		}
+	</style>
+</head>
+
+<body>
+	<center>
+		<div>
+			<!-- click on this button
+			and see the change -->
+			<button>Click Here!</button>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+			<h1>GeeksforGeeks</h1>
+		</div>
+	</center>
+</body>
+
+</html>
