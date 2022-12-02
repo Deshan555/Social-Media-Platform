@@ -281,12 +281,16 @@ if(!isset($_SESSION['id']))
                 <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
                 <div class="post-content">
-
+                    
                     <div class="reactions-wrapper">
-                        <i class="icon fas fa-thumbs-up"></i>
-                        <i class="icon fas fa-comment"></i>
-                        <i class="icon fas fa-calendar-alt"></i>
-                    </div>
+
+                        <a href="#" style="color: #22262A;"><i class="icon fas fa-thumbs-up fa-lg"></i></a>
+
+                        <a href="single-post.php?post_id= <?php echo $post["Post_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment fa-lg"></i></a>
+
+                        <a href="#" style="color: #22262A;"><i class="icon fas fa-calendar-alt fa-lg"></i></a>
+
+                </div>
 
                     <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
 
@@ -298,9 +302,11 @@ if(!isset($_SESSION['id']))
 
                     <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
+                    <p class="post-time"><?php echo $post['HashTags'];?></p>
+
                 </div>
 
-                <div class="comments-section">
+                <!--<div class="comments-section">
 
                     <img src="assets/images/default.png" class="icon">
 
@@ -308,7 +314,7 @@ if(!isset($_SESSION['id']))
 
                     <button class="comment-button">WRITE</button>
 
-                </div>
+                </div>-->
 
             </div>
 
@@ -354,38 +360,25 @@ if(!isset($_SESSION['id']))
 
             <!-- structure for profile card section-->
 
-            <div class="profile_card">
-
-                <div class="profile-pic">
-
-                    <img src="assets/images/default.png">
-
-                </div>
-
-                <div>
-                    <style>
-                        .profile_users{
-                            font-size: 16px;
-                                                                                    
-                            color: #262626;;
-
-                            font-weight: bold;
-                        }
-
-                    </style>
-
-                    <p class="profile_users">EventsWave Official</p>
-
-                    <p class="sub-text">Events with Elegance</p>
-
-                </div>
-
-                <form method="GET" action="logout.php">
+            <div class="style-wrapper mt-2" style="background: white;">
                     
-                    <button class="logout-btn" style="margin-left: 30px;">LogOut</button>
-                
-                </form>
+                    <div class="suggestion_card">
+                        
+                        <div>
+                            <img src="<?php echo "assets/images/profiles/".$_SESSION['img_path'];?>" style="border-radius: 50%; width: 60px; height: 60px; vertical-align: middle; float: left; margin-top: 6px;">
+                        </div>
 
+                        <div>
+                            <p class="username" style="margin-left: 11px;"><?php echo $_SESSION['username'];?></p>
+
+                            <p class="sub-text" style="margin-left: 19px;"><?php echo $_SESSION['fullname'];?></p>
+
+                        </div>
+
+                        <a href="logout.php"><button class="fallow-btn" style="margin-left: 60px;">LOG OUT</button></a>               
+
+                    </div>
+                
             </div>
 
             <!-- structure for suggestions -->
@@ -403,7 +396,7 @@ if(!isset($_SESSION['id']))
                     <div class="suggestion_card">
                         
                         <div>
-                            <img src="<?php echo "assets/images/".$suggestion['IMAGE'];?>" style="border-radius: 50%; width: 45px; height: 45px; vertical-align: middle; float: left; margin-top: 6px;">
+                            <img src="<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" style="border-radius: 50%; width: 45px; height: 45px; vertical-align: middle; float: left; margin-top: 6px;">
                         </div>
 
                         <div>
