@@ -419,6 +419,8 @@ if(!isset($_SESSION['id']))
             <?php include("get_suggestions.php"); ?>
 
             <?php foreach($suggestions as $suggestion){?>
+
+                <?php if($suggestion['User_ID']!= $_SESSION['id']){?>
                 
                 <div class="style-wrapper mt-2">
                     
@@ -440,6 +442,8 @@ if(!isset($_SESSION['id']))
                     </div>
                 
                 </div>
+
+                <?php }?>
 
             <?php }?>
 
