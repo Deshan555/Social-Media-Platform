@@ -57,9 +57,30 @@
 
 </nav>
 
-
 <!-- New Section -->
 
+<?php 
+
+include('config.php');
+
+if(isset($_GET['post_id']))
+{
+  $post_identification = $_GET['post_id'];
+
+  $stmt = $conn->prepare("SELECT * FROM Posts WHERE Post_ID = $post_identification;");
+  
+  $stmt->execute();
+  
+  $post_array = $stmt->get_result();
+
+}
+else{
+  header('location: home.php');
+
+  exit;
+}
+
+?>
 
 <section class="main">
 
@@ -71,15 +92,17 @@
 
       <!-- Wrapper for single posting -->
 
+    <?php foreach($post_array as $post){ ?>
+
       <div class="post">
 
         <div class="info">
 
           <div class="user">
 
-            <div class="profile-pic"><img src="assets/images/default.png"></div>
+            <div class="profile-pic"><img src="<?php echo "assets/images/posts/". $post['Profile_Img']; ?>"></div>
 
-            <p class="username">SLTC Leo Club</p>
+            <p class="username"><?php echo $post['USER_NAME'];?></p>
 
           </div>
 
@@ -87,7 +110,7 @@
 
         </div>
 
-        <img src="assets/images/posts/post.jpg" class="post-img">
+        <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
         <div class="post-content">
 
@@ -95,23 +118,20 @@
 
             <i class="icon fas fa-thumbs-up"></i>
 
-            <i class="icon fas fa-comment"></i>
-
             <i class="icon fas fa-calendar-alt"></i>
 
           </div>
-
-          <p class="reactions">1,789 Reactions</p>
-
+          
+          <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+          
           <p class="description">
-            <span>Username Says : <br></span>
-            I got my peaches out in Georgia (oh, yeah, shit)
-            I get my weed from California (that's that shit)
-            I took my chick up to the North, yeah (badass bitch)
-            I get my light right from the source, yeah (yeah, that's it)
+            
+            <span><?php echo $post['USER_NAME'];?> Says :<br></span>
+
+            <?php echo $post['Caption'];?>
           </p>
 
-          <p class="post-time">2022/11/5</p>
+          <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
         </div>
 
@@ -126,6 +146,8 @@
         </div>
 
       </div>
+
+    <?php }?>
 
     </div>
 
@@ -152,90 +174,6 @@
         </div>
 
         <button class="logout-btn">LogOut</button>
-
-      </div>
-
-      <!-- structure for suggestions -->
-
-      <p class="suggesting">Recommendation For You</p>
-
-      <div class="suggestion_card">
-
-        <div class="suggestions-pic">
-
-          <img src="assets/images/profile_2.jpg">
-
-        </div>
-
-        <div>
-
-          <p class="username">Naruto_Uz890</p>
-
-          <p class="sub-text">Naruto Uzumaki</p>
-
-        </div>
-
-        <button class="fallow-btn">Fallow</button>
-
-      </div>
-
-      <div class="suggestion_card">
-
-        <div class="suggestions-pic">
-
-          <img src="assets/images/profile_2.jpg">
-
-        </div>
-
-        <div>
-
-          <p class="username">Naruto_Uz890</p>
-
-          <p class="sub-text">Naruto Uzumaki</p>
-
-        </div>
-
-        <button class="fallow-btn">Fallow</button>
-
-      </div>
-
-      <div class="suggestion_card">
-
-        <div class="suggestions-pic">
-
-          <img src="assets/images/profile_2.jpg">
-
-        </div>
-
-        <div>
-
-          <p class="username">Naruto_Uz890</p>
-
-          <p class="sub-text">Naruto Uzumaki</p>
-
-        </div>
-
-        <button class="fallow-btn">Fallow</button>
-
-      </div>
-
-      <div class="suggestion_card">
-
-        <div class="suggestions-pic">
-
-          <img src="assets/images/profile_2.jpg">
-
-        </div>
-
-        <div>
-
-          <p class="username">Naruto_Uz890</p>
-
-          <p class="sub-text">Naruto Uzumaki</p>
-
-        </div>
-
-        <button class="fallow-btn">Fallow</button>
 
       </div>
 
