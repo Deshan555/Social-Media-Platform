@@ -55,7 +55,7 @@ CREATE TABLE Users(
   
 );
 
-  CREATE TABLE Videos(
+CREATE TABLE Videos(
   
   Video_ID int(11) PRIMARY KEY AUTO_INCREMENT,
   
