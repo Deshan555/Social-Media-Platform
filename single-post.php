@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>-->
 
   <title>Document</title>
 
@@ -25,6 +25,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
 <body>
@@ -80,6 +81,39 @@ else{
   exit;
 }
 
+if(isset($_GET['page_no']) && $_GET['page_no'] != "")
+{
+    $page_no = $_GET['page_no'];
+}else
+{
+    $page_no = 3;
+}
+
+$sql = "SELECT COUNT(*) as total_comments FROM comments WHERE POST_ID = $post_identification";
+
+$stmt = $conn->prepare($sql);
+
+$stmt->execute();
+
+$stmt->bind_result($total_comments);
+
+$stmt->store_result();
+
+$stmt->fetch();
+
+$total_comments_per_page = 20;
+
+$offest = ($page_no - 1) * $total_comments_per_page;
+
+// that php ceil function return rounded numbers
+
+$total_number_pages = ceil($total_comments/$total_comments_per_page);
+
+$stmt = $conn->prepare("SELECT * FROM comments WHERE POST_ID = $post_identification LIMIT $offest, $total_comments_per_page;");
+
+$stmt->execute();
+
+$comments = $stmt->get_result();
 ?>
 
 <section class="main">
@@ -147,24 +181,91 @@ else{
 
         </div>
 
-        <div class="comments-section">
-
-          <img src="assets/images/default.png" class="icon">
-
-          <form method="post" action="comments_action.php" class="comments-section">
-            
-            <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
-
-            <input type="hidden" name="post_id" value="<?php echo $post['Post_ID']?>">
-            
-            <button class="comment-button" type="submit" name="submit">WRITE</button>
-          
-          </form>
-        </div>
-
       </div>
 
     <?php }?>
+
+    <div class="col-md-12 col-lg-10 col-xl-8 mt-2 mb-2" style="width: 100%; ">
+        
+        <div class="card" style="border-radius: 10px; background: #F5F5F5;">
+
+          <div class="card-body">
+
+            <div class="d-flex flex-start align-items-center">
+              
+                <div class="comments-section">
+                  
+                    <img src="assets/images/default.png" class="icon" style="width: 40px; height: 40px;">
+              
+                    <form method="post" action="comments_action.php" class="comments-section">
+              
+                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
+              
+                    <input type="hidden" name="post_id" value="<?php echo $post['Post_ID']?>">
+
+                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"></i></button>
+
+                    </form>
+
+                </div>
+            
+              </div>
+
+          </div>
+
+        </div><br>
+
+      <p><strong>EventsWave Community Opinion</strong></p>
+
+      <?php foreach ($comments as $comment) { ?>
+    
+        <div class="card mb-2" style="border-radius: 10px; background: #F5F5F5;">
+    
+        <div class="card-body">
+    
+        <p><?php echo $comment['COMMENT']; ?></p>
+
+          <div class="d-flex justify-content-between">
+    
+          <div class="d-flex flex-row align-items-center">
+    
+          <img src="<?php echo "assets/images/posts/" . $post['Img_Path']; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
+    
+          <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$comment['USER_ID']; ?></p>
+    
+        </div>   
+              <div class="d-flex flex-row align-items-center text-primary">
+    
+                <p class="text-muted small mb-0"><?php echo $comment['DATE']; ?></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php }?>
+    
+      
+      <!--Pagination bar-->
+      <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
+
+      <ul class="pagination">
+            
+      <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
+                 
+        <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo 'single-post.php?post_id='.$post_identification.'&page_no='. ($page_no-1); }?>"><</a>
+            
+      </li>
+      
+        <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
+            
+        <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo 'single-post.php?post_id='.$post_identification.'&page_no='.($page_no+1);}?>">></a>
+            
+      </li>
+    </ul>
+    </nav>
+    
+</div>
+
+
 
     </div>
 
