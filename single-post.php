@@ -82,18 +82,6 @@ else{
 
 ?>
 
-<?php if(isset($_GET['error_message'])){ ?>
-        
-  <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
-        
-<?php }?>
-
-<?php if(isset($_GET['success_message'])){ ?>
-        
-  <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
-
-<?php }?>
-
 <section class="main">
 
   <div class="wrapper">
@@ -102,7 +90,19 @@ else{
 
     <div class="left-col">
 
-      <!-- Wrapper for single posting -->
+    <?php if(isset($_GET['error_message'])){ ?>
+        
+      <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
+        
+    <?php }?>
+
+    <?php if(isset($_GET['success_message'])){ ?>
+        
+      <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
+        
+    <?php }?>
+
+    <!-- Wrapper for single posting -->
 
     <?php foreach($post_array as $post){ ?>
 
@@ -151,7 +151,7 @@ else{
 
           <img src="assets/images/default.png" class="icon">
 
-          <form method="post" action="comments_action.php">
+          <form method="post" action="comments_action.php" class="comments-section">
             
             <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
 

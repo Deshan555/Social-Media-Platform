@@ -22,11 +22,15 @@ if(isset($_POST['submit']))
 
     if($stmt->execute())
     {
-        header("location: single_post.php?post_id" . $post_id."&success_message=Your Opinion was Successfully Submitted");
+
+        header("location: single-post.php?post_id=" . $post_id."&success_message=Your Opinion Was Submitted Successfully");
+        
     }
     else
     {
-        header("location: single_post.php?post_id" . $post_id."&error_message=Your Opinion was Submition Abort");
+        header("location: single-post.php?post_id=" . $post_id."&error_message=Your Opinion Submission Abort");
+
+        echo "alert('Your Opinion was Submition Abort')";
     }
 
     exit;
