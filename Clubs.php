@@ -10,7 +10,7 @@
 
                     <input type="hidden" value="<?php $person['User_ID']?>" name="target_id">
 
-                    <div class="profile-pic"><img onclick="document.getElementById('quick_access').submit();" src="<?php echo "assets/images/".$person['IMAGE']?>"> </div>
+                    <div class="profile-pic" style="cursor: pointer;"><img onclick="document.getElementById('quick_access').submit();" src="<?php echo "assets/images/".$person['IMAGE']?>"> </div>
 
                     <p class="username"><?php echo $person['USER_NAME']?></p>
 
