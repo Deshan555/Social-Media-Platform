@@ -4,13 +4,19 @@
 
     <?php foreach($Clubs as $person){?>
 
-    <div class="status-card">
+            <form method="post" action="user-profile.php" id="quick_access">
 
-        <div class="profile-pic"><img src="<?php echo "assets/images/".$person['IMAGE']?>"> </div>
+                <div class="status-card">
 
-        <p class="username"><?php echo $person['USER_NAME']?></p>
+                    <input type="hidden" value="<?php $person['User_ID']?>" name="target_id">
 
-    </div>
+                    <div class="profile-pic"><img onclick="document.getElementById('quick_access').submit();" src="<?php echo "assets/images/".$person['IMAGE']?>"> </div>
+
+                    <p class="username"><?php echo $person['USER_NAME']?></p>
+
+                </div>
+
+            </form>
 
     <?php }?>
 
