@@ -190,70 +190,6 @@ if(!isset($_SESSION['id']))
 
                 </div>
 
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
             </div>
 
             <!-- Wrapper for posting -->
@@ -406,8 +342,14 @@ if(!isset($_SESSION['id']))
 
                         </div>
 
-                        <button class="fallow-btn" style="margin-left: 60px;">Fallow</button>
-
+                        <form method="POST" action="fallow_user.php">
+                            
+                            <input type="hidden" name="fallow_person" value='<?php echo $suggestion['User_ID'];?>'>
+                            
+                            <button type="submit" class="fallow-btn" style="margin-left: 60px;" name="fallow">Fallow</button>
+                        
+                        </form>
+                        
                     </div>
                 
                 </div>
