@@ -2,7 +2,7 @@
 
 session_start();
 
-include("config.php");
+$conn = include("config.php");
 
 if(isset($_POST['submit']))
 {
@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
     {
         header("location: single-post.php?post_id=" . $post_id."&error_message=Your Opinion Submission Abort");
 
-        echo "alert('Your Opinion was Submition Abort')";
+        echo "alert('Your Opinion was Submission Abort')";
     }
 
     exit;
