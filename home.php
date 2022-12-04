@@ -178,19 +178,7 @@ if(!isset($_SESSION['id']))
 
             <!-- Wrapper For Status -->
 
-            <div class="status-wrapper">
-
-                <!-- sample data -->
-
-                <div class="status-card">
-
-                    <div class="profile-pic"><img src="assets/images/default.png"> </div>
-
-                    <p class="username">User Name</p>
-
-                </div>
-
-            </div>
+            <?php include('Clubs.php');?>
 
             <!-- Wrapper for posting -->
 
