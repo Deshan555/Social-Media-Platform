@@ -8,9 +8,13 @@
 
                 <div class="status-card">
 
-                    <input type="hidden" value="<?php $person['User_ID']?>" name="target_id">
+                    <input type="hidden" value="<?php echo $person['User_ID']?>" name="target_id">
 
-                    <div class="profile-pic" style="cursor: pointer;"><img onclick="document.getElementById('quick_access').submit();" src="<?php echo "assets/images/".$person['IMAGE']?>"> </div>
+                    <?php echo "Other User ID : ".$person['User_ID']?>
+
+                    <div class="profile-pic" style="cursor: pointer;">
+                        <img onclick="document.getElementById('quick_access').submit();" src="<?php echo "assets/images/".$person['IMAGE']?>" name="quick_access">
+                    </div>
 
                     <p class="username"><?php echo $person['USER_NAME']?></p>
 
