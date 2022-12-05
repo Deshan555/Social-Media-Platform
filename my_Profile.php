@@ -104,7 +104,7 @@ if(!isset($_SESSION['id']))
 
                         <form method="post" action="update-profile.php">
 
-                                <button type="button" class="btn btn-outline-light btn-sm btn-block mt-2">Edit Profile</button>
+                                <button type="submit" class="btn btn-outline-light btn-sm btn-block mt-2">Edit Profile</button>
                         </form>
 
                     </div>
@@ -171,8 +171,6 @@ if(!isset($_SESSION['id']))
 
                     <h5 class="mb-0">Recent photos</h5>
 
-                    <a href="#" class="btn btn-link text-muted">Show all</a>
-
                 </div> <div class="row">
 
                     <div class="gallery">
@@ -196,7 +194,13 @@ if(!isset($_SESSION['id']))
 
                                             <i class="icon fas fa-thumbs-up"></i>
 
-                                        </li><br>
+                                        </li>
+
+                                        <li class="gallery-items-likes"><span class="hide-gallery-elements">Opinions</span>
+
+                                            <a href="single-post.php?post_id=<?php echo $post['Post_ID'];?>" style="color: white"><i class="icon fas fa-comment"></i></a>
+
+                                        </li>
 
                                     </ul>
 
