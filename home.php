@@ -320,7 +320,13 @@ if(!isset($_SESSION['id']))
                     <div class="suggestion_card">
                         
                         <div>
-                            <img src="<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" style="border-radius: 50%; width: 45px; height: 45px; vertical-align: middle; float: left; margin-top: 6px;">
+                            <form id="suggestion_form<?php echo $suggestion['User_ID'];?>" method="post" action="follower_acc.php">
+
+                                <input type="hidden" value="<?php echo $suggestion['User_ID']?>" name="target_id">
+
+                                <img src="<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" style="border-radius: 50%; width: 45px; height: 45px; vertical-align: middle; float: left; margin-top: 6px;" onclick="document.getElementById('suggestion_form'+<?php echo $suggestion['User_ID'];?>).submit();">
+
+                            </form>
                         </div>
 
                         <div>
