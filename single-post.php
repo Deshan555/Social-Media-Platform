@@ -3,29 +3,31 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-  <title>Title</title>
+    <title>Title</title>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
-  <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>-->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>-->
 
-  <title>Document</title>
+    <title>Document</title>
 
-  <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-  <link rel="stylesheet" href="assets/css/section.css">
+    <link rel="stylesheet" href="assets/css/section.css">
 
-  <link rel="stylesheet" href="assets/css/posting.css">
+    <link rel="stylesheet" href="assets/css/posting.css">
 
-  <link rel="stylesheet" href="assets/css/right_col.css">
+    <link rel="stylesheet" href="assets/css/right_col.css">
 
-  <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/css/Comment.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
 <body>
@@ -34,51 +36,51 @@
 
 <nav class="navbar">
 
-  <div class="nav-wrapper">
+    <div class="nav-wrapper">
 
-    <img src="assets/images/black_logo.png" class="brand-img">
+        <img src="assets/images/black_logo.png" class="brand-img">
 
-    <div class="nav-items">
+        <div class="nav-items">
 
-      <i class="icon fas fa-home fa-lg"></i>
+            <i class="icon fas fa-home fa-lg"></i>
 
-      <i class="icon fas fa-plus-square fa-lg"></i>
+            <i class="icon fas fa-plus-square fa-lg"></i>
 
-      <i class="icon fas fa-heart fa-lg"></i>
+            <i class="icon fas fa-heart fa-lg"></i>
 
-      <div class="icon user-profile">
+            <div class="icon user-profile">
 
-        <i class="fas fa-user-circle fa-lg"></i>
+                <i class="fas fa-user-circle fa-lg"></i>
 
-      </div>
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
 
 </nav>
 
 <!-- New Section -->
 
-<?php 
+<?php
 
 include('config.php');
 
 if(isset($_GET['post_id']))
 {
-  $post_identification = $_GET['post_id'];
+    $post_identification = $_GET['post_id'];
 
-  $stmt = $conn->prepare("SELECT * FROM Posts WHERE Post_ID = $post_identification;");
-  
-  $stmt->execute();
-  
-  $post_array = $stmt->get_result();
+    $stmt = $conn->prepare("SELECT * FROM Posts WHERE Post_ID = $post_identification;");
+
+    $stmt->execute();
+
+    $post_array = $stmt->get_result();
 
 }
 else{
-  header('location: home.php');
+    header('location: home.php');
 
-  exit;
+    exit;
 }
 
 if(isset($_GET['page_no']) && $_GET['page_no'] != "")
@@ -86,7 +88,7 @@ if(isset($_GET['page_no']) && $_GET['page_no'] != "")
     $page_no = $_GET['page_no'];
 }else
 {
-    $page_no = 3;
+    $page_no = 1;
 }
 
 $sql = "SELECT COUNT(*) as total_comments FROM comments WHERE POST_ID = $post_identification";
@@ -95,13 +97,15 @@ $stmt = $conn->prepare($sql);
 
 $stmt->execute();
 
+$total_comments =0;
+
 $stmt->bind_result($total_comments);
 
 $stmt->store_result();
 
 $stmt->fetch();
 
-$total_comments_per_page = 20;
+$total_comments_per_page = 2;
 
 $offest = ($page_no - 1) * $total_comments_per_page;
 
@@ -118,186 +122,185 @@ $comments = $stmt->get_result();
 
 <section class="main">
 
-  <div class="wrapper">
+    <div class="wrapper">
 
-    <!-- Design for left column -->
+        <!-- Design for left column -->
 
-    <div class="left-col">
+        <div class="left-col">
 
-    <?php if(isset($_GET['error_message'])){ ?>
-        
-      <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
-        
-    <?php }?>
+            <?php if(isset($_GET['error_message'])){ ?>
 
-    <?php if(isset($_GET['success_message'])){ ?>
-        
-      <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
-        
-    <?php }?>
+                <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
 
-    <!-- Wrapper for single posting -->
+            <?php }?>
 
-    <?php foreach($post_array as $post){ ?>
+            <?php if(isset($_GET['success_message'])){ ?>
 
-      <div class="post">
+                <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
 
-        <div class="info">
+            <?php }?>
 
-          <div class="user">
+            <!-- Wrapper for single posting -->
 
-            <div class="profile-pic"><img src="<?php echo "assets/images/posts/". $post['Profile_Img']; ?>"></div>
+            <?php foreach($post_array as $post){ ?>
 
-            <p class="username"><?php echo $post['USER_NAME'];?></p>
+                <div class="post">
 
-          </div>
+                    <div class="info">
 
-          <i class="fas fa-ellipsis-v options"></i>
+                        <div class="user">
 
-        </div>
+                            <div class="profile-pic"><img src="<?php echo "assets/images/posts/". $post['Profile_Img']; ?>"></div>
 
-        <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
+                            <p class="username"><?php echo $post['USER_NAME'];?></p>
 
-        <div class="post-content">
+                        </div>
 
-          <div class="reactions-wrapper">
+                        <i class="fas fa-ellipsis-v options"></i>
 
-            <i class="icon fas fa-thumbs-up"></i>
+                    </div>
 
-            <i class="icon fas fa-calendar-alt"></i>
+                    <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
-          </div>
-          
-          <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
-          
-          <p class="description">
-            
-            <span><?php echo $post['USER_NAME'];?> Says :<br></span>
+                    <div class="post-content">
 
-            <?php echo $post['Caption'];?>
-          </p>
+                        <div class="reactions-wrapper">
 
-          <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+                            <i class="icon fas fa-thumbs-up"></i>
 
-        </div>
+                            <i class="icon fas fa-calendar-alt"></i>
 
-      </div>
+                        </div>
 
-    <?php }?>
+                        <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
 
-    <div class="col-md-12 col-lg-10 col-xl-8 mt-2 mb-2" style="width: 100%; ">
-        
-        <div class="card" style="border-radius: 10px; background: #F5F5F5;">
+                        <p class="description">
 
-          <div class="card-body">
+                            <span><?php echo $post['USER_NAME'];?> Says :<br></span>
 
-            <div class="d-flex flex-start align-items-center">
-              
-                <div class="comments-section">
-                  
-                    <img src="assets/images/default.png" class="icon" style="width: 40px; height: 40px;">
-              
-                    <form method="post" action="comments_action.php" class="comments-section">
-              
-                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
-              
-                    <input type="hidden" name="post_id" value="<?php echo $post['Post_ID']?>">
+                            <?php echo $post['Caption'];?>
+                        </p>
 
-                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"></i></button>
+                        <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
-                    </form>
+                    </div>
 
                 </div>
-            
-              </div>
 
-          </div>
+            <?php }?>
 
-        </div><br>
+            <div class="col-md-12 col-lg-10 col-xl-8 mt-2 mb-2" style="width: 100%; ">
 
-      <p><strong>EventsWave Community Opinion</strong></p>
+                <div class="card" style="border-radius: 10px; background: #F5F5F5;">
 
-      <?php foreach ($comments as $comment) { ?>
-    
-        <div class="card mb-2" style="border-radius: 10px; background: #F5F5F5;">
-    
-        <div class="card-body">
-    
-        <p><?php echo $comment['COMMENT']; ?></p>
+                    <div class="card-body">
 
-          <div class="d-flex justify-content-between">
-    
-          <div class="d-flex flex-row align-items-center">
-    
-          <img src="<?php echo "assets/images/posts/" . $post['Img_Path']; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
-    
-          <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$comment['USER_ID']; ?></p>
-    
-        </div>   
-              <div class="d-flex flex-row align-items-center text-primary">
-    
-                <p class="text-muted small mb-0"><?php echo $comment['DATE']; ?></p>
-              </div>
+                        <div class="d-flex flex-start align-items-center">
+
+                            <div class="comments-section">
+
+                                <img src="assets/images/default.png" class="icon" style="width: 40px; height: 40px;">
+
+                                <form method="post" action="comments_action.php" class="comments-section">
+
+                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
+
+                                    <input type="hidden" name="post_id" value="<?php echo $post['Post_ID']?>">
+
+                                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"></i></button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div><br>
+
+                <p><strong>EventsWave Community Opinion</strong></p>
+
+                <?php foreach ($comments as $comment) { ?>
+
+                    <div class="card mb-2" style="border-radius: 10px; background: #F5F5F5;">
+
+                        <div class="card-body">
+
+                            <p><?php echo $comment['COMMENT']; ?></p>
+
+                            <div class="d-flex justify-content-between">
+
+                                <div class="d-flex flex-row align-items-center">
+
+                                    <img src="<?php echo "assets/images/posts/" . $post['Img_Path']; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
+
+                                    <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$comment['USER_ID']; ?></p>
+
+                                </div>
+                                <div class="d-flex flex-row align-items-center text-primary">
+
+                                    <p class="text-muted small mb-0"><?php echo $comment['DATE']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php }?>
+
+                <!--Pagination bar-->
+                <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
+
+                    <ul class="pagination">
+
+                        <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
+
+                            <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo 'single-post.php?post_id='.$post_identification.'&page_no='. ($page_no-1); }?>"><</a>
+
+                        </li>
+
+                        <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
+
+                            <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo 'single-post.php?post_id='.$post_identification.'&page_no='.($page_no+1);}?>">></a>
+
+                        </li>
+                    </ul>
+                </nav>
+
             </div>
-          </div>
+
+
+
         </div>
-      <?php }?>
-    
-      
-      <!--Pagination bar-->
-      <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
 
-      <ul class="pagination">
-            
-      <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
-                 
-        <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo 'single-post.php?post_id='.$post_identification.'&page_no='. ($page_no-1); }?>"><</a>
-            
-      </li>
-      
-        <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
-            
-        <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo 'single-post.php?post_id='.$post_identification.'&page_no='.($page_no+1);}?>">></a>
-            
-      </li>
-    </ul>
-    </nav>
-    
-</div>
+        <!-- Design for right column -->
 
+        <div class="right-col">
 
+            <!-- structure for profile card section-->
+
+            <div class="profile_card">
+
+                <div class="profile-pic">
+
+                    <img src="assets/images/default.png">
+
+                </div>
+
+                <div>
+
+                    <p class="username">EventsWave Official</p>
+
+                    <p class="sub-text">Events with Elegance</p>
+
+                </div>
+
+                <button class="logout-btn">LogOut</button>
+
+            </div>
+
+        </div>
 
     </div>
-
-    <!-- Design for right column -->
-
-    <div class="right-col">
-
-      <!-- structure for profile card section-->
-
-      <div class="profile_card">
-
-        <div class="profile-pic">
-
-          <img src="assets/images/default.png">
-
-        </div>
-
-        <div>
-
-          <p class="username">EventsWave Official</p>
-
-          <p class="sub-text">Events with Elegance</p>
-
-        </div>
-
-        <button class="logout-btn">LogOut</button>
-
-      </div>
-
-    </div>
-
-  </div>
 
 </section>
 
