@@ -85,7 +85,7 @@ if(!isset($_SESSION['id']))
 
               <div class="user-avatar">
 
-                <img src="<?php echo $_SESSION['img_path'] ?>" alt="profile-avatar">
+                <img src="<?php echo "assets/images/profiles/".$_SESSION['img_path'] ?>" alt="profile-avatar">
 
               </div>
 
@@ -97,7 +97,7 @@ if(!isset($_SESSION['id']))
 
             <div class="about">
 
-              <h5>Bio</h5>
+              <h5>About</h5>
 
               <p><?php echo $_SESSION['bio']?></p>
 
@@ -130,7 +130,7 @@ if(!isset($_SESSION['id']))
 
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-    <h6 class="mb-2 text-primary">Personal/Organization Details</h6>
+    <h6 class="mb-2 text-primary">Personal/ Organization Details</h6>
 
   </div>
 
@@ -140,7 +140,7 @@ if(!isset($_SESSION['id']))
 
       <label for="fullName">Full Name</label>
 
-      <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name/Organization Name">
+      <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Enter full name/Organization Name" value="<?php echo $_SESSION['fullname'] ?>">
 
     </div>
 
@@ -153,7 +153,7 @@ if(!isset($_SESSION['id']))
 
       <label for="user_name">User Name</label>
 
-      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name" name="user_name">
+      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name" name="user_name" >
 
     </div>
 
@@ -173,7 +173,7 @@ if(!isset($_SESSION['id']))
 
     <label for="exampleFormControlTextarea1" class="form-label" style="padding-top: 5px;">Describe Your Self</label>
 
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="little bit about you" name="bio"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="little bit about you" name="bio"><?php echo $_SESSION['bio'];?></textarea>
 
   </div>
 
@@ -192,7 +192,7 @@ if(!isset($_SESSION['id']))
 
       <label for="email">Email Address</label>
 
-      <input type="email" class="form-control" id="email" placeholder="Enter email address" name="email">
+      <input type="email" class="form-control" id="email" placeholder="Enter email address" name="email" value="<?php echo $_SESSION['email'];?>">
 
     </div>
 
@@ -204,7 +204,7 @@ if(!isset($_SESSION['id']))
 
       <label for="whatsapp" style="padding-top: 5px;">WhatsApp</label>
 
-      <input type="text" class="form-control" id="whatsapp" placeholder="Enter WhatsApp Link" name="wapp" value="sdfs">
+      <input type="text" class="form-control" id="whatsapp" placeholder="Enter WhatsApp Link" name="wapp" value="<?php echo $_SESSION['whatsapp'];?>">
 
     </div>
 
@@ -217,7 +217,7 @@ if(!isset($_SESSION['id']))
 
       <label for="facebook" style="padding-top: 5px;">Facebook</label>
 
-      <input type="text" class="form-control" id="facebook" placeholder="Enter Facebook Link" name="fbook">
+      <input type="text" class="form-control" id="facebook" placeholder="Enter Facebook Link" name="fbook" value="<?php echo $_SESSION['facebook'];?>">
 
     </div>
 
@@ -228,7 +228,7 @@ if(!isset($_SESSION['id']))
 
 <div class="row gutters">
 
-  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+  <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
     <h6 class="mt-3 mb-2 text-primary"><br>Account Security - Change Password</h6>
 
@@ -273,7 +273,7 @@ if(!isset($_SESSION['id']))
 
   </div>
 
-</div>
+</div>-->
 
   <div class="row gutters">
 
