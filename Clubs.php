@@ -4,7 +4,7 @@
 
     <?php foreach($Clubs as $person){?>
 
-            <form method="post" action="user-profile.php" id="quick_access">
+            <form method="post" action="follower_acc.php" id="quick_access">
 
                 <div class="status-card">
 
