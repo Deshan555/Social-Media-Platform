@@ -113,11 +113,25 @@ else
 
                     <div class="profile mr-3">
 
-                        <img src="<?php echo "assets/images/profiles/".$array_user['IMAGE'] ?>"  width="150" style="border-radius: 50%;">
+                        <img src="<?php echo "assets/images/profiles/".$array_user['IMAGE'] ?>"  width="160" style="border-radius: 50%;">
 
                         <br>
 
-                        <a href="#" class="btn btn-outline-light btn-sm btn-block mt-2">Fallowing</a>
+                        <?php include('Check_FallowStatus.php');?>
+
+                        <?php if($following_status){?>
+
+                            <form method="post" action="">
+                                <button type="button" class="btn btn-outline-light btn-sm btn-block mt-2">Unfollow</button>
+                            </form>
+                        <?php }else{ ?>
+
+                            <form method="post" action="">
+                                <button type="button" class="btn btn-outline-light btn-sm btn-block mt-2">Follow</button>
+                            </form>
+                        <?php }?>
+
+
 
 
                     </div>
