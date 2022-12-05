@@ -4,7 +4,7 @@
 
     <?php foreach($Clubs as $person){?>
 
-            <form method="post" action="follower_acc.php" id="quick_access">
+            <form method="post" action="follower_acc.php" id="quick_access<?php echo $person['User_ID'];?>">
 
                 <div class="status-card">
 
@@ -13,7 +13,7 @@
                     <?php echo "Other User ID : ".$person['User_ID']?>
 
                     <div class="profile-pic" style="cursor: pointer;">
-                        <img onclick="document.getElementById('quick_access').submit();" src="<?php echo "assets/images/".$person['IMAGE']?>" name="quick_access">
+                        <img onclick="document.getElementById('quick_access'+<?php echo $person['User_ID'];?>).submit();" src="<?php echo "assets/images/".$person['IMAGE']?>" name="quick_access">
                     </div>
 
                     <p class="username"><?php echo $person['USER_NAME']?></p>
