@@ -208,12 +208,27 @@ if(!isset($_SESSION['id']))
                     
                     <div class="reactions-wrapper">
 
-                        <form action="like.php" method="post">
+                        <?php include('check_like_status.php');?>
+
+                        <?php if($reaction_status){?>
+
+                        <form action="unlike.php" method="post">
                             <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
                             <button style="background: none; border: none;" type="submit" name="reaction">
                                 <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
                             </button>
                         </form>
+
+                        <?php } else{?>
+
+                            <form action="like.php" method="post">
+                                <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
+                                <button style="background: none; border: none;" type="submit" name="reaction">
+                                    <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
+                                </button>
+                            </form>
+
+                        <?php }?>
 
                         <a href="single-post.php?post_id= <?php echo $post["Post_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment fa-lg"></i></a>
 
