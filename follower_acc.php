@@ -121,13 +121,19 @@ else
 
                         <?php if($following_status){?>
 
-                            <form method="post" action="">
-                                <button type="button" class="btn btn-outline-light btn-sm btn-block mt-2">Unfollow</button>
+                            <form method="post" action="Unfollow_User.php">
+
+                                <input type="hidden" value="<?php echo $array_user['User_ID']?>" name="other_User_Id">
+
+                                <button type="submit" name="unfollow" class="btn btn-outline-light btn-sm btn-block mt-2">Unfollow</button>
+
                             </form>
                         <?php }else{ ?>
 
-                            <form method="post" action="">
-                                <button type="button" class="btn btn-outline-light btn-sm btn-block mt-2">Follow</button>
+                            <form method="post" action="fallow_user.php">
+
+                                <button type="submit" name="fallow" class="btn btn-outline-light btn-sm btn-block mt-2">Follow</button>
+
                             </form>
                         <?php }?>
 
