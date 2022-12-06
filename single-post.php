@@ -68,6 +68,7 @@ include('config.php');
 
 if(isset($_GET['post_id']))
 {
+
     $post_identification = $_GET['post_id'];
 
     $stmt = $conn->prepare("SELECT * FROM Posts WHERE Post_ID = $post_identification;");
@@ -156,7 +157,17 @@ $comments = $stmt->get_result();
 
                         </div>
 
-                        <i class="fas fa-ellipsis-v options"></i>
+                        <?php
+
+                        session_start();
+
+                        $id = $_SESSION['id'];
+
+                        if($post['User_ID'] == $id){?>
+
+                        <i class="fas fa-ellipsis-v options" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+
+                        <?php }?>
 
                     </div>
 
@@ -218,6 +229,23 @@ $comments = $stmt->get_result();
                     </div>
 
                 </div><br>
+
+                <!-- Modal For Post Options-->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Post Options</h5>
+                            </div>
+                            <div class="modal-body">
+
+                                <i class="fa-solid fa-trash"></i><a href="" style="color: black;">Delete Post</a><br><br>
+
+                                <i class="fa-solid fa-pen-to-square"></i><a href="" style="color: black;">Edit Post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <p><strong>EventsWave Community Opinion</strong></p>
 
