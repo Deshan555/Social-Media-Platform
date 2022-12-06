@@ -13,7 +13,7 @@
                     <?php echo "Other User ID : ".$person['User_ID']?>
 
                     <div class="profile-pic" style="cursor: pointer;">
-                        <img onclick="document.getElementById('quick_access'+<?php echo $person['User_ID'];?>).submit();" src="<?php echo "assets/images/".$person['IMAGE']?>" name="quick_access">
+                        <img onclick="document.getElementById('quick_access'+<?php echo $person['User_ID'];?>).submit();" src="<?php echo "assets/images/profiles/".$person['IMAGE']?>" name="quick_access">
                     </div>
 
                     <p class="username"><?php echo $person['USER_NAME']?></p>
