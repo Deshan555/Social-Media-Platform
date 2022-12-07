@@ -161,7 +161,16 @@ $comments = $stmt->get_result();
 
             <!-- Wrapper for single posting -->
 
-            <?php foreach($post_array as $post){ ?>
+            <?php
+            include('get_dataById.php');
+
+            foreach($post_array as $post)
+            {
+                $data = get_UserData($post['User_ID']);
+
+                $profile_img = $data[2];
+
+                $profile_name = $data[0];?>
 
                 <div class="post">
 
@@ -169,9 +178,9 @@ $comments = $stmt->get_result();
 
                         <div class="user">
 
-                            <div class="profile-pic"><img src="<?php echo "assets/images/posts/". $post['Profile_Img']; ?>"></div>
+                            <div class="profile-pic"><img src="<?php echo "assets/images/profiles/". $profile_img; ?>"></div>
 
-                            <p class="username"><?php echo $post['USER_NAME'];?></p>
+                            <p class="username"><?php echo $profile_name;?></p>
 
                         </div>
 
@@ -205,7 +214,7 @@ $comments = $stmt->get_result();
 
                         <p class="description">
 
-                            <span><?php echo $post['USER_NAME'];?> Says :<br></span>
+                            <span><?php echo $profile_name;?> Says :<br></span>
 
                             <?php echo $post['Caption'];?>
                         </p>
@@ -269,8 +278,6 @@ $comments = $stmt->get_result();
 
                 <?php
 
-                include 'get_dataById.php';
-
                 foreach($comments as $comment)
                 {
                     $data = get_UserData($comment['USER_ID']);
@@ -292,13 +299,19 @@ $comments = $stmt->get_result();
                                     <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$data[0]; ?></p>
 
                                 </div>
+
                                 <div class="d-flex flex-row align-items-center text-primary">
 
                                     <p class="text-muted small mb-0"><?php echo $comment['DATE']; ?></p>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
                 <?php }?>
 
                 <!--Pagination bar-->
