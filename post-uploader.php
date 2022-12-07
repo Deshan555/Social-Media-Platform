@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -80,7 +81,9 @@
 
             <label for="caption">What On Your Mind</label>
 
-            <input type="text" class="form-control" id="caption" aria-describedby="caption-area" placeholder="caption here" onchange="get_caption();" name="caption">
+            <!--<input type="text" class="form-control" id="caption" aria-describedby="caption-area" placeholder="caption here" onchange="get_caption();" name="caption">-->
+
+            <textarea type="text" class="form-control" id="caption" rows="4"  placeholder="caption here" onchange="get_caption();" name="caption" maxlength="500"></textarea>
 
           </div><br>
 
