@@ -31,7 +31,7 @@ if (isset($_POST['unfollow']))
 
     update_Fallowing($user_id);
 
-    $_SESSION['fallowing'] =   $_SESSION['fallowing']+1;
+    $_SESSION['fallowing'] =   $_SESSION['fallowing']-1;
 
     header("location: home.php");
 
