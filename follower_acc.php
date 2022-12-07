@@ -203,50 +203,58 @@ else
 
         <div class="py-4 px-4">
 
-        <div class="d-flex align-items-center justify-content-between mb-3">
 
-            <h5 class="mb-0">Recent photos</h5>
+            <div class="d-flex align-items-center justify-content-between mb-3">
 
-            <a href="#" class="btn btn-link text-muted">Show all</a>
 
-        </div> <div class="row">
+                <h5 class="mb-0">Recent photos</h5>
 
-        <div class="col-lg-6 pl-lg-1">
+            </div> <div class="row">
 
-            <?php include('get_targetPosts.php')?>
+                <div class="gallery">
 
-            <?php foreach ($posts as $post){?>
 
-                <div class="gallery-items">
+                    <?php include("get_targetPosts.php"); ?>
 
-                    <img src="<?php echo "./assets/images/posts/".$post['Img_Path'];?>" alt="post" class="gallery-img">
+                    <!--loop over the results-->
 
-                    <div class="gallery-item-info">
+                    <?php foreach($posts as $post){ ?>
 
-                        <ul>
+                        <div class="gallery-items">
 
-                            <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : <?php echo $post['Likes'];?></span>
+                            <img src="<?php echo "./assets/images/posts/".$post['Img_Path'];?>" alt="post" class="gallery-img">
 
-                                <i class="icon fas fa-thumbs-up"></i>
+                            <div class="gallery-item-info">
 
-                            </li><br>
+                                <ul>
 
-                        </ul>
+                                    <li class="gallery-items-likes"><span class="hide-gallery-elements">Reactions : <?php echo $post['Likes'];?></span>
 
-                    </div>
+                                        <i class="icon fas fa-thumbs-up"></i>
 
-                </div>
+                                    </li>
 
-            <?php }?>
+                                    <li class="gallery-items-likes"><span class="hide-gallery-elements">Opinions</span>
+
+                                        <a href="single-post.php?post_id=<?php echo $post['Post_ID'];?>" target="_blank" style="color: white"><i class="icon fas fa-comment"></i></a>
+
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    <?php } ?></div>
+            </div>
+
         </div>
 
-    </div>
+        </div>
 
-    </div>
-
-</div>
-
-</div>
+        </div>
 
 </body>
+
 </html>
