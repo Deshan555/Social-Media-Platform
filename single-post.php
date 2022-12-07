@@ -266,9 +266,9 @@ $comments = $stmt->get_result();
                             </div>
                             <div class="modal-body">
 
-                                <i class="fa-solid fa-trash"></i><a href="" style="color: black;">Delete Post</a><br><br>
+                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Edit Post</a><br><br>
 
-                                <i class="fa-solid fa-pen-to-square"></i><a href="" style="color: black;">Edit Post</a>
+                                <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#delete_model" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Delete Post</a>
                             </div>
                         </div>
                     </div>
@@ -335,6 +335,51 @@ $comments = $stmt->get_result();
 
             </div>
 
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="Edit-Post-1.php">
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Hash Tags</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="hash-tag" value="">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Caption</label>
+                                    <textarea class="form-control" id="message-text" maxlength="500" name="caption"></textarea>
+                                </div>
+
+                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+                                <button type="submit" class="btn btn-outline-primary" name="edit">Edit Post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="delete_model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h6>Are You Really Want To Drop That Post ?</h6>
+
+                            <p class="h6">
+                                You will lose any associated comments and reactions made in relation to that post if you take that step.
+                            </p>
+
+                            <form action="Delete_Normal_Posts.php" method="post">
+                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+
+                                <button type="submit" class="btn btn-outline-primary" name="drop">Drop Post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
