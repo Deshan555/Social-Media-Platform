@@ -50,6 +50,8 @@ if(isset($_POST['posting']))
 
         header("location: post-uploader.php?success_message=Post Successfully updated");
 
+        update_Posts($ID);
+
         exit;
     }
     else
@@ -67,25 +69,17 @@ else
 }
 
 
+function update_Posts($user_id)
+{
+    include 'config.php';
 
+    $insert_query = "UPDATE users SET POSTS = POSTS+1 WHERE User_ID = $user_id ;";
 
+    $stmt = $conn->prepare($insert_query);
 
+    if ($stmt->execute()) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        $_SESSION['postcount'] = $_SESSION['postcount']+1;
+    }
+}
 ?>
