@@ -23,6 +23,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
 
+    <link rel="stylesheet" href="notifast/notifast.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
     <style>
         .profile-head {
             transform: translateY(5rem)
@@ -62,6 +67,29 @@ if(!isset($_SESSION['id']))
 
 ?>
 
+<?php if(isset($_GET['error_message'])){ ?>
+
+    <?php
+
+    $message = $_GET['error_message'];
+
+    echo"<body onload='notification_function(`Error Message`, `$message`, `#da1857`);'</body>"
+
+    ?>
+
+<?php }?>
+
+<?php if(isset($_GET['success_message'])){ ?>
+
+    <?php
+
+    $message = $_GET['success_message'];
+
+    echo"<body onload='notification_function(`Success Message`, `$message`, `#0F73FA`);'</body>"
+
+    ?>
+
+<?php }?>
 
 <nav class="navbar">
 
@@ -87,6 +115,7 @@ if(!isset($_SESSION['id']))
     </div>
 
 </nav>
+
 
 <div class="row py-6 px-4"><div class="col-md-11 mx-auto">
 
@@ -220,4 +249,9 @@ if(!isset($_SESSION['id']))
     </div>
 
 </body>
+
+<script src="notifast/notifast.min.js"></script>
+
+<script src="notifast/function.js"></script>
+
 </html>
