@@ -48,11 +48,9 @@ CREATE TABLE Users(
   HashTags varchar(250) NOT NULL,
   
   Date_Upload DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  
-  USER_NAME varchar(50)  NOT NULL,
-  
-  Profile_Img text NOT NULL,
-  
+
+  FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+
 );
 
 CREATE TABLE Videos(
@@ -108,7 +106,7 @@ CREATE TABLE Comments(
 
 CREATE TABLE Likes(
 
-    Like_ID INT(11) NOT NULL PRIMARY KEY,
+    Like_ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 
     Post_ID INT(11) NOT NULL,
 
