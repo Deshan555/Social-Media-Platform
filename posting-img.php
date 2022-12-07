@@ -27,10 +27,6 @@ if(isset($_POST['posting']))
 
     $ID = $_SESSION['id'];
 
-    $user_name= $_SESSION['username'];
-
-    $user_profile = $_SESSION['img_path'];
-
     $caption = $_POST['caption'];
 
     $hashtags= $_POST['hash-tags'];
@@ -41,8 +37,8 @@ if(isset($_POST['posting']))
 
     $date = date("Y-m-d H:i:s");
 
-    $sql_query = "INSERT INTO Posts (User_ID, Likes, Img_Path, Caption, HashTags, USER_NAME, Profile_Img, Date_Upload) VALUES 
-    ($ID, $likes, '$file_complete','$caption', '$hashtags', '$user_name', '$user_profile', '$date')";
+    $sql_query = "INSERT INTO Posts (User_ID, Likes, Img_Path, Caption, HashTags, Date_Upload) VALUES 
+    ($ID, $likes, '$file_complete','$caption', '$hashtags','$date')";
 
     echo $sql_query;
 
@@ -58,14 +54,14 @@ if(isset($_POST['posting']))
     }
     else
     {
-        header("location: post-uploader.php?error_message=Error Occured, try again - ERROR #008");
+        header("location: post-uploader.php?error_message=Error Occurred, try again - ERROR #008");
 
         exit;
     }
 }
 else
 {
-    header("location: post-uploader.php?error_message=Error Occured, try again2 - ERROR #009");
+    header("location: post-uploader.php?error_message=Error Occurred, try again2 - ERROR #009");
 
     exit;
 }
