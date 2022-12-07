@@ -274,6 +274,23 @@ $comments = $stmt->get_result();
                     </div>
                 </div>
 
+                <!-- Model For Comment Options -->
+                <div class="modal fade" id="Comment-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Comment Options</h5>
+                            </div>
+                            <div class="modal-body">
+
+                                <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit-comment" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Edit Comment</a><br><br>
+
+                                <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#delete_model" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Edit Post</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <p><strong>EventsWave Community Opinion</strong></p>
 
                 <?php
@@ -302,9 +319,19 @@ $comments = $stmt->get_result();
 
                                 <div class="d-flex flex-row align-items-center text-primary">
 
-                                    <p class="text-muted small mb-0"><?php echo $comment['DATE']; ?></p>
+                                    <p class="text-muted small mb-0"><?php echo "Posted Date : ".$comment['DATE']; ?></p>
 
                                 </div>
+
+                                <?php
+
+                                $id = $_SESSION['id'];
+
+                                if($comment['USER_ID'] == $id){?>
+
+                                    <i class="fas fa-ellipsis-v options" data-bs-toggle="modal" data-bs-target="#Comment-Modal"></i>
+
+                                <?php }?>
 
                             </div>
 
@@ -334,6 +361,8 @@ $comments = $stmt->get_result();
                 </nav>
 
             </div>
+
+
 
             <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -375,6 +404,27 @@ $comments = $stmt->get_result();
                                 <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
 
                                 <button type="submit" class="btn btn-outline-primary" name="drop">Drop Post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="edit-comment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <form method="post" action="Edit-Comment-1.php">
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Your Opinion</label>
+                                    <textarea class="form-control" id="message-text" maxlength="500" name="comment"><?php echo $comment['COMMENT']; ?></textarea>
+                                </div>
+
+                                <input type="hidden" name="comment_id" value="<?php echo $comment['COMMENT_ID'];?>">
+
+                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+
+                                <button type="submit" class="btn btn-outline-primary" name="edit-comment">Edit Your Opinion</button>
                             </form>
                         </div>
                     </div>
