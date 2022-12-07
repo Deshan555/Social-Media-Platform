@@ -184,17 +184,29 @@ if(!isset($_SESSION['id']))
 
             <?php include('get_latest_posts.php'); ?>
 
-            <?php foreach($posts as $post){ ?>
-            
+            <?php
+
+            include('get_dataById.php');
+
+            foreach($posts as $post)
+            {
+                $data = get_UserData($post['User_ID']);
+
+                $profile_img = $data[2];
+
+                $profile_name = $data[0];
+
+                ?>
+
             <div class="post">
 
                 <div class="info">
 
                     <div class="user">
 
-                        <div class="profile-pic"><img src="<?php echo "assets/images/posts/". $post['Profile_Img']; ?>"></div>
+                        <div class="profile-pic"><img src="<?php echo "assets/images/profiles/". $profile_img; ?>"></div>
 
-                        <p class="username"><?php echo $post['USER_NAME'];?></p>
+                        <p class="username"><?php echo $profile_name;?></p>
 
                     </div>
 
@@ -239,7 +251,7 @@ if(!isset($_SESSION['id']))
                     <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
 
                     <p class="description">
-                        <span><?php echo $post['USER_NAME'];?> Says :<br></span>
+                        <span><?php echo $profile_name;?> Says :<br></span>
 
                         <?php echo $post['Caption'];?>
                     </p>
