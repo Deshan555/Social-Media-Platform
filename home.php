@@ -227,7 +227,7 @@ if(!isset($_SESSION['id']))
                         <form action="unlike.php" method="post">
                             <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
                             <button style="background: none; border: none;" type="submit" name="reaction">
-                                <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
+                                <i style="color: #fb3958;" class="icon fas fa-heart fa-lg"></i>
                             </button>
                         </form>
 
