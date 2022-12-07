@@ -249,7 +249,15 @@ $comments = $stmt->get_result();
 
                 <p><strong>EventsWave Community Opinion</strong></p>
 
-                <?php foreach ($comments as $comment) { ?>
+                <?php
+
+                include 'get_dataById.php';
+
+                foreach($comments as $comment)
+                {
+                    $data = get_UserData($comment['USER_ID']);
+
+                    ?>
 
                     <div class="card mb-2" style="border-radius: 10px; background: #F5F5F5;">
 
@@ -261,9 +269,9 @@ $comments = $stmt->get_result();
 
                                 <div class="d-flex flex-row align-items-center">
 
-                                    <img src="<?php echo "assets/images/posts/" . $post['Img_Path']; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
+                                    <img src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
 
-                                    <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$comment['USER_ID']; ?></p>
+                                    <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$data[0]; ?></p>
 
                                 </div>
                                 <div class="d-flex flex-row align-items-center text-primary">
