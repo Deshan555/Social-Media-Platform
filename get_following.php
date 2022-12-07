@@ -1,10 +1,14 @@
 <?php
 
+session_start();
+
 include('config.php');
 
 $user_id = $_SESSION['id'];
 
 $sql = "SELECT * FROM fallowing WHERE User_Id = $user_id;";
+
+echo $sql;
 
 $stmt = $conn->prepare($sql);
 
@@ -30,6 +34,8 @@ if(empty($ids))
 $fallowing_id = join(",",$ids);
 
 $sql_query_two = "SELECT * FROM Users WHERE User_Id IN($fallowing_id) ORDER BY RAND() LIMIT 15;";
+
+echo $sql_query_two;
 
 $stmt = $conn->prepare($sql_query_two);
 
