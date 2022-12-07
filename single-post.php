@@ -279,13 +279,13 @@ $comments = $stmt->get_result();
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Comment Options</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Opinion Options</h5>
                             </div>
                             <div class="modal-body">
 
                                 <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#edit-comment" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Edit Comment</a><br><br>
 
-                                <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#delete_model" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Edit Post</a>
+                                <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#delete_comment" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Delete Opinion</a>
                             </div>
                         </div>
                     </div>
@@ -394,7 +394,7 @@ $comments = $stmt->get_result();
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <h6>Are You Really Want To Drop That Post ?</h6>
+                            <h5>Are You Really Want To Drop That Post ?</h5>
 
                             <p class="h6">
                                 You will lose any associated comments and reactions made in relation to that post if you take that step.
@@ -431,6 +431,28 @@ $comments = $stmt->get_result();
                 </div>
             </div>
 
+            <div class="modal fade" id="delete_comment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <h5>Are You Really Want To Remove Your Opinion?</h5>
+
+                            <p class="h6">
+                                Think twice before removing your comment from the section because it may be beneficial for planning the greatest events ☹️
+                            </p>
+
+                            <form action="Delete_Normal_Comment.php" method="post">
+
+                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+
+                                <input type="hidden" name="comment_id" value="<?php echo $comment['COMMENT_ID'];?>">
+
+                                <button type="submit" class="btn btn-outline-primary" name="drop_comments">Drop Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
