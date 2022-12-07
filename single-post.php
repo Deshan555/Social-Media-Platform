@@ -28,9 +28,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <link rel="stylesheet" href="notifast/notifast.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 
 <body>
+
+<?php if(isset($_GET['error_message'])){ ?>
+
+    <?php
+
+    $message = $_GET['error_message'];
+
+    echo"<body onload='notification_function(`Error Message`, `$message`, `#da1857`);'</body>"
+
+    ?>
+
+<?php }?>
+
+<?php if(isset($_GET['success_message'])){ ?>
+
+    <?php
+
+    $message = $_GET['success_message'];
+
+    echo"<body onload='notification_function(`Success Message`, `$message`, `#0F73FA`);'</body>"
+
+    ?>
+
+<?php }?>
+
 
 <!-- Nav Bar Design -->
 
@@ -128,18 +158,6 @@ $comments = $stmt->get_result();
         <!-- Design for left column -->
 
         <div class="left-col">
-
-            <?php if(isset($_GET['error_message'])){ ?>
-
-                <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
-
-            <?php }?>
-
-            <?php if(isset($_GET['success_message'])){ ?>
-
-                <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
-
-            <?php }?>
 
             <!-- Wrapper for single posting -->
 
@@ -340,8 +358,10 @@ $comments = $stmt->get_result();
 
 </section>
 
-
-
 </body>
+
+<script src="notifast/notifast.min.js"></script>
+
+<script src="notifast/function.js"></script>
 
 </html>
