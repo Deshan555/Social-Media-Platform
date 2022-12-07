@@ -132,6 +132,8 @@ else
 
                             <form method="post" action="fallow_user.php">
 
+                                <input type="hidden" name="fallow_person" value='<?php echo $array_user['User_ID'];?>'>
+
                                 <button type="submit" name="fallow" class="btn btn-outline-light btn-sm btn-block mt-2">Follow</button>
 
                             </form>
