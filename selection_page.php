@@ -46,7 +46,7 @@
 
                 <img src="assets/images/login_request/small_logo.png" height="40px" width="auto"><br><br>
 
-                  <h5 class="fw-normal mb-3 pb-3" style="text-transform: uppercase; color: grey;"><b>Select Your Experience Type</b></h5>
+                  <h5 class="fw-normal mb-3 pb-3" style="color: grey;"><b>Select Your Experience Type</b></h5>
 
                   <div class="d-grid gap-2 col-12 mx-auto">
                     
