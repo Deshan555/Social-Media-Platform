@@ -210,7 +210,7 @@ $comments = $stmt->get_result();
 
                             <div class="comments-section">
 
-                                <img src="assets/images/default.png" class="icon" style="width: 40px; height: 40px;">
+                                <img src="<?php echo 'assets/images/profiles/'.$_SESSION['img_path']?>" class="icon" style="width: 40px; height: 40px;">
 
                                 <form method="post" action="comments_action.php" class="comments-section">
 
