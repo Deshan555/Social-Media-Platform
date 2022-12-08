@@ -106,13 +106,11 @@ if(!isset($_SESSION['id']))
 
           <img src="assets/images/black_logo.png" class="brand-img">
 
-          <form>
-              <input type="text" class="search-box" placeholder="search">
-          </form>
-
           <div class="nav-items">
 
               <i class="icon fas fa-home fa-lg"></i>
+
+              <i class="icon fa-solid fa-magnifying-glass fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
               <i class="icon fas fa-flag fa-lg"></i>
 
@@ -121,8 +119,6 @@ if(!isset($_SESSION['id']))
               <i class="icon fas fa-plus-square fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 
               <i class="icon fas fa-calendar-alt fa-lg"></i>
-
-              <i class="icon fas fa-heart fa-lg"></i>
 
               <div class="icon user-profile">
 
@@ -384,7 +380,7 @@ if(!isset($_SESSION['id']))
 
             <?php }?>
 
-            <p class="suggesting">Upcomming Events</p>
+            <p class="suggesting">Upcoming Events</p>
 
             <div class="card" style="width: 90%; border-radius: 10px; background: #F5F5F5; border: 1px solid #fdfdfd;">
             
@@ -406,6 +402,18 @@ if(!isset($_SESSION['id']))
 </section>
 
 
+<!-- Search Modal -->
+<div class="modal fade" id="search-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                    <form method="post" action="Results.php">
+                        <input type="search" name="find" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- model for video upload -->
 
