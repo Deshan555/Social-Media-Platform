@@ -136,7 +136,7 @@ $stmt->store_result();
 
 $stmt->fetch();
 
-$total_comments_per_page = 2;
+$total_comments_per_page = 20;
 
 $offest = ($page_no - 1) * $total_comments_per_page;
 
@@ -144,7 +144,7 @@ $offest = ($page_no - 1) * $total_comments_per_page;
 
 $total_number_pages = ceil($total_comments/$total_comments_per_page);
 
-$stmt = $conn->prepare("SELECT * FROM comments WHERE POST_ID = $post_identification LIMIT $offest, $total_comments_per_page;");
+$stmt = $conn->prepare("SELECT * FROM comments WHERE POST_ID = $post_identification ORDER BY POST_ID DESC LIMIT $offest, $total_comments_per_page;");
 
 $stmt->execute();
 
@@ -374,12 +374,12 @@ $comments = $stmt->get_result();
                             <form method="post" action="Edit-Post-1.php">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Hash Tags</label>
-                                    <input type="text" class="form-control" id="recipient-name" name="hash-tag" value="">
+                                    <input type="text" class="form-control" id="recipient-name" name="hash-tag" value="<?php echo $post['HashTags'];?>" maxlength="20">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="message-text" class="col-form-label">Caption</label>
-                                    <textarea class="form-control" id="message-text" maxlength="500" name="caption"></textarea>
+                                    <textarea class="form-control" id="message-text" maxlength="500" name="caption"><?php echo $post['Caption'];?></textarea>
                                 </div>
 
                                 <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
