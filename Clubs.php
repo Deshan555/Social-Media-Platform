@@ -15,8 +15,6 @@ include('get_following.php');?>
 
                     <input type="hidden" value="<?php echo $person['User_ID']?>" name="target_id">
 
-                    <?php echo "Other User ID : ".$person['User_ID']?>
-
                     <div class="profile-pic" style="cursor: pointer;">
                         <img onclick="document.getElementById('quick_access'+<?php echo $person['User_ID'];?>).submit();" src="<?php echo "assets/images/profiles/".$person['IMAGE']?>" name="quick_access">
                     </div>

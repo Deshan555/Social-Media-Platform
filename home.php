@@ -132,6 +132,8 @@ if(!isset($_SESSION['id']))
 
   </nav>
 
+
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     
     <div class="modal-dialog">
@@ -257,16 +259,6 @@ if(!isset($_SESSION['id']))
                     <p class="post-time"><?php echo $post['HashTags'];?></p>
 
                 </div>
-
-                <!--<div class="comments-section">
-
-                    <img src="assets/images/default.png" class="icon">
-
-                    <input type="text" class="comment-box" placeholder="Your Opinion">
-
-                    <button class="comment-button">WRITE</button>
-
-                </div>-->
 
             </div>
 
