@@ -208,7 +208,17 @@ if(!isset($_SESSION['id']))
 
                     </div>
 
-                    <i class="fas fa-ellipsis-v options"></i>
+                    <?php
+
+                    $id = $_SESSION['id'];
+
+                    if($post['User_ID'] == $id){?>
+
+                        <i class="fas fa-ellipsis-v options" data-bs-toggle="modal" data-bs-target="#post-model"></i>
+
+                    <?php }?>
+
+                    <!--<i class="fas fa-ellipsis-v options"></i>-->
 
                 </div>
 
@@ -264,6 +274,50 @@ if(!isset($_SESSION['id']))
 
             <?php } ?>
 
+            <!-- Modal For Post Options-->
+            <div class="modal fade" id="post-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Post Options</h5>
+                        </div>
+                        <div class="modal-body">
+
+                            <i class="fa-solid fa-pen-to-square" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Edit Post</a><br><br>
+
+                            <i class="fa-solid fa-trash" data-bs-toggle="modal" data-bs-target="#delete_model" data-bs-whatever="@mdo"></i><a href="" style="color: black; text-decoration: none;">Delete Post</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- actions for opinions -->
+
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="Edit-Post-1.php">
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Hash Tags</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="hash-tag" value="<?php echo $post['HashTags'];?>" maxlength="20">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Caption</label>
+                                    <textarea class="form-control" id="message-text" maxlength="500" name="caption"><?php echo $post['Caption'];?></textarea>
+                                </div>
+
+                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+                                <button type="submit" class="btn btn-outline-primary" name="edit">Edit Post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         
             <!--Pagination bar-->
             <nav aria-label="Page navigation example" class="mx-auto mt-3">
