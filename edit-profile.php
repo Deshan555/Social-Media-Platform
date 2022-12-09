@@ -1,5 +1,5 @@
 
-<?php 
+<?php
 
 session_start();
 
@@ -34,6 +34,10 @@ if(!isset($_SESSION['id']))
   <link rel="stylesheet" href="assets/css/edit-profile.css">
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="notifast/notifast.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -101,13 +105,35 @@ if(!isset($_SESSION['id']))
 
               <p><?php echo $_SESSION['bio']?></p>
 
+                <button type="button" class="btn btn-outline-primary btn-sm" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="icon fas fa-user-edit"></i>Change Profile Pic</button><br>
+
+                <button type="button" class="btn btn-outline-primary btn-sm mt-2"><i class="fas fa-shield-alt"></i>Password & Security</button>
+
             </div>
 
-            <?php if(isset($_GET['error_message'])){ ?>
-                  
-              <p id="error_message" class="text-center alert-danger"><?php echo $_GET['error_message'];?></p>
-                  
-            <?php }?>
+              <?php if(isset($_GET['error_message'])){ ?>
+
+                  <?php
+
+                  $message = $_GET['error_message'];
+
+                  echo"<body onload='notification_function(`Error Message`, `$message`, `#da1857`);'</body>"
+
+                  ?>
+
+              <?php }?>
+
+              <?php if(isset($_GET['success_message'])){ ?>
+
+                  <?php
+
+                  $message = $_GET['success_message'];
+
+                  echo"<body onload='notification_function(`Success Message`, `$message`, `#0F73FA`);'</body>"
+
+                  ?>
+
+              <?php }?>
 
           </div>
 
@@ -130,7 +156,9 @@ if(!isset($_SESSION['id']))
 
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-    <h6 class="mb-2 text-primary">Personal/ Organization Details</h6>
+     <h4 class="mb-2 text-primary">ACCOUNT SETTING</h4><br>
+
+    <h6 class="mb-2 text-primary">Personal / Organization Details</h6>
 
   </div>
 
@@ -153,21 +181,11 @@ if(!isset($_SESSION['id']))
 
       <label for="user_name">User Name</label>
 
-      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name" name="user_name" >
+      <input type="text" class="form-control" id="user_name" placeholder="Enter User Name" name="user_name" value="<?php echo $_SESSION['username']; ?>" >
 
     </div>
 
   </div>
-
-
-  <div class="form-group">
-
-      <label for="formFile" style="padding-top: 5px;">Change Display Picture</label>
-
-      <input class="form-control" type="file" id="formFile" name="image">
-
-  </div>
-
 
   <div class="mb-3">
 
@@ -181,7 +199,7 @@ if(!isset($_SESSION['id']))
 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
-      <h6 class="mt-3 mb-2 text-primary">Social</h6>
+      <h6 class="mt-3 mb-2 text-primary">Social Links</h6>
 
   </div>
 
@@ -225,56 +243,6 @@ if(!isset($_SESSION['id']))
 
 </div>
 
-
-<div class="row gutters">
-
-  <!--<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-    <h6 class="mt-3 mb-2 text-primary"><br>Account Security - Change Password</h6>
-
-  </div>
-
-
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-    <div class="form-group">
-
-      <label for="current-password">Current Password</label>
-
-      <input type="password" class="form-control" id="current-password" placeholder="Enter current-password" name="cpass">
-
-    </div>
-
-  </div>
-
-
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-    <div class="form-group">
-
-      <label for="new-password">New Password</label>
-
-      <input type="password" class="form-control" id="new-password" placeholder="Enter new-password" name="npass">
-
-    </div>
-
-  </div>
-
-
-  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-
-    <div class="form-group">
-
-      <label for="retype-password" style="padding-top: 5px;">Retype New Password</label>
-
-      <input type="password" class="form-control" id="retype-password" placeholder="Enter retype-password" name="ccpass">
-
-    </div>
-
-  </div>
-
-</div>-->
-
   <div class="row gutters">
 
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -294,16 +262,49 @@ if(!isset($_SESSION['id']))
 </div>
 
 </div>
-      </form>
-      
+
+</form>
+
       </div>
 
     </div>
 
   </div>
 
+
+</div>
+
+</div>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Change Profile Picture</h5>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="Update-Profile-img.php" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="formFileSm" class="form-label">Choose Your Profile Image : </label>
+
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="image">
+
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-primary btn-sm mt-2" name="posting"><i class="fas fa-cloud-upload-alt"></i>Upload Image</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
+
+<script src="notifast/notifast.min.js"></script>
+
+<script src="notifast/function.js"></script>
 
 </html>
