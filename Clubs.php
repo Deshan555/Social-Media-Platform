@@ -1,5 +1,10 @@
-<?php include('get_following.php');?>
+<?php
 
+include('get_following.php');?>
+
+<?php if(!isset($Clubs)){?>
+
+<?php } else {?>
 <div class="status-wrapper">
 
     <?php foreach($Clubs as $person){?>
@@ -26,3 +31,4 @@
 
 </div>
 
+<?php }?>

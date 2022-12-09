@@ -28,19 +28,20 @@ while($row = $result->fetch_array(MYSQLI_NUM))
 
 if(empty($ids))
 {
-    $ids = [$user_id];
+
+}else{
+
+    $fallowing_id = join(",",$ids);
+
+    $sql_query_two = "SELECT * FROM Users WHERE User_Id IN($fallowing_id) AND USER_TYPE = '1'ORDER BY RAND() LIMIT 15;";
+
+    echo $sql_query_two;
+
+    $stmt = $conn->prepare($sql_query_two);
+
+    $stmt->execute();
+
+    $Clubs = $stmt->get_result();
 }
-
-$fallowing_id = join(",",$ids);
-
-$sql_query_two = "SELECT * FROM Users WHERE User_Id IN($fallowing_id) ORDER BY RAND() LIMIT 15;";
-
-echo $sql_query_two;
-
-$stmt = $conn->prepare($sql_query_two);
-
-$stmt->execute();
-
-$Clubs = $stmt->get_result();
 
 ?>
