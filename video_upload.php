@@ -25,6 +25,9 @@
 
   <link rel="stylesheet" href="assets/css/links.css">
 
+  <link rel="stylesheet" href="notifast/notifast.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -121,17 +124,30 @@
 
       <h1 class="profile-user-name" style="font-size: 2rem;font-weight: 300;">Preview Post</h1><br>
 
-      <?php if(isset($_GET['error_message'])){ ?>
-        
-        <p id="error_message" class="text-center alert-danger mt-3"><?php echo $_GET['error_message'];?></p>
-        
-      <?php }?>
 
-      <?php if(isset($_GET['success_message'])){ ?>
-        
-        <p class="text-center alert alert-success mt-3"><?php echo $_GET['success_message'];?></p>
-        
-      <?php }?>
+        <?php if(isset($_GET['error_message'])){ ?>
+
+            <?php
+
+            $message = $_GET['error_message'];
+
+            echo"<body onload='notification_function(`Error Message`, `$message`, `#da1857`);'</body>"
+
+            ?>
+
+        <?php }?>
+
+        <?php if(isset($_GET['success_message'])){ ?>
+
+            <?php
+
+            $message = $_GET['success_message'];
+
+            echo"<body onload='notification_function(`Success Message`, `$message`, `#0F73FA`);'</body>"
+
+            ?>
+
+        <?php }?>
 
       <div class="post">
 
@@ -188,6 +204,10 @@
 </div>
 
 <script src="assets/js/preview-helper.js"> </script>
+
+<script src="notifast/notifast.min.js"></script>
+
+<script src="notifast/function.js"></script>
 
 </body>
 
