@@ -68,11 +68,8 @@ CREATE TABLE Videos(
   HashTags varchar(250) NOT NULL,
   
   Date_Upload DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  
-  USER_NAME varchar(50)  NOT NULL,
-  
-  Profile_Img text NOT NULL
-  
+
+  FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
 
