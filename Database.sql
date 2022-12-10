@@ -43,7 +43,7 @@ CREATE TABLE Users(
   
   Img_Path text  NOT NULL,
   
-  Caption varchar(250) NOT NULL,
+  Caption varchar(700) NOT NULL,
   
   HashTags varchar(250) NOT NULL,
   
@@ -110,6 +110,74 @@ CREATE TABLE Likes(
     User_ID INT(11) NOT NULL,
 
     FOREIGN KEY (POST_ID) REFERENCES Posts(Post_ID),
+
+    FOREIGN KEY (USER_ID) REFERENCES Users(User_ID)
+);
+
+CREATE TABLE Comments_Vid(
+
+    COMMENT_ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+    VIDEO_ID INT(11) NOT NULL,
+
+    USER_ID INT(11) NOT NULL,
+
+    COMMENT  text  NOT NULL,
+
+    DATE DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (VIDEO_ID) REFERENCES Videos(Video_ID),
+
+    FOREIGN KEY (USER_ID) REFERENCES Users(User_ID)
+);
+
+CREATE TABLE Likes_Vid(
+
+    Like_ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+    Video_ID INT(11) NOT NULL,
+
+    User_ID INT(11) NOT NULL,
+
+    FOREIGN KEY (Video_ID) REFERENCES Videos(Video_ID),
+
+    FOREIGN KEY (USER_ID) REFERENCES Users(User_ID)
+);
+
+CREATE TABLE Events(
+
+    Event_ID int(11) PRIMARY KEY AUTO_INCREMENT,
+
+    User_ID int(11) NOT NULL,
+
+    Likes int(11) NOT NULL,
+
+    Event_Poster text  NOT NULL,
+
+    Caption varchar(250) NOT NULL,
+
+    Event_Time time NOT NULL,
+
+    Event_Date DATETIME NOT NULL ,
+
+    Invite_Link text NOT NULL,
+
+    HashTags varchar(250) NOT NULL,
+
+    Date_Upload DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
+);
+
+CREATE TABLE Likes_Events(
+
+    Like_ID INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+
+    Event_ID INT(11) NOT NULL,
+
+    User_ID INT(11) NOT NULL,
+
+    FOREIGN KEY (Event_ID) REFERENCES Events(Event_ID),
 
     FOREIGN KEY (USER_ID) REFERENCES Users(User_ID)
 );
