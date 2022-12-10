@@ -84,7 +84,9 @@
 
             <label for="caption">What On Your Mind</label>
 
-            <input type="text" class="form-control" id="caption" aria-describedby="caption-area" placeholder="caption here" onchange="get_caption();" name="caption">
+            <!--<input type="text" class="form-control" id="caption" aria-describedby="caption-area" placeholder="caption here" onchange="get_caption();" name="caption">-->
+
+            <textarea type="text" class="form-control" id="caption" rows="4"  placeholder="caption here" onchange="get_caption();" name="caption" maxlength="500"></textarea>
 
           </div><br>
 
@@ -92,7 +94,7 @@
 
             <label for="tag-id">Hash Tags</label>
 
-            <input type="text" class="form-control" id="tag-id" aria-describedby="caption-area" placeholder="Hash Tags" onchange="get_hash();" name="hash-tags">
+            <input type="text" class="form-control" id="tag-id" aria-describedby="caption-area" placeholder="Hash Tags" onchange="get_hash();" name="hash-tags" maxlength="50">
 
           </div><br>
 

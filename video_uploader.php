@@ -21,7 +21,7 @@ if(isset($_POST['posting']))
   
     $random_number = rand(0, 10000000);
   
-    $file_rename = 'File_'.date('Ymd').$random_number;
+    $file_rename = 'Vid_'.date('Ymd').$random_number;
   
     $file_complete = $file_rename.'.'.$file_extansion;
   
@@ -33,10 +33,6 @@ if(isset($_POST['posting']))
 
     $ID = $_SESSION['id'];
 
-    $user_name= $_SESSION['username'];
-
-    $user_profile = $_SESSION['img_path'];
-
     $caption = $_POST['caption'];
 
     $hashtags= $_POST['hash-tags'];
@@ -45,8 +41,7 @@ if(isset($_POST['posting']))
 
     $date = date("Y-m-d");
 
-    $sql_query = "INSERT INTO videos (User_ID, Likes, Video_Path, Caption, HashTags, USER_NAME, Profile_Img, Date_Upload) VALUES 
-    ($ID, $likes, '$file_complete','$caption', '$hashtags', '$user_name', '$user_profile', '$date')";
+    $sql_query = "INSERT INTO videos (User_ID, Likes, Video_Path, Caption, HashTags, Date_Upload)VALUES($ID, $likes, '$file_complete','$caption', '$hashtags', '$date')";
 
     echo $sql_query;
 
