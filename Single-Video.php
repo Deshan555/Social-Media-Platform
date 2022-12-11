@@ -44,6 +44,29 @@
 
         }
 
+        style-wrapper{
+
+            width: 90%;
+
+            height: 70px;
+
+            background:  #F5F5F5;
+
+            border: 1px solid #fdfdfd;
+
+            padding: 10px;
+
+            padding-right: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            overflow: hidden;
+
+            border-radius: 10px;
+        }
+
     </style>
 
 
@@ -86,15 +109,16 @@
 
         <div class="nav-items">
 
-            <i class="icon fas fa-home fa-lg"></i>
+            <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-            <i class="icon fas fa-plus-square fa-lg"></i>
+            <a href="Events.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-flag fa-lg"></i></a>
 
-            <i class="icon fas fa-heart fa-lg"></i>
+            <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
+
 
             <div class="icon user-profile">
 
-                <i class="fas fa-user-circle fa-lg"></i>
+                <a href="my_Profile.php" ><i class="fas fa-user-circle fa-lg"></i></a>
 
             </div>
 
@@ -512,24 +536,24 @@ $comments = $stmt->get_result();
         <div class="right-col">
 
             <!-- structure for profile card section-->
+            <div class="style-wrapper mt-2" style="background: #F5F5F5;">
 
-            <div class="profile_card">
+                <div class="suggestion_card">
 
-                <div class="profile-pic">
+                    <div>
+                        <img src="<?php echo "assets/images/profiles/".$_SESSION['img_path'];?>" style="border-radius: 50%; width: 60px; height: 60px; vertical-align: middle; float: left; margin-top: 6px;">
+                    </div>
 
-                    <img src="assets/images/default.png">
+                    <div>
+                        <p class="username" style="margin-left: 8px;"><?php echo $_SESSION['username'];?></p>
+
+                        <p class="sub-text" style="margin-left: 19px;"><?php echo $_SESSION['fullname'];?></p>
+
+                    </div>
+
+                    <a href="logout.php"><button class="fallow-btn" style="margin-left: 30px; font-size: small">LOG OUT</button></a>
 
                 </div>
-
-                <div>
-
-                    <p class="username">EventsWave Official</p>
-
-                    <p class="sub-text">Events with Elegance</p>
-
-                </div>
-
-                <button class="logout-btn">LogOut</button>
 
             </div>
 

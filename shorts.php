@@ -50,8 +50,31 @@ if(!isset($_SESSION['id']))
             border-radius: 10px;
         
         }
-    
+         .style-wrapper{
+
+             width: 90%;
+
+             height: 70px;
+
+             background:  #F5F5F5;
+
+             border: 1px solid #fdfdfd;
+
+             padding: 10px;
+
+             padding-right: 0;
+
+             display: flex;
+
+             align-items: center;
+
+             overflow: hidden;
+
+             border-radius: 10px;
+         }
+
     </style>
+
 </head>
 
 <body>
@@ -64,23 +87,19 @@ if(!isset($_SESSION['id']))
 
           <img src="assets/images/black_logo.png" class="brand-img">
 
-          <form>
-              <input type="text" class="search-box" placeholder="search">
-          </form>
-
           <div class="nav-items">
 
-              <i class="icon fas fa-home fa-lg"></i>
+              <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-              <i class="icon fas fa-plus-square fa-lg"></i>
+              <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
+
+              <a href="Events.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-flag fa-lg"></i></a>
 
               <i class="icon fas fa-calendar-alt fa-lg"></i>
 
-              <i class="icon fas fa-heart fa-lg"></i>
-
               <div class="icon user-profile">
 
-                  <i class="fas fa-user-circle fa-lg"></i>
+                  <a href="my_Profile.php" ><i class="fas fa-user-circle fa-lg"></i></a>
 
               </div>
 
@@ -90,6 +109,18 @@ if(!isset($_SESSION['id']))
 
   </nav>
 
+<!-- Search Modal -->
+<div class="modal fade" id="search-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form method="post" action="Results.php">
+                    <input type="search" name="find" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- New Section -->
 
@@ -192,6 +223,38 @@ if(!isset($_SESSION['id']))
                 </div>
 
             <?php } ?>
+
+
+            <!--Pagination bar-->
+            <nav aria-label="Page navigation example" class="mx-auto mt-3">
+
+                <ul class="pagination">
+
+                    <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
+
+                        <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo '?page_no='. ($page_no-1); }?>">Previous</a>
+
+                    </li>
+                    <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
+
+                    <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
+
+                    <li class="page-item"><a class="page-link" href="?page_no=3">3</a></li>
+                    <?php if($page_no >= 3){?>
+
+                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+
+                        <li class="page-item"><a class="page-link" href="<?php echo "?page_no=". $page_no;?>"></a></li>
+
+                    <?php } ?>
+
+                    <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
+
+                        <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo "?page_no=".($page_no+1);}?>">Next</a>
+
+                    </li>
+                </ul>
+            </nav>
         </div>
 
         <!-- Design for right column -->
@@ -200,65 +263,33 @@ if(!isset($_SESSION['id']))
 
             <!-- structure for profile card section-->
 
-            <div class="profile_card">
+            <!-- structure for profile card section-->
+            <div class="style-wrapper mt-2" style="background: #F5F5F5;">
 
-                <div class="profile-pic">
+                <div class="suggestion_card">
 
-                    <img src="assets/images/default.png">
+                    <div>
+                        <img src="<?php echo "assets/images/profiles/".$_SESSION['img_path'];?>" style="border-radius: 50%; width: 60px; height: 60px; vertical-align: middle; float: left; margin-top: 6px;">
+                    </div>
+
+                    <div>
+                        <p class="username" style="margin-left: 8px;"><?php echo $_SESSION['username'];?></p>
+
+                        <p class="sub-text" style="margin-left: 19px;"><?php echo $_SESSION['fullname'];?></p>
+
+                    </div>
+
+                    <a href="logout.php"><button class="fallow-btn" style="margin-left: 30px; font-size: small">LOG OUT</button></a>
 
                 </div>
-
-                <div>
-
-                    <p class="username">EventsWave Official</p>
-
-                    <p class="sub-text">Events with Elegance</p>
-
-                </div>
-
-                <form method="GET" action="logout.php">
-                    <button class="logout-btn">LogOut</button>
-                </form>
 
             </div>
-
         </div>
 
     </div>
 
+
 </section>
-
-
-<!--Pagination bar-->
-<nav aria-label="Page navigation example" class="mx-auto mt-3">
-
-    <ul class="pagination">
-
-        <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
-
-            <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo '?page_no='. ($page_no-1); }?>">Previous</a>
-
-        </li>
-        <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
-
-        <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
-
-        <li class="page-item"><a class="page-link" href="?page_no=3">3</a></li>
-        <?php if($page_no >= 3){?>
-
-            <li class="page-item"><a class="page-link" href="#">...</a></li>
-
-            <li class="page-item"><a class="page-link" href="<?php echo "?page_no=". $page_no;?>"></a></li>
-
-        <?php } ?>
-
-        <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
-
-            <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo "?page_no=".($page_no+1);}?>">Next</a>
-
-        </li>
-    </ul>
-</nav>
 
 </body>
 

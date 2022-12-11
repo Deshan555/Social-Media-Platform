@@ -82,18 +82,21 @@ else
 
         <img src="assets/images/black_logo.png" class="brand-img">
 
-
         <div class="nav-items">
 
-            <i class="icon fas fa-home fa-lg"></i>
+            <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-            <i class="icon fas fa-flag fa-lg"></i>
+            <a href="Events.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-flag fa-lg"></i></a>
 
-            <i class="icon fas fa-video fa-lg"></i>
+            <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
 
             <i class="icon fas fa-calendar-alt fa-lg"></i>
 
-            <link rel="stylesheet" href="assets/css/responsive.css">
+            <div class="icon user-profile">
+
+                <a href="my_Profile.php" ><i class="fas fa-user-circle fa-lg"></i></a>
+
+            </div>
 
         </div>
 

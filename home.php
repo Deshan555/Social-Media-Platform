@@ -67,32 +67,6 @@ if(!isset($_SESSION['id']))
             border-radius: 10px;
         }
 
-        .Events-wrapper{
-            
-            width: 90%;
-            
-            height: 200px;
-            
-            background:  #F5F5F5;
-            
-            border: 1px solid #fdfdfd;
-            
-            padding: 10px;
-            
-            padding-right: 0;
-
-            display: flex;
-            
-            align-items: center;
-            
-            overflow: hidden;
-            
-            overflow-x: auto;
-            
-            border-radius: 10px;
-
-        }
-
     </style>
 </head>
 
@@ -108,13 +82,13 @@ if(!isset($_SESSION['id']))
 
           <div class="nav-items">
 
-              <i class="icon fas fa-home fa-lg"></i>
+              <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
               <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
-              <i class="icon fas fa-flag fa-lg"></i>
+              <a href="Events.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-flag fa-lg"></i></a>
 
-              <i class="icon fas fa-video fa-lg"></i>
+              <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
 
               <i class="icon fas fa-plus-square fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 

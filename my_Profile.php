@@ -20,10 +20,12 @@
 
     <link rel="stylesheet" href="assets/css/profile-page.css">
 
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
-
     <link rel="stylesheet" href="notifast/notifast.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
@@ -100,15 +102,15 @@ if(!isset($_SESSION['id']))
 
         <div class="nav-items">
 
-            <i class="icon fas fa-home fa-lg"></i>
+            <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-            <i class="icon fas fa-flag fa-lg"></i>
+            <a href="Events.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-flag fa-lg"></i></a>
 
-            <i class="icon fas fa-video fa-lg"></i>
+            <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
+
+            <i class="icon fas fa-plus-square fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
 
             <i class="icon fas fa-calendar-alt fa-lg"></i>
-
-            <link rel="stylesheet" href="assets/css/responsive.css">
 
         </div>
 

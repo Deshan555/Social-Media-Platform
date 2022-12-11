@@ -109,31 +109,38 @@ if(!isset($_SESSION['id']))
 
         <img src="assets/images/black_logo.png" class="brand-img">
 
-        <form>
-            <input type="text" class="search-box" placeholder="search">
-        </form>
-
         <div class="nav-items">
+            <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-            <i class="icon fas fa-home fa-lg"></i>
+            <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
-            <i class="icon fas fa-plus-square fa-lg"></i>
+            <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
 
             <i class="icon fas fa-calendar-alt fa-lg"></i>
 
-            <i class="icon fas fa-heart fa-lg"></i>
-
             <div class="icon user-profile">
 
-                <i class="fas fa-user-circle fa-lg"></i>
+                <a href="my_Profile.php" ><i class="fas fa-user-circle fa-lg"></i></a>
 
             </div>
-
         </div>
 
     </div>
 
 </nav>
+
+<!-- Search Modal -->
+<div class="modal fade" id="search-model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form method="post" action="Results.php">
+                    <input type="search" name="find" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!-- New Section -->
@@ -148,70 +155,6 @@ if(!isset($_SESSION['id']))
         <div class="left-col">
 
             <!-- Wrapper for posting -->
-
-            <div class="post">
-
-                <div class="info">
-
-                    <div class="user">
-
-                        <div class="profile-pic"><img src="assets/images/default.png"></div>
-
-                        <p class="username">SLTC Leo Club</p>
-
-                    </div>
-
-                    <i class="fas fa-ellipsis-v options"></i>
-
-                </div>
-
-                <video controls class="post-source" muted poster="assets/images/shorts/sample.jpeg">
-
-                    <source src="assets/images/shorts/sample.mp4" type="video/mp4">
-
-                </video>
-
-                <div class="post-content">
-
-                    <div class="reactions-wrapper">
-
-                        <i class="icon fas fa-thumbs-up"></i>
-
-                        <i class="icon fas fa-comment"></i>
-
-                        <i class="icon fas fa-calendar-alt"></i>
-
-                    </div>
-
-                    <p class="reactions">1,789 Reactions</p>
-
-                    <p class="description">
-                        <span>Username Says : <br></span>
-                        "Perry the Platypus" is a background theme song played as Agent P embarks on a mission to stop Dr. Doofenshmirtz. It was mostly runs in small fragments
-                    </p>
-
-                    <p class="description">Event Will Be Held On : <span>2nd January 2023</span> At : <span>University Main Hall</span></p>
-
-                    <p class="description"><span>Invite Link : <a href="www.facebook.com">www.facebook.com</a> </span></p>
-
-                    <p class="description"><span>#moon-land #sltc #events</span></p>
-
-                    <p class="post-time">2022/11/5</p>
-
-                </div>
-
-                <div class="comments-section">
-
-                    <img src="assets/images/default.png" class="icon">
-
-                    <input type="text" class="comment-box" placeholder="Your Opinion">
-
-                    <button class="comment-button">WRITE</button>
-
-                </div>
-
-            </div>
-
             <?php
 
             include('get_latest_events.php');
@@ -302,6 +245,36 @@ if(!isset($_SESSION['id']))
 
             <?php } ?>
 
+            <nav aria-label="Page navigation example" class="mx-auto mt-3">
+
+                <ul class="pagination">
+
+                    <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
+
+                        <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo '?page_no='. ($page_no-1); }?>">Previous</a>
+
+                    </li>
+                    <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
+
+                    <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
+
+                    <li class="page-item"><a class="page-link" href="?page_no=3">3</a></li>
+                    <?php if($page_no >= 3){?>
+
+                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+
+                        <li class="page-item"><a class="page-link" href="<?php echo "?page_no=". $page_no;?>"></a></li>
+
+                    <?php } ?>
+
+                    <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
+
+                        <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo "?page_no=".($page_no+1);}?>">Next</a>
+
+                    </li>
+                </ul>
+            </nav>
+
         </div>
 
         <!-- Design for right column -->
@@ -335,36 +308,6 @@ if(!isset($_SESSION['id']))
     </div>
 
 </section>
-
-<nav aria-label="Page navigation example" class="mx-auto mt-3">
-
-    <ul class="pagination">
-
-        <li class="page-item <?php if($page_no<=1){echo 'disabled';}?>">
-
-            <a class="page-link" href="<?php if($page_no<=1){echo'#';}else{ echo '?page_no='. ($page_no-1); }?>">Previous</a>
-
-        </li>
-        <li class="page-item"><a class="page-link" href="?page_no=1">1</a></li>
-
-        <li class="page-item"><a class="page-link" href="?page_no=2">2</a></li>
-
-        <li class="page-item"><a class="page-link" href="?page_no=3">3</a></li>
-        <?php if($page_no >= 3){?>
-
-            <li class="page-item"><a class="page-link" href="#">...</a></li>
-
-            <li class="page-item"><a class="page-link" href="<?php echo "?page_no=". $page_no;?>"></a></li>
-
-        <?php } ?>
-
-        <li class="page-item <?php if($page_no>= $total_number_pages){echo 'disabled';}?>">
-
-            <a class="page-link" href="<?php if($page_no>=$total_number_pages){echo "#";}else{ echo "?page_no=".($page_no+1);}?>">Next</a>
-
-        </li>
-    </ul>
-</nav>
 
 </body>
 
