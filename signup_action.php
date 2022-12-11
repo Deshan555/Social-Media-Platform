@@ -39,7 +39,7 @@ if(isset($_POST['signup_btn']))
     {
         $message_error = "error message";
 
-        header('location: signup.php?error_message=Passwords can not verify');
+        header('location: WelCome?error_message=Passwords can not verify');
 
         exit;
     }
@@ -62,7 +62,7 @@ if(isset($_POST['signup_btn']))
     {
         echo 'user name already exists';
 
-        header('location: signup.php?error_message=user already exists');
+        header('location: WelCome?error_message=user already exists');
 
         exit;
 
@@ -116,7 +116,7 @@ if(isset($_POST['signup_btn']))
 
         }else{
 
-            header("location: signup.php?error_message=error occured");
+            header("location: WelCome?error_message=error occured");
 
             exit;
         }       
@@ -124,7 +124,7 @@ if(isset($_POST['signup_btn']))
 
 }else
 {
-    header("location: signup.php?error_message=error occured");
+    header("location: WelCome?error_message=error occured");
 
     exit;
 }
