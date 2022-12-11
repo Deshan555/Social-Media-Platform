@@ -6,7 +6,7 @@
 
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>EventsWave</title>
 
     <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css>
 
@@ -158,12 +158,13 @@ if(!isset($_SESSION['id']))
 
                     <li class="list-inline-item"> <h5 class="font-weight-bold mb-0 d-block"><?php echo $_SESSION['fallowers'] ?></h5><small class="text-muted">
 
-                            <i class="fas fa-user mr-1"></i>Followers</small> </li>
+                            <i class="fas fa-user mr-1" class="btn btn-primary" data-toggle="modal" data-target="#myModal"></i>Followers</small> </li>
 
                     <li class="list-inline-item"> <h5 class="font-weight-bold mb-0 d-block"><?php echo $_SESSION['fallowing'] ?></h5><small class="text-muted">
 
                             <i class="fas fa-user mr-1"></i>Following</small> </li>
                 </ul>
+
             </div>
 
             <div class="px-4 py-3">
@@ -227,7 +228,7 @@ if(!isset($_SESSION['id']))
 
                                         <li class="gallery-items-likes"><span class="hide-gallery-elements">Opinions</span>
 
-                                            <a href="single-post.php?post_id=<?php echo $post['Post_ID'];?>" style="color: white"><i class="icon fas fa-comment"></i></a>
+                                            <a href="single-post.php?post_id=<?php echo $post['Post_ID'];?>" style="color: white" target="_blank"><i class="icon fas fa-comment"></i></a>
 
                                         </li>
 
@@ -247,6 +248,8 @@ if(!isset($_SESSION['id']))
         </div>
 
     </div>
+
+<!-- Model For Show Followers -->
 
 <nav aria-label="Page navigation example" style="display:flex; justify-content: center">
     <ul class="pagination">

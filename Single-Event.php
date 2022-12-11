@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>EventsWave</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
@@ -399,10 +399,25 @@ $comments = $stmt->get_result();
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="Edit-Post-1.php">
+                            <form method="post" action="Edit-Post-Events.php">
                                 <div class="mb-3">
                                     <label for="recipient-name" class="col-form-label">Hash Tags</label>
                                     <input type="text" class="form-control" id="recipient-name" name="hash-tag" value="<?php echo $post['HashTags'];?>" maxlength="20">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Invite Link</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="invite-link" value="<?php echo $post['Invite_Link'];?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Event Time</label>
+                                    <input type="time" class="form-control" id="recipient-name" name="time" value="<?php echo $post['Event_Time'];?>">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Event Date</label>
+                                    <input type="date" class="form-control" id="recipient-name" name="event-date" value="<?php echo $post['Event_Date'];?>">
                                 </div>
 
                                 <div class="mb-3">
@@ -410,7 +425,7 @@ $comments = $stmt->get_result();
                                     <textarea class="form-control" id="message-text" maxlength="500" name="caption"><?php echo $post['Caption'];?></textarea>
                                 </div>
 
-                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+                                <input type="hidden" name="post_id" value="<?php echo $post['Event_ID'];?>">
                                 <button type="submit" class="btn btn-outline-primary" name="edit">Edit Post</button>
                             </form>
                         </div>
@@ -428,8 +443,8 @@ $comments = $stmt->get_result();
                                 You will lose any associated comments and reactions made in relation to that post if you take that step.
                             </p>
 
-                            <form action="Delete_Normal_Posts.php" method="post">
-                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
+                            <form action="Delete_Event.php" method="post">
+                                <input type="hidden" name="post_id" value="<?php echo $post['Event_ID'];?>">
 
                                 <button type="submit" class="btn btn-outline-primary" name="drop">Drop Post</button>
                             </form>

@@ -19,7 +19,7 @@ if(!isset($_SESSION['id']))
 <head>
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>EventsWave</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
@@ -110,7 +110,7 @@ if(!isset($_SESSION['id']))
 
               <i class="icon fas fa-home fa-lg"></i>
 
-              <i class="icon fa-solid fa-magnifying-glass fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
+              <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
               <i class="icon fas fa-flag fa-lg"></i>
 

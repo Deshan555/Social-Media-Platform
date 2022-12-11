@@ -15,7 +15,7 @@ if(!isset($_SESSION['id']))
 <head>
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>EventsWave</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
@@ -51,6 +51,27 @@ if(!isset($_SESSION['id']))
             border-radius: 10px;
 
         }
+
+         .style-wrapper{
+
+             width: 90%;
+
+             height: 70px;
+
+             border: 1px solid #F5F5F5;
+
+             padding: 10px;
+
+             padding-right: 0;
+
+             display: flex;
+
+             align-items: center;
+
+             overflow: hidden;
+
+             border-radius: 10px;
+         }
 
     </style>
 </head>
@@ -253,7 +274,7 @@ if(!isset($_SESSION['id']))
 
                             <?php }?>
 
-                            <a href="Single-Video.php?post_id=<?php echo $post["Event_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
+                            <a href="Single-Event.php?post_id=<?php echo $post["Event_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
 
                             <a href="#" style="color: #22262A;"><i class="icon fas fa-calendar-alt"></i></a>
 
@@ -288,26 +309,24 @@ if(!isset($_SESSION['id']))
         <div class="right-col">
 
             <!-- structure for profile card section-->
+            <div class="style-wrapper mt-2" style="background: #F5F5F5;">
 
-            <div class="profile_card">
+                <div class="suggestion_card">
 
-                <div class="profile-pic">
+                    <div>
+                        <img src="<?php echo "assets/images/profiles/".$_SESSION['img_path'];?>" style="border-radius: 50%; width: 60px; height: 60px; vertical-align: middle; float: left; margin-top: 6px;">
+                    </div>
 
-                    <img src="assets/images/default.png">
+                    <div>
+                        <p class="username" style="margin-left: 8px;"><?php echo $_SESSION['username'];?></p>
+
+                        <p class="sub-text" style="margin-left: 19px;"><?php echo $_SESSION['fullname'];?></p>
+
+                    </div>
+
+                    <a href="logout.php"><button class="fallow-btn" style="margin-left: 30px; font-size: small">LOG OUT</button></a>
 
                 </div>
-
-                <div>
-
-                    <p class="username">EventsWave Official</p>
-
-                    <p class="sub-text">Events with Elegance</p>
-
-                </div>
-
-                <form method="GET" action="logout.php">
-                    <button class="logout-btn">LogOut</button>
-                </form>
 
             </div>
 

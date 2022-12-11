@@ -18,7 +18,7 @@ if(!isset($_SESSION['id']))
 <head>
     <meta charset="UTF-8">
 
-    <title>Title</title>
+    <title>EventsWave</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
@@ -102,71 +102,6 @@ if(!isset($_SESSION['id']))
 
         <div class="left-col">
 
-            <!-- Wrapper for posting -->
-
-            <!--<div class="post">
-
-                <div class="info">
-
-                    <div class="user">
-
-                        <div class="profile-pic"><img src="assets/images/default.png"></div>
-
-                        <p class="username">SLTC Leo Club</p>
-
-                    </div>
-
-                    <i class="fas fa-ellipsis-v options"></i>
-
-                </div>
-
-                <!--<video controls class="post-source" muted poster="assets/images/shorts/sample.jpeg">
-                  
-                    <source src="assets/images/shorts/sample.mp4" type="video/mp4">
-                
-                </video>
-
-                <div class="ratio ratio-4x3">
-
-                    <iframe src="assets/images/shorts/sample.mp4" id="frame" title="YouTube video" allowfullscreen></iframe>
-
-                </div>
-
-                <div class="post-content">
-
-                    <div class="reactions-wrapper">
-
-                        <i class="icon fas fa-thumbs-up"></i>
-
-                        <i class="icon fas fa-comment"></i>
-
-                        <i class="icon fas fa-calendar-alt"></i>
-
-                    </div>
-
-                    <p class="reactions">1,789 Reactions</p>
-
-                    <p class="description">
-                        <span>Username Says : <br></span>
-                        "Perry the Platypus" is a background theme song played as Agent P embarks on a mission to stop Dr. Doofenshmirtz. It was mostly runs in small fragments
-                    </p>
-
-                    <p class="post-time">2022/11/5</p>
-
-                </div>
-
-                <div class="comments-section">
-
-                    <img src="assets/images/default.png" class="icon">
-
-                    <input type="text" class="comment-box" placeholder="Your Opinion">
-
-                    <button class="comment-button">WRITE</button>
-
-                </div>
-
-            </div>-->
-
             <?php
 
             include('get_latest_videos.php');
@@ -204,8 +139,6 @@ if(!isset($_SESSION['id']))
 
                         <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4">
 
-                        <h1><?php echo 'assets/videos/'.$post['Video_Path'];?></h1>
-
                     </video>
 
                     <div class="post-content">
@@ -213,7 +146,6 @@ if(!isset($_SESSION['id']))
                         <div class="reactions-wrapper">
 
                             <?php
-
 
                             include('check_like_statusVid.php');?>
 
