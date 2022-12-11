@@ -19,7 +19,7 @@ if(!isset($_SESSION['id']))
 <head>
   <meta charset="UTF-8">
 
-  <title>Title</title>
+  <title>EventsWave</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-+qdLaIRZfNu4cVPK/PxJJEy0B0f3Ugv8i482AKY7gwXwhaCroABd086ybrVKTa0q" crossorigin="anonymous">
 
@@ -53,15 +53,15 @@ if(!isset($_SESSION['id']))
 
     <div class="nav-items">
 
-      <i class="icon fas fa-home fa-lg"></i>
+        <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-      <i class="icon fas fa-cog fa-lg"></i>
+        <a href="logout.php.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-sign-out-alt fa-lg"></i></a>
 
-      <div class="icon user-profile">
+        <div class="icon user-profile">
 
-        <i class="fas fa-user-circle fa-lg"></i>
+            <a href="my_Profile.php" ><i class="fas fa-user-circle fa-lg"></i></a>
 
-      </div>
+        </div>
 
     </div>
 
