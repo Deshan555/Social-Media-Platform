@@ -299,12 +299,8 @@
 
                                 <p class="username">
 
-                                    <i class="icon fas fa-play-circle fa-lg" class="btn btn-outline-primary btn-sm"
-                                       data-toggle="modal" data-target="#exampleModal"></i>
-
                                     <a href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>"
                                        target="_blank"><i class="icon fas fa-eye fa-lg"></i></a>
-
                                 </p>
 
                             </div>
@@ -316,26 +312,11 @@
 
                 </div>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <video controls class="post-source">
-
-                                    <source src="<?php echo 'assets/videos/' . $video['Video_Path']; ?>"
-                                            type="video/mp4">
-
-                                </video>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
+            </ul>
         </div>
     </div>
 
-    <?php } ?>
-    </ul>
 </div>
 
 </body>

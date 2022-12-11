@@ -40,6 +40,8 @@ if(!isset($_SESSION['id']))
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="notifast/notifast.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
@@ -117,6 +119,30 @@ if(!isset($_SESSION['id']))
             </div>
           </div>
       </div>
+
+        <?php if(isset($_GET['error_message'])){ ?>
+
+            <?php
+
+            $message = $_GET['error_message'];
+
+            echo"<body onload='notification_function(`Error Message`, `$message`, `#da1857`);'</body>"
+
+            ?>
+
+        <?php }?>
+
+        <?php if(isset($_GET['success_message'])){ ?>
+
+            <?php
+
+            $message = $_GET['success_message'];
+
+            echo"<body onload='notification_function(`Success Message`, `$message`, `#0F73FA`);'</body>"
+
+            ?>
+
+        <?php }?>
       
       <!--<div class="popup" id="popup">
 
@@ -145,11 +171,13 @@ if(!isset($_SESSION['id']))
       <div class="social">
 
         <ul>
-          <li><i class="fas fa-envelope"></i><?php echo " ".$_SESSION['email'] ?></li>
+          <li><i class="fas fa-envelope fa-lg"></i><?php echo " ".$_SESSION['email'] ?></li>
 
-          <li><i class="fab fa-facebook-square"></i><?php echo " ".$_SESSION['facebook'] ?></li>
+          <li><i class="fab fa-facebook-square fa-lg"></i><?php echo " ".$_SESSION['facebook'] ?></li>
 
-          <li><i class="fab fa-whatsapp-square"></i><?php echo " ".$_SESSION['whatsapp'] ?></li>
+          <li><i class="fab fa-whatsapp-square fa-lg"></i><?php echo " ".$_SESSION['whatsapp'] ?></li>
+
+          <i class="fad fa-campfire"></i>
 
         </ul>
 
@@ -208,5 +236,9 @@ if(!isset($_SESSION['id']))
   </main>
 
 </body>
+
+<script src="notifast/notifast.min.js"></script>
+
+<script src="notifast/function.js"></script>
 
 </html>

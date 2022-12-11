@@ -126,7 +126,7 @@ if(!isset($_SESSION['id']))
                 
                 <ul style="list-style: none; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-size: 10px; text-decoration: none;">
                     <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-cog"></i></button><a href="edit-profile.php">Profile Edit<a></li>
-                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-calendar-week"></i></i></button><a href="">Post About New Event</a></li>
+                    <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-calendar-week"></i></i></button><a href="Event-Upload.php">Post About New Event</a></li>
                     <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-pen"></i></i></button><a href="post-uploader.php">Create New Post</a></li>
                     <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-video"></i></i></button><a href="video_upload.php">Publish New Short video</li>
                     <li><button class="profile-button profile-settings-btn"><i class="icon fas fa-sign-out-alt"></i></i></button><a href="logout.php">Log Out</a></li>

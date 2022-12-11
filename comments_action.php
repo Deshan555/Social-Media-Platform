@@ -2,7 +2,7 @@
 
 session_start();
 
-$conn = include("config.php");
+include("config.php");
 
 if(isset($_POST['submit']))
 {

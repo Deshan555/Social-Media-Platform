@@ -20,8 +20,6 @@ if (isset($_POST['reaction'])) {
 
     update_likes($post_id);
 
-    $_SESSION['fallowing'] = $_SESSION['fallowing'] + 1;
-
     header("location: home.php");
 
 } else {

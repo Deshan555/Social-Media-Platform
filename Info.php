@@ -51,6 +51,11 @@
 
         <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
 
+        <div class="icon user-profile">
+
+            <a href="my_Profile.php" ><i class="fas fa-user-circle fa-lg"></i></a>
+
+        </div>
     </div>
 
   </div>
@@ -67,7 +72,6 @@
 
     <div class="gallery">
       <div class="container mt-3">
-        <h2>Toggleable Pills</h2>
         <br>
         <!-- Nav pills -->
         <ul class="nav nav-pills nav-justified" role="tablist">
@@ -77,16 +81,12 @@
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="pill" href="#menu1">Followers</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="pill" href="#menu2">Menu 2</a>
-          </li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
           <div id="home" class="container tab-pane active"><br>
-            <h3>HOME</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
               <ul class="list-group">
 
                   <?php
@@ -136,8 +136,6 @@
               </ul>
           </div>
           <div id="menu1" class="container tab-pane fade"><br>
-            <h3>Menu 1</h3>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
               <ul class="list-group">
 
@@ -183,26 +181,10 @@
                   <?php }?>
               </ul>
           </div>
-          <div id="menu2" class="container tab-pane fade"><br>
-            <h3>Menu 2</h3>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-          </div>
         </div>
       </div>
 
     </div>
-
-    <!-- Add Pagination Bar -->
-
-    <!--<nav aria-label="Page navigation example">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul> -->
-    </nav>
 
   </div>
 
