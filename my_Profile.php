@@ -104,11 +104,9 @@ if(!isset($_SESSION['id']))
 
             <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-            <a href="Events.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-flag fa-lg"></i></a>
+            <a href="logout.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-sign-out-alt fa-lg"></i></a>
 
-            <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
-
-            <i class="icon fas fa-plus-square fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+            <a href="edit-profile.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-wrench fa-lg"></i></a>
 
             <i class="icon fas fa-calendar-alt fa-lg"></i>
 
@@ -117,7 +115,6 @@ if(!isset($_SESSION['id']))
     </div>
 
 </nav>
-
 
 <div class="row py-6 px-4"><div class="col-md-11 mx-auto">
 
@@ -156,15 +153,15 @@ if(!isset($_SESSION['id']))
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item"><h5 class="font-weight-bold mb-0 d-block"><?php echo $_SESSION['postcount'] ?></h5><small class="text-muted">
 
-                            <i class="fas fa-image mr-1"></i>Photos</small> </li>
+                            <i class="fas fa-image mr-1"></i><a href="All-Media.php" style="text-decoration: none; color: #1c1f23;">Posts</small></a></li>
 
                     <li class="list-inline-item"> <h5 class="font-weight-bold mb-0 d-block"><?php echo $_SESSION['fallowers'] ?></h5><small class="text-muted">
 
-                            <i class="fas fa-user mr-1" class="btn btn-primary" data-toggle="modal" data-target="#myModal"></i>Followers</small> </li>
+                            <i class="fas fa-user mr-1""></i><a href="Info.php" style="text-decoration: none; color: #1c1f23;">Followers</small></a></li>
 
                     <li class="list-inline-item"> <h5 class="font-weight-bold mb-0 d-block"><?php echo $_SESSION['fallowing'] ?></h5><small class="text-muted">
 
-                            <i class="fas fa-user mr-1"></i>Following</small> </li>
+                            <i class="fas fa-user mr-1"></i><a href="Info.php" style="text-decoration: none; color: #1c1f23;">Following</small></a></li>
                 </ul>
 
             </div>
@@ -202,6 +199,8 @@ if(!isset($_SESSION['id']))
                 <div class="d-flex align-items-center justify-content-between mb-3">
 
                     <h5 class="mb-0">Recent photos</h5>
+
+                    <p class="mb-0"><a href="All-Media.php" class="text-muted">Show all</a></p>
 
                 </div> <div class="row">
 
