@@ -1,3 +1,24 @@
+<?php
+
+session_start();
+
+$function_out = strcmp($_SESSION['usertype'], '1');
+
+if(!isset($_SESSION['id']))
+{
+    header('location: login.php');
+
+    exit;
+}
+else
+{
+    if($function_out == 0)
+    {
+        header("location: home.php");
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
