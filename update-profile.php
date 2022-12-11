@@ -5,6 +5,8 @@ session_start();
 
 include('config.php');
 
+include('functions.php');
+
 if(isset($_POST['submit']))
 {
     $ID = $_SESSION['id'];
@@ -32,73 +34,40 @@ if(isset($_POST['submit']))
         $image_name =  $_SESSION['img_path'];
     }
 
-    $sql_query = "SELECT USER_NAME FROM USERS WHERE USER_NAME = '$user_name';";
-
-    echo $sql_query;
-
-    $stmt = $conn->prepare($sql_query);
-
-    $stmt->execute();
-
-    $stmt->store_result();
-
-    if($stmt->num_rows() > 0)
+    if($user_name != $_SESSION['username'])
     {
-        header('location: edit-profile.php?error_message=User Name Alrady Taken');
+        $sql_query = "SELECT USER_NAME FROM USERS WHERE USER_NAME = '$user_name';";
 
-        exit;
+        echo $sql_query;
 
-    }else{
+        $stmt = $conn->prepare($sql_query);
 
-        $insert_query = "UPDATE users SET FULL_NAME = '$full_name', USER_NAME = '$user_name' ,EMAIL = '$email_address', IMAGE = '$image', FACEBOOK = '$facebook', WHATSAPP = '$whatsapp', BIO = '$bio' WHERE User_ID = $ID ;";
+        $stmt->execute();
 
-        $stmt->prepare($insert_query);
+        $stmt->store_result();
 
-        if($stmt->execute())
+        if($stmt->num_rows() > 0)
         {
-            if($image != "")
-            {
-                // store images in th folder
-                
-                move_uploaded_file($image, "assets/images/profiles/".$image_name);
-            }
-            // upldate section
-
-            $_SESSION['id'] = $ID;
-
-            $_SESSION['username'] = $user_name;
-
-            $_SESSION['fullname'] = $full_name;
-
-            $_SESSION['email'] = $email_address;
-
-            $_SESSION['facebook'] = $facebook;
-
-            $_SESSION['whatsapp'] = $whatsapp;
-
-            $_SESSION['bio'] = $bio;
-
-            $_SESSION['img_path'] = $image;
-
-            header("location: profile.php?success_message=Profile Updated Sucessfully");
+            header('location: edit-profile.php?error_message=User Name Already Taken');
 
             exit;
-
-        }else{
-
-            header("location: edit-profile.php?error_message=error occured");
-
-            exit;
-        }      
+        }
+        else
+        {
+            Update_Profile($ID, $full_name, $user_name, $email_address, $facebook, $whatsapp, $bio);
+        }
+    }
+    else
+    {
+        Update_Profile($ID, $full_name, $user_name, $email_address, $facebook, $whatsapp, $bio);
     }
 
-}else
+}
+else
 {
-    header("location: edit-profile.php?error_message=error occured, try again");
+    header("location: edit-profile.php");
 
     exit;
 }
-
-
 
 ?>
