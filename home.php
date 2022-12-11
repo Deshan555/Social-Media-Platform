@@ -400,19 +400,43 @@ if(!isset($_SESSION['id']))
 
             <?php }?>
 
+            <?php
+
+            $SQL = "SELECT * FROM events ORDER BY Event_ID DESC LIMIT 1;";
+
+            $result = $conn->query($SQL);
+
+            if ($result->num_rows > 0)
+            {
+                while($row = $result->fetch_assoc())
+                {
+                    $Event_Caption = $row["Caption"];
+
+                    $Event_Date = $row["Event_Date"];
+
+                    $Event_ID = $row["Event_ID"];
+
+                    $Poster = $row["Event_Poster"];
+                }
+            }
+            $conn->close();
+
+            ?>
             <p class="suggesting">Upcoming Events</p>
 
             <div class="card" style="width: 90%; border-radius: 10px; background: #F5F5F5; border: 1px solid #fdfdfd;">
             
-            <img src="assets/images/pp3.jpg" class="card-img-top" alt="Event_Card" style="border-radius: 10px;">
+            <img src="<?php echo "assets/images/posts/". $Poster; ?>" class="card-img-top" alt="Event_Card" style="border-radius: 10px;">
             
             <div class="card-body">
                 
-                <h6 class="card-title">Card title</h6>
+                <h6 class="card-title"><?php echo 'Date : '.$Event_Date?></h6>
                 
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                
-                <button class="fallow-btn">See All</button>
+                <p class="card-text"><?php echo $Event_Caption?></p>
+
+                <form>
+                    <button class="fallow-btn"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>">See All</a></button>
+                </form>
             </div>
 
         </div>
