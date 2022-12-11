@@ -192,17 +192,16 @@ if(!isset($_SESSION['id']))
                                     <p class="username"
                                        style="text-transform: capitalize;"><?php echo $event['Caption']; ?></p>
 
-                                    <p class="username"
-                                       style="text-transform: capitalize; color: #0b5ed7"><?php echo $event['HashTags']; ?></p>
-
-                                    <p class="username">
-
-                                        <a href="Single-Event.php?post_id=<?php echo $event['Event_ID']; ?>"
-                                           target="_blank"><i class="icon fas fa-eye fa-lg"></i></a>
-                                    </p>
-
+                                    <p class="sub-text"><?php echo "Post Uploaded : ".$event['Date_Upload']; ?></p>
                                 </div>
 
+                            </div>
+
+                            <div class="search-result-item-button">
+
+                                <button type="button" class="btn btn-outline-primary"><a href="Single-Event.php?post_id=<?php echo $event['Event_ID']; ?>" target="_blank">
+
+                                        View Event</a></button>
                             </div>
 
                         </li>
@@ -241,17 +240,16 @@ if(!isset($_SESSION['id']))
                                 <p class="username"
                                    style="text-transform: capitalize;"><?php echo $video['Caption']; ?></p>
 
-                                <p class="username"
-                                   style="text-transform: capitalize; color: #0b5ed7"><?php echo $video['HashTags']; ?></p>
-
-                                <p class="username">
-
-                                    <a href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>" target="_blank"><i class="icon fas fa-eye fa-lg"></i></a>
-
-                                </p>
+                                <p class="sub-text"><?php echo "Upload Date : ".$video['Date_Upload']; ?></p>
 
                             </div>
 
+                        </div>
+
+                        <div class="search-result-item-button">
+
+                            <button type="button" class="btn btn-outline-primary"><a href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>"
+                                                                                     target="_blank">View Video</a></button>
                         </div>
 
                     </li>
