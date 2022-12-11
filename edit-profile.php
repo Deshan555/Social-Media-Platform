@@ -55,7 +55,7 @@ if(!isset($_SESSION['id']))
 
         <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
-        <a href="logout.php.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-sign-out-alt fa-lg"></i></a>
+        <a href="logout.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-sign-out-alt fa-lg"></i></a>
 
         <div class="icon user-profile">
 
@@ -105,9 +105,9 @@ if(!isset($_SESSION['id']))
 
               <p><?php echo $_SESSION['bio']?></p>
 
-                <button type="button" class="btn btn-outline-primary btn-sm" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="icon fas fa-user-edit"></i>Change Profile Pic</button><br>
+                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="icon fas fa-user-edit"></i>Change Profile Pic</button><br>
 
-                <button type="button" class="btn btn-outline-primary btn-sm mt-2"><i class="fas fa-shield-alt"></i>Password & Security</button>
+                <button type="button" class="btn btn-outline-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#passchange"><i class="fas fa-shield-alt"></i>Password & Security</button>
 
             </div>
 
@@ -292,6 +292,38 @@ if(!isset($_SESSION['id']))
                     </div>
 
                     <button type="submit" class="btn btn-outline-primary btn-sm mt-2" name="posting"><i class="fas fa-cloud-upload-alt"></i>Upload Image</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="passchange" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Change Password</h5>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="Change-Pass.php">
+
+                    <label for="inputPassword5" class="form-label">Old Password</label>
+                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="old-password">
+
+                    <label for="inputPassword5" class="form-label">New Password</label>
+                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="new-password">
+
+                    <label for="inputPassword5" class="form-label">Retype Password</label>
+                    <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" name="retype-password">
+                    <div id="passwordHelpBlock" class="form-text">
+                        Your New password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-primary btn-sm mt-2" name="change-password"><i class="fas fa-cloud-upload-alt"></i> Change Password</button>
                 </form>
             </div>
             <div class="modal-footer">
