@@ -35,7 +35,7 @@ if(isset($_POST['signup_btn']))
 
     $post_count = 0;
 
-    $image = "assets/images/default.png";
+    $image = "default.png";
 
     $password= randomPassword();
 
