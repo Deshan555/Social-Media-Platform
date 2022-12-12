@@ -59,7 +59,7 @@ if(isset($_POST['signup_btn']))
 
         if($stmt->num_rows() > 0)
         {    
-            header('location: create-account.php?error_message=Your Email  Account alrady register on System');
+            header('location: create-account.php?error_message=Your Email  Account already register on System');
     
             exit;
         }
@@ -111,13 +111,13 @@ if(isset($_POST['signup_btn']))
 
             $_SESSION['temp_password'] = $password;
 
-            mailer($email_address, $password, $user_name, $full_name);
+            header("location: WelCome.php");
 
-            //header("location: mailer/mailing.php");
+            mailer($email_address, $password, $user_name, $full_name);
 
         }else{
 
-            header("location: create-account.php?error_message=error occured #008");
+            header("location: create-account.php?error_message=error occurred #008");
 
             exit;
         }       
@@ -131,7 +131,7 @@ if(isset($_POST['signup_btn']))
     }
 }else
 {
-    header("location: create-account.php?error_message=error occured #009");
+    header("location: create-account.php?error_message=error occurred #009");
 
     exit;
 }
@@ -236,7 +236,7 @@ function mailer($sending_address, $password, $user_name, $full_name)
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet">
         <!-- <![endif]-->
     
-        <title>Material Design for Bootstrap</title>
+        <title>EventsWave Email</title>
     
         <style type="text/css">
             body {
@@ -370,7 +370,7 @@ function mailer($sending_address, $password, $user_name, $full_name)
             <tr>
                 <td>
                     <div style="overflow:hidden;display:none;font-size:1px;color:#ffffff;line-height:1px;font-family:Arial;maxheight:0px;max-width:0px;opacity:0;">
-                        Pre-header for the newsletter template
+
                     </div>
                 </td>
             </tr>
@@ -605,6 +605,7 @@ function mailer($sending_address, $password, $user_name, $full_name)
         $mail->send();
 
         echo "Message has been sent successfully";
+
     } 
     catch (Exception $e)
     {

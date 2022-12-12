@@ -90,7 +90,15 @@ if(!isset($_SESSION['id']))
 
               <a href="shorts.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-video fa-lg"></i></a>
 
-              <i class="icon fas fa-plus-square fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+              <?php
+
+              $function_out = strcmp($_SESSION['usertype'], '1');
+
+              if($function_out != 0)
+              {
+                  echo '<i class="icon fas fa-plus-square fa-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>';
+              }
+              ?>
 
               <i class="icon fas fa-calendar-alt fa-lg"></i>
 
@@ -115,10 +123,8 @@ if(!isset($_SESSION['id']))
         <div class="modal-content">
             
             <div class="modal-header">
-                
-                <!--<h5 class="modal-title" id="exampleModalLabel">Post Short Video</h5>-->
 
-                <h3 class="profile-user-name modal-title" style="font-size: 2rem;font-weight: 200;">Publish Your Short Videos</h3>
+                <h3 class="profile-user-name modal-title" style="font-size: 2rem;font-weight: 200;">Publish Your Posts</h3>
             
             </div>
 

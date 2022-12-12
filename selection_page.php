@@ -46,13 +46,13 @@
 
                 <img src="assets/images/login_request/small_logo.png" height="40px" width="auto"><br><br>
 
-                  <h5 class="fw-normal mb-3 pb-3" style="color: grey;"><b>Select Your Experience Type</b></h5>
+                  <h5 class="fw-normal mb-3 pb-3" style="color: grey;"><b>Wel Come To EventsWave</b></h5>
 
                   <div class="d-grid gap-2 col-12 mx-auto">
                     
-                    <a href="login.php"><button class="btn btn-dark btn-lg btn-block" type="button">LogIn As SLTC Student</button></a>
+                    <a href="login.php"><button class="btn btn-dark btn-lg btn-block btn-sm" type="button">Log In Section</button></a>
 
-                    <a href="login.php"><button class="btn btn-dark btn-lg btn-block" type="button">LogIn As Club President</button></a>
+                    <a href="login.php"><button class="btn btn-dark btn-lg btn-block btn-sm" type="button">Register Your Club Here</button></a>
                   
                   </div>
 
