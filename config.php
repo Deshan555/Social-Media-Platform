@@ -1,12 +1,12 @@
 <?php
 
-$user = 'mdrh3o2xpg3uy0yv';
+$user = 'r6h0dfofvz3dg6j1';
 
-$password = 'gcdbv8exn60vo8t8';
+$password = 'wg9d7fuvswmwpzic';
 
-$db = 'dvh4ff24tskwf150';
+$db = 'ckkmy15kvonrb0en';
 
-$host = 'ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$host = 'h1use0ulyws4lqr1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
 
 $port = 3306;
 
