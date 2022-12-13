@@ -33,6 +33,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <style>
         .style-wrapper{
 
@@ -347,6 +349,7 @@ $comments = $stmt->get_result();
 
                 <p><strong>EventsWave Community Opinion</strong></p>
 
+                <div id="comments">
                 <?php
 
                 foreach($comments as $comment)
@@ -395,6 +398,7 @@ $comments = $stmt->get_result();
 
                 <?php }?>
 
+                </div>
                 <!--Pagination bar-->
                 <nav aria-label="Page navigation example" style="display: flex; justify-content: center;">
 
@@ -563,5 +567,14 @@ $comments = $stmt->get_result();
 <script src="notifast/notifast.min.js"></script>
 
 <script src="notifast/function.js"></script>
+
+<script>
+    $(document).ready(function()
+    {
+        setInterval(function(){
+            $("#comments").load(window.location.href + " #comments" );
+        }, 3000);
+    });
+</script>
 
 </html>
