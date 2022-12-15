@@ -36,6 +36,10 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+
+    <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <style>
@@ -165,12 +169,25 @@ if(!isset($_SESSION['id']))
 
                     </div>
 
-
-                    <video controls class="post-source" >
-
-                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4">
-
+                    <video
+                            id="my-video"
+                            class="video-js vjs-theme-sea post-source"
+                            controls
+                            preload="none"
+                            data-setup="{}"
+                            poster="<?php echo "assets/images/profiles/". $profile_img; ?>"
+                    >
+                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
+                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/webm" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank"
+                            >supports HTML5 video</a
+                            >
+                        </p>
                     </video>
+
 
                     <div class="post-content">
 
@@ -331,6 +348,8 @@ if(!isset($_SESSION['id']))
 
 
 </section>
+
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
 
 </body>
 
