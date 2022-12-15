@@ -39,6 +39,8 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1/assets/css/atcb.min.css">
+
     <style>
         .post-source{
 
@@ -219,7 +221,22 @@ if(!isset($_SESSION['id']))
 
                             <a href="Single-Event.php?post_id=<?php echo $post["Event_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
 
-                            <a href="#" style="color: #22262A;"><i class="icon fas fa-calendar-alt"></i></a>
+                            <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="default-button"></i>
+
+                            <script type="application/javascript">
+                                const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                                const config = {
+                                    name: "<?php echo $profile_name.' s Event';?>",
+                                    description: "<?php echo $post['Invite_Link'];?>",
+                                    startDate: "<?php echo date("Y-m-d", strtotime($post['Event_Date']));?>",
+                                    options: ["Google","Apple","Microsoft365", "MicrosoftTeams","Outlook.com","iCal"],
+                                    timeZone: timeZoneIANA,
+                                    trigger: "click",
+                                    iCalFileName: "Reminder-Event",
+                                };
+                                const button = document.getElementById('default-button');
+                                button.addEventListener('click', () => atcb_action(config, button));
+                            </script>
 
                         </div>
 
@@ -231,11 +248,9 @@ if(!isset($_SESSION['id']))
                             <?php echo $post['Caption'];?>
                         </p>
 
-                        <p class="description">Event Will Be Held On : <span><?php echo $post['Event_Date'];?></span> At : <span><span><?php echo $post['Event_Time'];?></span></p>
+                        <p class="description">Event Will Be Held On : <span><?php echo date("Y-m-d", strtotime($post['Event_Date']));?></span> At : <span><span><?php echo $post['Event_Time'];?></span></p>
 
                         <p class="description"><span>Invite Link : <a href="<?php echo $post['Invite_Link'];?>"><?php echo $post['Invite_Link'];?></a></span></p>
-
-                        <p class="description"><span><?php echo $post['HashTags'];?></span></p>
 
                         <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
@@ -351,6 +366,7 @@ if(!isset($_SESSION['id']))
 </section>
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1" async defer></script>
 
 <script src="notifast/notifast.min.js"></script>
 
