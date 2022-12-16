@@ -25,8 +25,6 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 
-    <title>Document</title>
-
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link rel="stylesheet" href="assets/css/section.css">
@@ -45,25 +43,25 @@ if(!isset($_SESSION['id']))
     
     <style>
         .style-wrapper{
-            
+
             width: 90%;
-            
+
             height: 70px;
-            
+
             background:  #F5F5F5;
-            
+
             border: 1px solid #fdfdfd;
-            
+
             padding: 10px;
-            
+
             padding-right: 0;
 
             display: flex;
-            
+
             align-items: center;
-            
+
             overflow: hidden;
-                        
+
             border-radius: 10px;
         }
 
@@ -83,6 +81,7 @@ if(!isset($_SESSION['id']))
             object-fit: cover;
             border-radius: 50%;
             border: 2px solid #fff;
+            cursor: pointer;
 
         }
 
@@ -101,8 +100,8 @@ if(!isset($_SESSION['id']))
             flex: 0 0 auto;
             padding: 0;
             background: none;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             margin-right: 10px;
         }
 
@@ -152,11 +151,11 @@ if(!isset($_SESSION['id']))
 
       <div class="nav-wrapper">
 
-          <img src="assets/images/black_logo.png" class="brand-img">
+          <img src="assets/images/black_logo.png" class="brand-img" id="logo-img" style="cursor: pointer">
 
           <div class="nav-items">
 
-              <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
+              <!-- <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>-->
 
               <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
@@ -262,18 +261,6 @@ if(!isset($_SESSION['id']))
 
                     </div>
 
-                    <?php
-
-                    $id = $_SESSION['id'];
-
-                    if($post['User_ID'] == $id){?>
-
-                        <i class="fas fa-ellipsis-v options" data-bs-toggle="modal" data-bs-target="#post-model"></i>
-
-                    <?php }?>
-
-                    <!--<i class="fas fa-ellipsis-v options"></i>-->
-
                 </div>
 
                 <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
@@ -305,8 +292,6 @@ if(!isset($_SESSION['id']))
                         <?php }?>
 
                         <a href="single-post.php?post_id= <?php echo $post["Post_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment fa-lg"></i></a>
-
-                        <a href="#" style="color: #22262A;"><i class="icon fas fa-calendar-alt fa-lg"></i></a>
 
                 </div>
 
@@ -345,34 +330,6 @@ if(!isset($_SESSION['id']))
                 </div>
             </div>
 
-            <!-- actions for opinions -->
-
-            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Post</h1>
-                        </div>
-                        <div class="modal-body">
-                            <form method="post" action="Edit-Post-1.php">
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Hash Tags</label>
-                                    <input type="text" class="form-control" id="recipient-name" name="hash-tag" value="<?php echo $post['HashTags'];?>" maxlength="20">
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Caption</label>
-                                    <textarea class="form-control" id="message-text" maxlength="500" name="caption"><?php echo $post['Caption'];?></textarea>
-                                </div>
-
-                                <input type="hidden" name="post_id" value="<?php echo $post['Post_ID'];?>">
-                                <button type="submit" class="btn btn-outline-primary" name="edit">Edit Post</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
             <!--Pagination bar-->
             <nav aria-label="Page navigation example" class="mx-auto mt-3">
 
@@ -540,5 +497,11 @@ if(!isset($_SESSION['id']))
 </div>
 
 </body>
+
+<script type="text/javascript">
+    document.getElementById("logo-img").onclick = function () {
+        location.href = "home.php";
+    };
+</script>
 
 </html>
