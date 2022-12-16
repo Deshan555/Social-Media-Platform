@@ -119,31 +119,25 @@ if(!isset($_SESSION['id']))
             font-weight: 500;
             font-size: 14px;
             color: #000;
+            font-weight: bold;
 
         }
 
         .sub-text{
-            color: rgba(0, 0, 0, 0.5);
-            font-size:12px;
+            font-size:13px;
             font-weight: 500;
-            margin-top: 5px;
+            margin-top: 4px;
+            color: #939393;
 
         }
 
         .action-btn{
-
             opacity: 2;
-
             font-weight: 700;
-
             font-size: 12px;
-
             color: #55B7F7;
-
             border: none;
-
             margin-left: 100px;
-
             text-transform: uppercase;
         }
 
