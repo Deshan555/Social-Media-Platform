@@ -67,6 +67,86 @@ if(!isset($_SESSION['id']))
             border-radius: 10px;
         }
 
+
+        .profile-pics{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            padding: 3px;
+            background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%);
+        }
+
+        .profile-pics img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #fff;
+
+        }
+
+
+        .profile-cards{
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+            background: #F5F5F5;
+            border-radius: 10px;
+        }
+
+        .profile-cards .profile-pics{
+            flex: 0 0 auto;
+            padding: 0;
+            background: none;
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .profile-cards:first-child .profile-pics{
+            width: 70px;
+            height: 70px;
+        }
+
+        .profile-cards .profile-pics img{
+            border: none;
+        }
+
+        .profile-cards .username{
+            font-weight: 500;
+            font-size: 14px;
+            color: #000;
+
+        }
+
+        .sub-text{
+            color: rgba(0, 0, 0, 0.5);
+            font-size:12px;
+            font-weight: 500;
+            margin-top: 5px;
+
+        }
+
+        .action-btn{
+
+            opacity: 2;
+
+            font-weight: 700;
+
+            font-size: 12px;
+
+            color: #55B7F7;
+
+            border: none;
+
+            margin-left: 100px;
+
+            text-transform: uppercase;
+        }
+
     </style>
 </head>
 
@@ -368,39 +448,39 @@ if(!isset($_SESSION['id']))
             <?php foreach($suggestions as $suggestion){?>
 
                 <?php if($suggestion['User_ID']!= $_SESSION['id']){?>
-                
-                <div class="style-wrapper mt-2">
-                    
-                    <div class="suggestion_card">
-                        
+
+                    <div class="profile-cards">
+
+                        <form id="suggestion_form<?php echo $suggestion['User_ID'];?>" method="post" action="follower_acc.php">
+
+                            <input type="hidden" value="<?php echo $suggestion['User_ID']?>" name="target_id">
+
+                            <div class="profile-pics">
+
+                                <img src= "<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" alt="profile-user" onclick="document.getElementById('suggestion_form'+<?php echo $suggestion['User_ID'];?>).submit();">
+
+                            </div>
+
+                        </form>
+
                         <div>
-                            <form id="suggestion_form<?php echo $suggestion['User_ID'];?>" method="post" action="follower_acc.php">
 
-                                <input type="hidden" value="<?php echo $suggestion['User_ID']?>" name="target_id">
+                            <?php $new_string =  mb_strimwidth($suggestion['FULL_NAME'], 0, 10, "..");?>
 
-                                <img src="<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" style="border-radius: 50%; width: 45px; height: 45px; vertical-align: middle; float: left; margin-top: 6px;" onclick="document.getElementById('suggestion_form'+<?php echo $suggestion['User_ID'];?>).submit();">
+                            <p class="username"><?php echo $suggestion['USER_NAME'];?></p>
 
-                            </form>
-                        </div>
-
-                        <div>
-                            <p class="username" style="margin-left: 0px;"><?php echo $suggestion['USER_NAME'];?></p>
-
-                            <p class="sub-text" style="margin-left: 19px;"><?php echo $suggestion['FULL_NAME'];?></p>
-
+                            <p class="sub-text"><?php echo $new_string?></p>
                         </div>
 
                         <form method="POST" action="fallow_user.php">
-                            
+
                             <input type="hidden" name="fallow_person" value='<?php echo $suggestion['User_ID'];?>'>
-                            
-                            <button type="submit" class="fallow-btn" style="margin-left: 60px;" name="fallow">Fallow</button>
-                        
+
+                            <button type="submit" class="action-btn" name="fallow">follow</button>
+
                         </form>
-                        
+
                     </div>
-                
-                </div>
 
                 <?php } ?>
 
