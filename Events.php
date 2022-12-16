@@ -109,10 +109,9 @@ if(!isset($_SESSION['id']))
 
     <div class="nav-wrapper">
 
-        <img src="assets/images/black_logo.png" class="brand-img">
+        <img src="assets/images/black_logo.png" class="brand-img" id="logo-img">
 
         <div class="nav-items">
-            <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
             <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
@@ -371,6 +370,12 @@ if(!isset($_SESSION['id']))
 <script src="notifast/notifast.min.js"></script>
 
 <script src="notifast/function.js"></script>
+
+<script type="text/javascript">
+    document.getElementById("logo-img").onclick = function () {
+        location.href = "home.php";
+    };
+</script>
 
 </html>
 

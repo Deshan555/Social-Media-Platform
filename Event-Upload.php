@@ -61,7 +61,7 @@ else
 
     <div class="nav-wrapper">
 
-        <img src="assets/images/black_logo.png" class="brand-img">
+        <img src="assets/images/black_logo.png" class="brand-img" id="logo-img">
 
         <div class="nav-items">
 
@@ -271,6 +271,12 @@ else
 <script src="notifast/notifast.min.js"></script>
 
 <script src="notifast/function.js"></script>
+
+<script type="text/javascript">
+    document.getElementById("logo-img").onclick = function () {
+        location.href = "home.php";
+    };
+</script>
 
 </body>
 

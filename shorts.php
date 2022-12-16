@@ -89,11 +89,9 @@ if(!isset($_SESSION['id']))
 
       <div class="nav-wrapper">
 
-          <img src="assets/images/black_logo.png" class="brand-img">
+          <img src="assets/images/black_logo.png" class="brand-img" id="logo-img">
 
           <div class="nav-items">
-
-              <a href="home.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-home fa-lg"></i></a>
 
               <i class="icon fas fa-search fa-lg" data-bs-toggle="modal" data-bs-target="#search-model"></i>
 
@@ -350,6 +348,12 @@ if(!isset($_SESSION['id']))
 </section>
 
 <script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
+
+<script type="text/javascript">
+    document.getElementById("logo-img").onclick = function () {
+        location.href = "home.php";
+    };
+</script>
 
 </body>
 
