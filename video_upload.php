@@ -103,30 +103,37 @@ else
 
           <div class="form-group">
 
-            <label for="caption">What On Your Mind</label>
+            <label for="caption">What On Your Mind : </label>
 
             <!--<input type="text" class="form-control" id="caption" aria-describedby="caption-area" placeholder="caption here" onchange="get_caption();" name="caption">-->
 
-            <textarea type="text" class="form-control" id="caption" rows="4"  placeholder="caption here" onchange="get_caption();" name="caption" maxlength="500"></textarea>
+            <textarea type="text" class="form-control mt-2" id="caption" rows="4"  placeholder="caption here" onchange="get_caption();" name="caption" maxlength="500"></textarea>
 
           </div><br>
 
           <div class="form-group">
 
-            <label for="tag-id">Hash Tags</label>
+            <label for="tag-id">Hash Tags : </label>
 
-            <input type="text" class="form-control" id="tag-id" aria-describedby="caption-area" placeholder="Hash Tags" onchange="get_hash();" name="hash-tags" maxlength="50">
+            <input type="text" class="form-control mt-2" id="tag-id" aria-describedby="caption-area" placeholder="Hash Tags" onchange="get_hash();" name="hash-tags" maxlength="50">
 
           </div><br>
 
           <div class="form-group">
 
-            <label for="tag-id">Add video</label>
+            <label for="tag-id">Add video : </label>
 
-            <input class="form-control" type="file" id="file" name="file" onchange="preview()">
+            <input class="form-control mt-2" type="file" id="file" name="file" onchange="preview()" accept="video/*">
+
+          </div><br>
+
+          <div class="form-group">
+
+              <label for="tag-id">Add video Thumbnail : </label>
+
+              <input class="form-control mt-2" type="file" id="file_thumb" name="thumbnail" accept="image/png, image/gif, image/jpeg">
 
           </div>
-
           <br>
 
           <div class="form-group">
@@ -233,10 +240,15 @@ else
 <script src="notifast/function.js"></script>
 
 <script type="text/javascript">
-    document.getElementById("logo-img").onclick = function () {
+
+    document.getElementById("logo-img").onclick = function()
+    {
         location.href = "home.php";
     };
+
 </script>
+
+
 
 </body>
 

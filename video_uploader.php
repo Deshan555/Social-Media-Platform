@@ -16,6 +16,12 @@ if(isset($_POST['posting']))
     $filename = $_FILES["file"]["name"];
 
     $tempname = $_FILES["file"]["tmp_name"];
+
+    $filename_thumb = $_FILES["thumbnail"]["name"];
+
+    $thumb_temp_name = $_FILES["thumbnail"]["tmp_name"];
+
+    $file_type = pathinfo($filename_thumb, PATHINFO_EXTENSION);
   
     $file_extansion = pathinfo($filename, PATHINFO_EXTENSION);
   
@@ -24,12 +30,14 @@ if(isset($_POST['posting']))
     $file_rename = 'Vid_'.date('Ymd').$random_number;
   
     $file_complete = $file_rename.'.'.$file_extansion;
+
+    $thumbnail_name = 'Thumb_'.date('Ymd').$random_number;
+
+    $thumbnail_name_complete = $thumbnail_name.'.'.$file_type;
   
     $folder = "./assets/videos/" . $file_complete;
-  
-    move_uploaded_file($tempname, $folder);
-  
-    echo $file_complete;
+
+    $second_file = "./assets/videos/" . $thumbnail_name_complete;
 
     $ID = $_SESSION['id'];
 
@@ -41,7 +49,7 @@ if(isset($_POST['posting']))
 
     $date = date("Y-m-d");
 
-    $sql_query = "INSERT INTO videos (User_ID, Likes, Video_Path, Caption, HashTags, Date_Upload)VALUES($ID, $likes, '$file_complete','$caption', '$hashtags', '$date')";
+    $sql_query = "INSERT INTO videos (User_ID, Likes, Video_Path, Caption, HashTags, Date_Upload, Thumbnail_Path)VALUES($ID, $likes, '$file_complete','$caption', '$hashtags', '$date', '$thumbnail_name_complete')";
 
     echo $sql_query;
 
@@ -50,6 +58,8 @@ if(isset($_POST['posting']))
     if($stmt->execute())
     {
         move_uploaded_file($tempname, $folder);
+
+        move_uploaded_file($thumb_temp_name, $second_file);
 
         header("location: video_upload.php?success_message=Post Successfully updated");
 
