@@ -173,7 +173,7 @@ if(!isset($_SESSION['id']))
                             controls
                             preload="none"
                             data-setup="{}"
-                            poster="<?php echo "assets/images/profiles/". $profile_img; ?>"
+                            poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>"
                     >
                         <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
                         <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/webm" />

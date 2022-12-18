@@ -119,11 +119,13 @@ else
 
           </div><br>
 
-          <div class="form-group">
+          <div class="form-group" id="vid-group">
 
             <label for="tag-id">Add video : </label>
 
-            <input class="form-control mt-2" type="file" id="file" name="file" onchange="preview()" accept="video/*">
+            <input id="max_id" type="hidden" name="MAX_FILE_SIZE" value="20971520" />
+
+            <input class="form-control mt-2" type="file" id="file" name="file"  onchange="upload_check()"  accept="video/*">
 
           </div><br>
 
@@ -245,6 +247,25 @@ else
     {
         location.href = "home.php";
     };
+
+    function upload_check()
+    {
+        const upl = document.getElementById("file");
+
+        const max = document.getElementById("max_id").value;
+
+        if(upl.files[0].size > max)
+        {
+            alert("File too big, Your File Must Be Under 20MB");
+
+            upl.value = "";
+        }
+        else{
+
+            preview();
+        }
+    };
+
 
 </script>
 
