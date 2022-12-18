@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'EventsWave-SLTC'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_35A4F26D6D5748CB8211E82353B66E4C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_23966E2946DA495FAE6F0E4F9601E24E }}
           package: .
