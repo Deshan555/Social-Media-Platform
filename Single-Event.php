@@ -35,12 +35,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1/assets/css/atcb.min.css">
+
     <style>
         .style-wrapper{
 
             width: 90%;
 
-            height: 70px;
+            height: 100px;
 
             background:  #F5F5F5;
 
@@ -254,7 +256,22 @@ $comments = $stmt->get_result();
 
                             <?php }?>
 
-                            <i class="icon fas fa-calendar-alt"></i>
+                            <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="default-button"></i>
+
+                            <script type="application/javascript">
+                                const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                                const config = {
+                                    name: "<?php echo $profile_name.' s Event';?>",
+                                    description: "<?php echo $post['Invite_Link'];?>",
+                                    startDate: "<?php echo date("Y-m-d", strtotime($post['Event_Date']));?>",
+                                    options: ["Google","Apple","Microsoft365", "MicrosoftTeams","Outlook.com","iCal"],
+                                    timeZone: timeZoneIANA,
+                                    trigger: "click",
+                                    iCalFileName: "Reminder-Event",
+                                };
+                                const button = document.getElementById('default-button');
+                                button.addEventListener('click', () => atcb_action(config, button));
+                            </script>
 
                         </div>
 
@@ -580,5 +597,7 @@ $comments = $stmt->get_result();
         location.href = "home.php";
     };
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1" async defer></script>
 
 </html>
