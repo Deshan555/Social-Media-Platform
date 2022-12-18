@@ -36,7 +36,7 @@
 
             width: 90%;
 
-            height: 70px;
+            height: 100px;
 
             background:  #F5F5F5;
 
@@ -225,9 +225,27 @@ $comments = $stmt->get_result();
 
                         <div class="reactions-wrapper">
 
-                            <i class="icon fas fa-thumbs-up"></i>
+                            <?php include('check_like_status.php');?>
 
-                            <i class="icon fas fa-calendar-alt"></i>
+                            <?php if($reaction_status){?>
+
+                                <form action="unlike.php" method="post">
+                                    <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
+                                    <button style="background: none; border: none;" type="submit" name="reaction">
+                                        <i style="color: #fb3958;" class="icon fas fa-heart fa-lg"></i>
+                                    </button>
+                                </form>
+
+                            <?php } else{?>
+
+                                <form action="like.php" method="post">
+                                    <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
+                                    <button style="background: none; border: none;" type="submit" name="reaction">
+                                        <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
+                                    </button>
+                                </form>
+
+                            <?php }?>
 
                         </div>
 
@@ -250,7 +268,7 @@ $comments = $stmt->get_result();
 
             <div class="col-md-12 col-lg-10 col-xl-8 mt-2 mb-2" style="width: 100%; ">
 
-                <div class="card" style="border-radius: 10px; background: #F5F5F5;">
+                <div class="card" style="border-radius: 10px; background: #F5F5F5; border-color: white;">
 
                     <div class="card-body">
 
@@ -258,7 +276,7 @@ $comments = $stmt->get_result();
 
                             <div class="comments-section">
 
-                                <img src="<?php echo 'assets/images/profiles/'.$_SESSION['img_path']?>" class="icon" style="width: 40px; height: 40px;">
+                                <img src="<?php echo 'assets/images/profiles/'.$_SESSION['img_path']?>" class="icon" style="width: 45px; height: 45px;">
 
                                 <form method="post" action="comments_action.php" class="comments-section">
 
@@ -323,7 +341,7 @@ $comments = $stmt->get_result();
 
                     ?>
 
-                    <div class="card mb-2" style="border-radius: 10px; background: #F5F5F5;">
+                    <div class="card mb-2" style="border-radius: 10px; background: #F5F5F5; border-color: white;">
 
                         <div class="card-body">
 
@@ -333,15 +351,11 @@ $comments = $stmt->get_result();
 
                                 <div class="d-flex flex-row align-items-center">
 
-                                    <img src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
+                                    <img class="mr-3" src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
 
-                                    <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$data[0]; ?></p>
+                                    <p class="small mb-0 m-lg-2"><?php echo "\t".$data[0]; ?></p>
 
-                                </div>
-
-                                <div class="d-flex flex-row align-items-center text-primary">
-
-                                    <p class="text-muted small mb-0"><?php echo "Posted Date : ".$comment['DATE']; ?></p>
+                                    <p class="text-muted small mb-0 m-lg-1"><?php echo "Posted Date : ".$comment['DATE']; ?></p>
 
                                 </div>
 
@@ -522,7 +536,7 @@ $comments = $stmt->get_result();
     $(document).ready(function()
     {
         setInterval(function(){
-            $("#here").load(window.location.href + " #here" );
+            $("#here").load(window.location.href + " #here");
         }, 3000);
     });
 </script>
