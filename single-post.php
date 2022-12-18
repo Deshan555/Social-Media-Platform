@@ -351,7 +351,7 @@ $comments = $stmt->get_result();
 
                                 <div class="d-flex flex-row align-items-center">
 
-                                    <img class="mr-3" src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
+                                    <img class="mr-3" src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="35" height="35" style="border-radius: 50%;"/>
 
                                     <p class="small mb-0 m-lg-2"><?php echo "\t".$data[0]; ?></p>
 
