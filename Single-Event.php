@@ -288,9 +288,9 @@ $comments = $stmt->get_result();
 
                         <p class="description"><span>Invite Link : <a href="<?php echo $post['Invite_Link'];?>"><?php echo $post['Invite_Link'];?></a></span></p>
 
-                        <p class="description"><span><?php echo $post['HashTags'];?></span></p>
-
                         <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+
+                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                     </div>
 

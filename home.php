@@ -305,7 +305,7 @@ if(!isset($_SESSION['id']))
 
                     <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
-                    <p class="post-time"><?php echo $post['HashTags'];?></p>
+                    <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                 </div>
 
@@ -467,12 +467,12 @@ if(!isset($_SESSION['id']))
             
             <div class="card-body">
                 
-                <h6 class="card-title"><?php echo 'Date : '.$Event_Date?></h6>
-                
+                <h6 class="card-title"><?php echo 'Date : '.date("M,Y,d", strtotime($Event_Date))?></h6>
+
                 <p class="card-text"><?php echo $Event_Caption?></p>
 
                 <form>
-                    <button class="fallow-btn"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>">See All</a></button>
+                    <button class="fallow-btn"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>" style="font-size: 12px;">Read More</a></button>
                 </form>
             </div>
 

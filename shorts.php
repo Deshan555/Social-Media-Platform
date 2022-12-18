@@ -36,6 +36,8 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+    <link rel="stylesheet" href="assets/css/profile-card.css">
+
     <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
 
     <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
@@ -58,7 +60,7 @@ if(!isset($_SESSION['id']))
 
              width: 90%;
 
-             height: 70px;
+             height: 100px;
 
              background:  #F5F5F5;
 
@@ -163,8 +165,6 @@ if(!isset($_SESSION['id']))
 
                         </div>
 
-                        <i class="fas fa-ellipsis-v options"></i>
-
                     </div>
 
                     <video
@@ -200,7 +200,7 @@ if(!isset($_SESSION['id']))
                                 <form action="unlike_vid.php" method="post">
                                     <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
                                     <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #fb3958;" class="icon fas fa-heart fa-lg"></i>
+                                        <i style="color: #fb3958;" class="icon fas fa-heart"></i>
                                     </button>
                                 </form>
 
@@ -209,15 +209,13 @@ if(!isset($_SESSION['id']))
                                 <form action="like_vid.php" method="post">
                                     <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
                                     <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
+                                        <i style="color: #22262A;" class="icon fas fa-heart"></i>
                                     </button>
                                 </form>
 
                             <?php }?>
 
-                            <a href="Single-Video.php?post_id=<?php echo $post["Video_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment fa-lg"></i></a>
-
-                            <a href="#" style="color: #22262A;"><i class="icon fas fa-calendar-alt fa-lg"></i></a>
+                            <a href="Single-Video.php?post_id=<?php echo $post["Video_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
 
                         </div>
 
@@ -231,7 +229,7 @@ if(!isset($_SESSION['id']))
 
                         <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
-                        <p class="post-time"><?php echo $post['HashTags'];?></p>
+                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                     </div>
 
@@ -300,6 +298,51 @@ if(!isset($_SESSION['id']))
 
             </div>
 
+            <p class="suggesting">Recommendation For You</p>
+
+            <?php include("get_suggestions.php"); ?>
+
+            <?php foreach($suggestions as $suggestion){?>
+
+                <?php if($suggestion['User_ID']!= $_SESSION['id']){?>
+
+                    <div class="profile-cards">
+
+                        <form id="suggestion_form<?php echo $suggestion['User_ID'];?>" method="post" action="follower_acc.php">
+
+                            <input type="hidden" value="<?php echo $suggestion['User_ID']?>" name="target_id">
+
+                            <div class="profile-pics">
+
+                                <img src= "<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" alt="profile-user" onclick="document.getElementById('suggestion_form'+<?php echo $suggestion['User_ID'];?>).submit();">
+
+                            </div>
+
+                        </form>
+
+                        <div>
+
+                            <?php $new_string =  mb_strimwidth($suggestion['FULL_NAME'], 0, 10, "..");?>
+
+                            <p class="username"><?php echo $suggestion['USER_NAME'];?></p>
+
+                            <p class="sub-text"><?php echo $new_string?></p>
+                        </div>
+
+                        <form method="POST" action="fallow_user.php">
+
+                            <input type="hidden" name="fallow_person" value='<?php echo $suggestion['User_ID'];?>'>
+
+                            <button type="submit" class="action-btn" name="fallow">follow</button>
+
+                        </form>
+
+                    </div>
+
+                <?php } ?>
+
+            <?php }?>
+
             <?php
 
             $SQL = "SELECT * FROM events ORDER BY Event_ID DESC LIMIT 1;";
@@ -330,12 +373,12 @@ if(!isset($_SESSION['id']))
 
                 <div class="card-body">
 
-                    <h6 class="card-title"><?php echo 'Date : '.$Event_Date?></h6>
+                    <h6 class="card-title"><?php echo 'Date : '.date("M,Y,d", strtotime($Event_Date))?></h6>
 
-                    <p class="card-text"><?php echo $Event_Caption?></p>
+                    <p class="card-text" style="font-size: 14px;"><?php echo $Event_Caption?></p>
 
                     <form>
-                        <button class="fallow-btn"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>">See All</a></button>
+                        <button class="fallow-btn" style="font-size: 12px;"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>">Read More</a></button>
                     </form>
                 </div>
 

@@ -33,6 +33,8 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="assets/css/responsive.css">
 
+    <link rel="stylesheet" href="assets/css/profile-card.css">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="notifast/notifast.min.css">
@@ -58,7 +60,7 @@ if(!isset($_SESSION['id']))
 
              width: 90%;
 
-             height: 70px;
+             height: 100px;
 
              border: 1px solid #F5F5F5;
 
@@ -184,8 +186,6 @@ if(!isset($_SESSION['id']))
 
                         </div>
 
-                        <i class="fas fa-ellipsis-v options"></i>
-
                     </div>
 
                     <img src="<?php echo "assets/images/posts/". $post['Event_Poster']; ?>" class="post-img">
@@ -252,6 +252,8 @@ if(!isset($_SESSION['id']))
                         <p class="description"><span>Invite Link : <a href="<?php echo $post['Invite_Link'];?>"><?php echo $post['Invite_Link'];?></a></span></p>
 
                         <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+
+                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                     </div>
 
@@ -339,6 +341,52 @@ if(!isset($_SESSION['id']))
             $conn->close();
 
             ?>
+
+            <p class="suggesting">Recommendation For You</p>
+
+            <?php include("get_suggestions.php"); ?>
+
+            <?php foreach($suggestions as $suggestion){?>
+
+                <?php if($suggestion['User_ID']!= $_SESSION['id']){?>
+
+                    <div class="profile-cards">
+
+                        <form id="suggestion_form<?php echo $suggestion['User_ID'];?>" method="post" action="follower_acc.php">
+
+                            <input type="hidden" value="<?php echo $suggestion['User_ID']?>" name="target_id">
+
+                            <div class="profile-pics">
+
+                                <img src= "<?php echo "assets/images/profiles/".$suggestion['IMAGE'];?>" alt="profile-user" onclick="document.getElementById('suggestion_form'+<?php echo $suggestion['User_ID'];?>).submit();">
+
+                            </div>
+
+                        </form>
+
+                        <div>
+
+                            <?php $new_string =  mb_strimwidth($suggestion['FULL_NAME'], 0, 10, "..");?>
+
+                            <p class="username"><?php echo $suggestion['USER_NAME'];?></p>
+
+                            <p class="sub-text"><?php echo $new_string?></p>
+                        </div>
+
+                        <form method="POST" action="fallow_user.php">
+
+                            <input type="hidden" name="fallow_person" value='<?php echo $suggestion['User_ID'];?>'>
+
+                            <button type="submit" class="action-btn" name="fallow">follow</button>
+
+                        </form>
+
+                    </div>
+
+                <?php } ?>
+
+            <?php }?>
+
             <p class="suggesting">Upcoming Events</p>
 
             <div class="card" style="width: 90%; border-radius: 10px; background: #F5F5F5; border: 1px solid #fdfdfd;">
@@ -347,12 +395,12 @@ if(!isset($_SESSION['id']))
 
                 <div class="card-body">
 
-                    <h6 class="card-title"><?php echo 'Date : '.$Event_Date?></h6>
+                    <h6 class="card-title"><?php echo 'Date : '.date("M,Y,d", strtotime($Event_Date))?></h6>
 
-                    <p class="card-text"><?php echo $Event_Caption?></p>
+                    <p class="card-text" style="font-size: 14px;"><?php echo $Event_Caption?></p>
 
                     <form>
-                        <button class="fallow-btn"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>">See All</a></button>
+                        <button class="fallow-btn" style="font-size: 12px;"><a href="Single-Event.php?post_id=<?php echo $Event_ID;?>">Read More</a></button>
                     </form>
                 </div>
 

@@ -260,6 +260,8 @@ $comments = $stmt->get_result();
 
                         <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
+                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
+
                     </div>
 
                 </div>
