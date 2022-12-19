@@ -33,6 +33,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+
+    <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+
     <style>
         .post-source{
 
@@ -240,16 +244,24 @@ $comments = $stmt->get_result();
 
                     </div>
 
-
-                    <video controls class="post-source" >
-
-                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4">
-
-                        <h1><?php echo 'assets/videos/'.$post['Video_Path'];?></h1>
-
+                    <video
+                            id="my-video"
+                            class="video-js vjs-theme-sea post-source"
+                            controls
+                            preload="none"
+                            data-setup="{}"
+                            poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>"
+                    >
+                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
+                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/webm" />
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank"
+                            >supports HTML5 video</a
+                            >
+                        </p>
                     </video>
-
-
 
                     <div class="post-content">
 
@@ -561,6 +573,8 @@ $comments = $stmt->get_result();
 </section>
 
 </body>
+
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
 
 <script src="notifast/notifast.min.js"></script>
 
