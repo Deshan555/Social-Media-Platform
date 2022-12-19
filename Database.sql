@@ -72,6 +72,7 @@ CREATE TABLE Videos(
   FOREIGN KEY (User_ID) REFERENCES Users(User_ID)
 );
 
+ALTER TABLE Videos ADD Thumbnail_Path varchar(255);
 
 CREATE TABLE Fallowing(
   
@@ -198,3 +199,4 @@ CREATE TABLE Comments_Events(
 
    FOREIGN KEY (USER_ID) REFERENCES Users(User_ID)
 );
+
