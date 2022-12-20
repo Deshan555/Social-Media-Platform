@@ -265,6 +265,7 @@ if(!isset($_SESSION['id']))
 
                 <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
+
                 <div class="post-content">
                     
                     <div class="reactions-wrapper">

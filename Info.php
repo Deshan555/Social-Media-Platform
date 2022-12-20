@@ -108,7 +108,7 @@
                               <div class="profile_card" style="margin-left: 20px;">
 
                                   <div>
-                                      <p class="username"><?php echo $extract_data[1]; ?></p>
+                                      <p class="username" style="font-weight: bold;"><?php echo $extract_data[1]; ?></p>
 
                                       <p class="sub-text"><?php echo $extract_data['0']; ?></p>
 
@@ -154,7 +154,7 @@
                               <div class="profile_card" style="margin-left: 20px;">
 
                                   <div>
-                                      <p class="username"><?php echo $extract_data[1]; ?></p>
+                                      <h6 class="username" style="font-weight: bold;"><?php echo$extract_data[1];?></h6>
 
                                       <p class="sub-text"><?php echo $extract_data[0]; ?></p>
 
