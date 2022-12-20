@@ -37,21 +37,6 @@
 
     <link rel="stylesheet" href="assets/css/results.css">
 
-    <style>
-        .post-source {
-
-            width: 100%;
-
-            height: 500px;
-
-            object-fit: cover;
-
-            border-radius: 10px;
-
-        }
-
-    </style>
-
 </head>
 
 <body>
@@ -242,18 +227,18 @@
                             <div>
                                 <p class="username"
                                    style="text-transform: capitalize;"><?php echo $event['Caption']; ?></p>
-
-                                <p class="sub-text"><?php echo "Post Uploaded : ".$event['Date_Upload']; ?></p>
-
                             </div>
 
                         </div>
 
                         <div class="search-result-item-button">
 
-                            <button type="button" class="btn btn-outline-primary"><a href="Single-Event.php?post_id=<?php echo $event['Event_ID']; ?>" target="_blank">
+                            <button class="btn btn-outline-primary" style="background: white none;">
+                                <a href="Single-Event.php?post_id=<?php echo $event['Event_ID']; ?>" style="text-decoration: none; font-weight: bold;" target="_blank">
+                                    View Event
+                                </a>
+                            </button>
 
-                                    View Event</a></button>
                         </div>
 
                     </li>
@@ -284,15 +269,18 @@
 
                     <li class="list-group-item search-result-item">
 
-                        <img src="assets/images/video.png" alt="profile-image">
+                        <img src="<?php echo 'assets/videos/'. $video['Thumbnail_Path']; ?>" alt="profile-image">
 
                         <div class="profile_card" style="margin-left: 20px;">
 
                             <div>
                                 <p class="username"
-                                   style="text-transform: capitalize;"><?php echo $video['Caption']; ?></p>
 
-                                <p class="sub-text"><?php echo "Upload Date : ".$video['Date_Upload']; ?></p>
+                                   <?php $vid_data = "Single-Video.php?post_id= ".$video['Video_ID'];?>
+
+                                    <?php $new_string =  mb_strimwidth($video['Caption'], 0, 200, "....<br><a href='$vid_data'> Read More</a>");?>
+
+                                   style="text-transform: capitalize; font-weight: bold; font-size: 13px;"><?php echo $new_string ?></p>
 
                             </div>
 
@@ -300,8 +288,10 @@
 
                         <div class="search-result-item-button">
 
-                            <button type="button" class="btn btn-outline-primary"><a href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>"
-                                                                                     target="_blank">View Video</a></button>
+                            <button class="btn btn-outline-primary" style="background: white none;">
+                                <a style="font-weight: bold; text-decoration: none;"
+                                   href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>"
+                                   target="_blank">View Video</a></button>
                         </div>
 
                     </li>
