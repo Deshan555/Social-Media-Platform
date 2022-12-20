@@ -200,3 +200,12 @@ CREATE TABLE Comments_Events(
    FOREIGN KEY (USER_ID) REFERENCES Users(User_ID)
 );
 
+CREATE TABLE Admin
+(
+    Admin_ID INT(11)  AUTO_INCREMENT PRIMARY KEY,
+
+    User_Name varchar(100) NOT NULL,
+
+    Password varchar(100) NOT NULL
+);
+
