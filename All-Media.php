@@ -188,7 +188,7 @@ if(!isset($_SESSION['id']))
 
                                 <div>
                                     <p class="username"
-                                       style="text-transform: capitalize;"><?php echo $event['Caption']; ?></p>
+                                       style="text-transform: capitalize; font-weight: bold;"><?php echo $event['Caption']; ?></p>
 
                                     <p class="sub-text"><?php echo "Post Uploaded : ".$event['Date_Upload']; ?></p>
                                 </div>
@@ -197,7 +197,8 @@ if(!isset($_SESSION['id']))
 
                             <div class="search-result-item-button">
 
-                                <button type="button" class="btn btn-outline-primary"><a href="Single-Event.php?post_id=<?php echo $event['Event_ID']; ?>" target="_blank">
+                                <button style="background: white none" class="btn btn-outline-primary">
+                                    <a style="font-weight: bold; text-decoration: none;" href="Single-Event.php?post_id=<?php echo $event['Event_ID']; ?>" target="_blank">
 
                                         View Event</a></button>
                             </div>
@@ -236,9 +237,12 @@ if(!isset($_SESSION['id']))
 
                             <div>
                                 <p class="username"
-                                   style="text-transform: capitalize;"><?php echo $video['Caption']; ?></p>
 
-                                <p class="sub-text"><?php echo "Upload Date : ".$video['Date_Upload']; ?></p>
+                                    <?php $vid_data = "Single-Video.php?post_id= ".$video['Video_ID'];?>
+
+                                    <?php $new_string =  mb_strimwidth($video['Caption'], 0, 200, "....<br><a href='$vid_data'> Read More</a>");?>
+
+                                   style="text-transform: capitalize; font-weight: bold; font-size: 13px;"><?php echo $new_string ?></p>
 
                             </div>
 
@@ -246,8 +250,11 @@ if(!isset($_SESSION['id']))
 
                         <div class="search-result-item-button">
 
-                            <button type="button" class="btn btn-outline-primary"><a href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>"
-                                                                                     target="_blank">View Video</a></button>
+                            <button style="background: white none" class="btn btn-outline-primary">
+                                <a style="text-decoration: none; font-weight: bold;" href="Single-Video.php?post_id=<?php echo $video['Video_ID']; ?>" target="_blank">
+                                    View Video
+                                </a>
+                            </button>
                         </div>
 
                     </li>
