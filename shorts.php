@@ -176,7 +176,6 @@ if(!isset($_SESSION['id']))
                             poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>"
                     >
                         <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
-                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/webm" />
                         <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a
                             web browser that
