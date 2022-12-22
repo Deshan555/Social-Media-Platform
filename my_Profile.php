@@ -28,8 +28,6 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-
-
     <style>
         .profile-head {
             transform: translateY(5rem)
@@ -48,6 +46,14 @@
             background: #ffffff;
             min-height: 100vh;
             overflow-x:hidden;
+        }
+
+        @media (max-width: 800px)
+        {
+            .edit-profile button{
+
+                display: none;
+            }
         }
     </style>
 </head>
@@ -128,7 +134,7 @@ if(!isset($_SESSION['id']))
 
                         <br>
 
-                        <form method="post" action="update-profile.php">
+                        <form method="post" action="update-profile.php" class="edit-profile">
 
                                 <button type="submit" class="btn btn-outline-light btn-sm btn-block mt-2">Edit Profile</button>
                         </form>
