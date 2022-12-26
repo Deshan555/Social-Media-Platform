@@ -193,7 +193,7 @@ $comments = $stmt->get_result();
 
                 $profile_name = $data[0];?>
 
-                <div class="post">
+                <div class="post" id="post-id">
 
                     <div class="info">
 
@@ -221,46 +221,52 @@ $comments = $stmt->get_result();
 
                     <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
-                    <div class="post-content">
+                    <div id="data-contents">
 
-                        <div class="reactions-wrapper">
+                        <div class="post-content" id="post-content">
 
-                            <?php include('check_like_status.php');?>
+                            <div class="reactions-wrapper" id="reaction-wrapper">
 
-                            <?php if($reaction_status){?>
+                                <?php include('check_like_status.php');?>
 
-                                <form action="unlike.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #fb3958;" class="icon fas fa-heart fa-lg"></i>
-                                    </button>
-                                </form>
+                                <?php if($reaction_status){?>
 
-                            <?php } else{?>
+                                    <form>
+                                        <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_ids" id="post_ids">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #fb3958;" class="icon fas fa-heart fa-lg" onclick="return unlike();" id="unlike"></i>
+                                        </button>
+                                    </form>
 
-                                <form action="like.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
-                                    </button>
-                                </form>
+                                <?php } else{?>
 
-                            <?php }?>
+                                    <form>
+                                        <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id" id="post_id">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #22262A;" class="icon fas fa-heart fa-lg" onclick="return like();" id="like"></i>
+                                        </button>
+                                    </form>
+
+                                <?php }?>
+
+                            </div>
+
+                            <input type="hidden" value="<?php echo $post['Likes'];?>" id="reaction-counter">
+
+                            <p class="reactions" id="reaction-id"><?php echo $post['Likes'];?> Reactions</p>
+
+                            <p class="description">
+
+                                <span><?php echo $profile_name;?> Says :<br></span>
+
+                                <?php echo $post['Caption'];?>
+                            </p>
+
+                            <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+
+                            <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                         </div>
-
-                        <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
-
-                        <p class="description">
-
-                            <span><?php echo $profile_name;?> Says :<br></span>
-
-                            <?php echo $post['Caption'];?>
-                        </p>
-
-                        <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
-
-                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                     </div>
 
@@ -534,6 +540,49 @@ $comments = $stmt->get_result();
 
 <script src="notifast/function.js"></script>
 
+<script type="text/javascript">
+
+    function like(){
+
+        const post_id = document.getElementById('post_id').value;
+
+        $.ajax({
+            type:"post",
+            url:"like.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#data-contents").load(window.location.href + " #data-contents" );
+            }
+        });
+        return false;
+    }
+
+    function unlike(){
+
+        const post_ids = document.getElementById('post_ids').value;
+
+        $.ajax({
+            type:"post",
+            url:"unlike.php",
+            data:
+                {
+                    'post_id' :post_ids,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#data-contents").load(window.location.href + " #data-contents" );
+            }
+        });
+        return false;
+    }
+</script>
+
 <script>
     $(document).ready(function()
     {
@@ -543,8 +592,11 @@ $comments = $stmt->get_result();
     });
 </script>
 
+
 <script type="text/javascript">
-    document.getElementById("logo-img").onclick = function () {
+
+    document.getElementById("logo-img").onclick = function ()
+    {
         location.href = "home.php";
     };
 </script>

@@ -40,7 +40,9 @@ if(!isset($_SESSION['id']))
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <style>
         .style-wrapper{
 
@@ -225,7 +227,7 @@ if(!isset($_SESSION['id']))
 
         <!-- Design for left column -->
 
-        <div class="left-col">
+        <div class="left-col" id="left-col">
 
             <!-- Wrapper For Status -->
 
@@ -249,7 +251,7 @@ if(!isset($_SESSION['id']))
 
                 ?>
 
-            <div class="post">
+            <div class="post" id="post">
 
                 <div class="info">
 
@@ -265,51 +267,52 @@ if(!isset($_SESSION['id']))
 
                 <img src="<?php echo "assets/images/posts/". $post['Img_Path']; ?>" class="post-img">
 
+                    <div id="post_info_data">
 
-                <div class="post-content">
-                    
-                    <div class="reactions-wrapper">
+                        <div class="post-content">
 
-                        <?php include('check_like_status.php');?>
+                            <div class="reactions-wrapper">
 
-                        <?php if($reaction_status){?>
+                                <?php include('check_like_status.php');?>
 
-                        <form action="unlike.php" method="post">
-                            <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
-                            <button style="background: none; border: none;" type="submit" name="reaction">
-                                <i style="color: #fb3958;" class="icon fas fa-heart fa-lg"></i>
-                            </button>
-                        </form>
+                                <?php if($reaction_status){?>
 
-                        <?php } else{?>
+                                    <form>
+                                        <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_ids" id="post_ids">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #fb3958;" class="icon fas fa-heart fa-lg" onclick="return unlike(<?php echo $post['Post_ID'];?>);"></i>
+                                        </button>
+                                    </form>
 
-                            <form action="like.php" method="post">
-                                <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id">
-                                <button style="background: none; border: none;" type="submit" name="reaction">
-                                    <i style="color: #22262A;" class="icon fas fa-heart fa-lg"></i>
-                                </button>
-                            </form>
+                                <?php } else{?>
 
-                        <?php }?>
+                                    <form>
+                                        <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id" id="post_id">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #22262A;" class="icon fas fa-heart fa-lg" onclick="return like(<?php echo $post['Post_ID'];?>);"></i>
+                                        </button>
+                                    </form>
 
-                        <a href="single-post.php?post_id= <?php echo $post["Post_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment fa-lg"></i></a>
+                                <?php }?>
 
-                </div>
+                                <a href="single-post.php?post_id= <?php echo $post["Post_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment fa-lg"></i></a>
 
-                    <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+                            </div>
 
-                    <p class="description">
-                        <span><?php echo $profile_name;?> Says :<br></span>
+                            <p class="reactions" id="<?php echo 'reactions_'.$post['Post_ID'];?>"><?php echo $post['Likes'];?> Reactions</p>
 
-                        <?php echo $post['Caption'];?>
-                    </p>
+                            <p class="description">
+                                <span><?php echo $profile_name;?> Says :<br></span>
 
-                    <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+                                <?php echo $post['Caption'];?>
+                            </p>
 
-                    <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
+                            <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
 
-                </div>
+                            <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
+                        </div>
+                    </div>
             </div>
 
             <?php } ?>
@@ -500,7 +503,50 @@ if(!isset($_SESSION['id']))
 </body>
 
 <script type="text/javascript">
-    document.getElementById("logo-img").onclick = function () {
+
+    function like(post_id){
+
+        const div_id = "post_info"+post_id;
+
+        $.ajax({
+            type:"post",
+            url:"like.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $('#left-col').load(document.URL +  ' #left-col');
+            }
+        });
+        return false;
+    }
+
+    function unlike(post_id){
+
+        $.ajax({
+            type:"post",
+            url:"unlike.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $('#left-col').load(document.URL +  ' #left-col');
+            }
+        });
+        return false;
+    }
+
+</script>
+
+<script type="text/javascript">
+    document.getElementById("logo-img").onclick = function ()
+    {
         location.href = "home.php";
     };
 </script>
