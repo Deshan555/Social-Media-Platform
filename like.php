@@ -4,29 +4,20 @@ session_start();
 
 include("config.php");
 
-if (isset($_POST['reaction'])) {
+$post_id = isset($_POST['post_id']) ? $_POST['post_id'] : '';
 
-    $user_id = $_SESSION['id'];
 
-    $post_id = $_POST['post_id'];
+$user_id = $_SESSION['id'];
 
-    $SQL = "INSERT INTO likes(Post_ID, User_ID)VALUES($post_id, $user_id);";
+$SQL = "INSERT INTO likes(Post_ID, User_ID)VALUES($post_id, $user_id);";
 
-    $stmt = $conn->prepare($SQL);
+$stmt = $conn->prepare($SQL);
 
-    $stmt->execute();
+$stmt->execute();
 
-    $conn->close();
+$conn->close();
 
-    update_likes($post_id);
-
-    header("location: home.php");
-
-} else {
-
-    header("location: home.php");
-}
-
+update_likes($post_id);
 
 function update_likes($post_id)
 {
