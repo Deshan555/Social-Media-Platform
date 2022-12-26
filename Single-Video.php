@@ -262,51 +262,52 @@ $comments = $stmt->get_result();
                         </p>
                     </video>
 
-                    <div class="post-content">
+                    <div id="post_info">
+                        <div class="post-content">
 
-                        <div class="reactions-wrapper">
+                            <div class="reactions-wrapper">
 
-                            <?php
+                                <?php
 
-                            include('check_like_statusVid.php');?>
+                                include('check_like_statusVid.php');?>
 
-                            <?php if($reaction_status){?>
+                                <?php if($reaction_status){?>
 
-                                <form action="unlike_vid.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #fb3958;" class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
+                                    <form">
+                                        <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id" id="post_ids">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #fb3958;" class="icon fas fa-heart" onclick="return unlike();"></i>
+                                        </button>
+                                    </form>
 
-                            <?php } else{?>
+                                <?php } else{?>
 
-                                <form action="like_vid.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #22262A;" class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
+                                    <form>
+                                        <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id" id="post_id">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #22262A;" class="icon fas fa-heart" onclick="return like();"></i>
+                                        </button>
+                                    </form>
 
-                            <?php }?>
+                                <?php }?>
+
+                            </div>
+
+                            <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+
+                            <p class="description">
+
+                                <span><?php echo $profile_name;?> Says :<br></span>
+
+                                <?php echo $post['Caption'];?>
+                            </p>
+
+                            <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+
+                            <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                         </div>
-
-                        <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
-
-                        <p class="description">
-
-                            <span><?php echo $profile_name;?> Says :<br></span>
-
-                            <?php echo $post['Caption'];?>
-                        </p>
-
-                        <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
-
-                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
-
                     </div>
-
                 </div>
 
             <?php }?>
@@ -578,6 +579,49 @@ $comments = $stmt->get_result();
 <script src="notifast/notifast.min.js"></script>
 
 <script src="notifast/function.js"></script>
+
+<script type="text/javascript">
+
+    function like(){
+
+        const post_id = document.getElementById('post_id').value;
+
+        $.ajax({
+            type:"post",
+            url:"like_vid.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#post_info").load(window.location.href + " #post_info" );
+            }
+        });
+        return false;
+    }
+
+    function unlike(){
+
+        const post_ids = document.getElementById('post_ids').value;
+
+        $.ajax({
+            type:"post",
+            url:"unlike_vid.php",
+            data:
+                {
+                    'post_id' :post_ids,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#post_info").load(window.location.href + " #post_info" );
+            }
+        });
+        return false;
+    }
+</script>
 
 <script>
     $(document).ready(function()

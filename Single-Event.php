@@ -228,72 +228,74 @@ $comments = $stmt->get_result();
 
                     <img src="<?php echo "assets/images/posts/". $post['Event_Poster']; ?>" class="post-img">
 
-                    <div class="post-content">
+                    <div id="post_info">
 
-                        <div class="reactions-wrapper">
+                        <div class="post-content">
 
-                            <?php
+                            <div class="reactions-wrapper">
 
-                            include('check_like_status_events.php');?>
+                                <?php
 
-                            <?php if($reaction_status){?>
+                                include('check_like_status_events.php');?>
 
-                                <form action="unlike_event.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Event_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #fb3958;" class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
+                                <?php if($reaction_status){?>
 
-                            <?php } else{?>
+                                    <form">
+                                        <input type="hidden" value="<?php echo $post['Event_ID'];?>" id="post_ids">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #fb3958;" class="icon fas fa-heart" onclick="return unlike();"></i>
+                                        </button>
+                                    </form>
 
-                                <form action="like_events.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Event_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #22262A;" class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
+                                <?php } else{?>
 
-                            <?php }?>
+                                    <form">
+                                        <input type="hidden" value="<?php echo $post['Event_ID'];?>" id="post_id">
+                                        <button style="background: none; border: none;" type="submit" name="reaction">
+                                            <i style="color: #22262A;" class="icon fas fa-heart" onclick="return like();"></i>
+                                        </button>
+                                    </form>
 
-                            <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="default-button"></i>
+                                <?php }?>
 
-                            <script type="application/javascript">
-                                const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                                const config = {
-                                    name: "<?php echo $profile_name.' s Event';?>",
-                                    description: "<?php echo $post['Invite_Link'];?>",
-                                    startDate: "<?php echo date("Y-m-d", strtotime($post['Event_Date']));?>",
-                                    options: ["Google","Apple","Microsoft365", "MicrosoftTeams","Outlook.com","iCal"],
-                                    timeZone: timeZoneIANA,
-                                    trigger: "click",
-                                    iCalFileName: "Reminder-Event",
-                                };
-                                const button = document.getElementById('default-button');
-                                button.addEventListener('click', () => atcb_action(config, button));
-                            </script>
+                                <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="default-button"></i>
+
+                                <script type="application/javascript">
+                                    const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                                    const config = {
+                                        name: "<?php echo $profile_name.' s Event';?>",
+                                        description: "<?php echo $post['Invite_Link'];?>",
+                                        startDate: "<?php echo date("Y-m-d", strtotime($post['Event_Date']));?>",
+                                        options: ["Google","Apple","Microsoft365", "MicrosoftTeams","Outlook.com","iCal"],
+                                        timeZone: timeZoneIANA,
+                                        trigger: "click",
+                                        iCalFileName: "Reminder-Event",
+                                    };
+                                    const button = document.getElementById('default-button');
+                                    button.addEventListener('click', () => atcb_action(config, button));
+                                </script>
+
+                            </div>
+
+                            <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+
+                            <p class="description">
+
+                                <span><?php echo $profile_name;?> Says :<br></span>
+
+                                <?php echo $post['Caption'];?>
+                            </p>
+
+                            <p class="description">Event Will Be Held On : <span><?php echo $post['Event_Date'];?></span> At : <span><span><?php echo $post['Event_Time'];?></span></p>
+
+                            <p class="description"><span>Invite Link : <a href="<?php echo $post['Invite_Link'];?>"><?php echo $post['Invite_Link'];?></a></span></p>
+
+                            <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+
+                            <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                         </div>
-
-                        <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
-
-                        <p class="description">
-
-                            <span><?php echo $profile_name;?> Says :<br></span>
-
-                            <?php echo $post['Caption'];?>
-                        </p>
-
-                        <p class="description">Event Will Be Held On : <span><?php echo $post['Event_Date'];?></span> At : <span><span><?php echo $post['Event_Time'];?></span></p>
-
-                        <p class="description"><span>Invite Link : <a href="<?php echo $post['Invite_Link'];?>"><?php echo $post['Invite_Link'];?></a></span></p>
-
-                        <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
-
-                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
-
                     </div>
-
                 </div>
 
             <?php }?>
@@ -582,6 +584,49 @@ $comments = $stmt->get_result();
 <script src="notifast/notifast.min.js"></script>
 
 <script src="notifast/function.js"></script>
+
+<script type="text/javascript">
+
+    function like(){
+
+        const post_id = document.getElementById('post_id').value;
+
+        $.ajax({
+            type:"post",
+            url:"like_events.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#post_info").load(window.location.href + " #post_info" );
+            }
+        });
+        return false;
+    }
+
+    function unlike(){
+
+        const post_ids = document.getElementById('post_ids').value;
+
+        $.ajax({
+            type:"post",
+            url:"unlike_event.php",
+            data:
+                {
+                    'post_id' :post_ids,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#post_info").load(window.location.href + " #post_info" );
+            }
+        });
+        return false;
+    }
+</script>
 
 <script>
     $(document).ready(function()
