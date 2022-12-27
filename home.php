@@ -506,8 +506,6 @@ if(!isset($_SESSION['id']))
 
     function like(post_id){
 
-        const div_id = "post_info"+post_id;
-
         $.ajax({
             type:"post",
             url:"like.php",

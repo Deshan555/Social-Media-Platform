@@ -15,7 +15,7 @@ if(!isset($_SESSION['id']))
 
 <html lang="en">
 
-<head>
+<head id="head">
     <meta charset="UTF-8">
 
     <title>EventsWave</title>
@@ -38,9 +38,11 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="assets/css/profile-card.css">
 
-    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-    <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet">
+    <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" id="js_2"/>
+
+    <link href="https://unpkg.com/@videojs/themes@1/dist/sea/index.css" rel="stylesheet" id="js_1">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
@@ -135,106 +137,106 @@ if(!isset($_SESSION['id']))
 
         <!-- Design for left column -->
 
-        <div class="left-col">
+        <div class="left-col" id="left-col">
 
-            <?php
+                <?php
 
-            include('get_latest_videos.php');
+                include('get_latest_videos.php');
 
-            include('get_dataById.php');
+                include('get_dataById.php');
 
-            foreach($posts as $post)
-            {
-                $data = get_UserData($post['User_ID']);
+                foreach($posts as $post)
+                {
+                    $data = get_UserData($post['User_ID']);
 
-                $profile_img = $data[2];
+                    $profile_img = $data[2];
 
-                $profile_name = $data[0];
+                    $profile_name = $data[0];
 
-                ?>
+                    ?>
 
-                <div class="post">
+                    <div class="post">
 
-                    <div class="info">
+                        <div class="info">
 
-                        <div class="user">
+                            <div class="user">
 
-                            <div class="profile-pic"><img src="<?php echo "assets/images/profiles/". $profile_img; ?>"></div>
+                                <div class="profile-pic"><img src="<?php echo "assets/images/profiles/". $profile_img; ?>"></div>
 
-                            <p class="username"><?php echo $profile_name;?></p>
+                                <p class="username"><?php echo $profile_name;?></p>
 
-                        </div>
-
-                    </div>
-
-                    <video
-                            id="my-video"
-                            class="video-js vjs-theme-sea post-source"
-                            controls
-                            preload="none"
-                            data-setup="{}"
-                            poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>"
-                    >
-                        <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
-                        <p class="vjs-no-js">
-                            To view this video please enable JavaScript, and consider upgrading to a
-                            web browser that
-                            <a href="https://videojs.com/html5-video-support/" target="_blank"
-                            >supports HTML5 video</a
-                            >
-                        </p>
-                    </video>
-
-
-                    <div class="post-content">
-
-                        <div class="reactions-wrapper">
-
-                            <?php
-
-                            include('check_like_statusVid.php');?>
-
-                            <?php if($reaction_status){?>
-
-                                <form action="unlike_vid.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #fb3958;" class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
-
-                            <?php } else{?>
-
-                                <form action="like_vid.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #22262A;" class="icon fas fa-heart"></i>
-                                    </button>
-                                </form>
-
-                            <?php }?>
-
-                            <a href="Single-Video.php?post_id=<?php echo $post["Video_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
+                            </div>
 
                         </div>
 
-                        <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+                        <video
+                                id="my-video"
+                                class="video-js vjs-theme-sea post-source"
+                                controls
+                                preload="none"
+                                data-setup="{}"
+                                poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>"
+                        >
+                            <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                >supports HTML5 video</a
+                                >
+                            </p>
+                        </video>
 
-                        <p class="description">
-                            <span><?php echo $profile_name;?> Says :<br></span>
+                        <div id="post-details">
+                            <div class="post-content">
 
-                            <?php echo $post['Caption'];?>
-                        </p>
+                                <div class="reactions-wrapper" id="reaction">
 
-                        <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+                                    <?php
 
-                        <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
+                                    include('check_like_statusVid.php');?>
 
+                                    <?php if($reaction_status){?>
+
+                                        <form>
+                                            <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
+                                            <button style="background: none; border: none;" type="submit" name="reaction">
+                                                <i style="color: #fb3958;" class="icon fas fa-heart" onclick="return unlike(<?php echo $post['Video_ID'];?>);"></i>
+                                            </button>
+                                        </form>
+
+                                    <?php } else{?>
+
+                                        <form>
+                                            <input type="hidden" value="<?php echo $post['Video_ID'];?>" name="post_id">
+                                            <button style="background: none; border: none;" type="submit" name="reaction">
+                                                <i style="color: #22262A;" class="icon fas fa-heart" onclick="return like(<?php echo $post['Video_ID'];?>);"></i>
+                                            </button>
+                                        </form>
+
+                                    <?php }?>
+
+                                    <a href="Single-Video.php?post_id=<?php echo $post["Video_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
+
+                                </div>
+
+                                <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+
+                                <p class="description">
+                                    <span><?php echo $profile_name;?> Says :<br></span>
+
+                                    <?php echo $post['Caption'];?>
+                                </p>
+
+                                <p class="post-time"><?php echo date("M,Y,d", strtotime($post['Date_Upload']));?></p>
+
+                                <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
+
+                            </div>
+                        </div>
                     </div>
 
-                </div>
-
-            <?php } ?>
+                <?php } ?>
 
 
             <!--Pagination bar-->
@@ -389,15 +391,61 @@ if(!isset($_SESSION['id']))
 
 </section>
 
-<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
-
 <script type="text/javascript">
-    document.getElementById("logo-img").onclick = function () {
+    document.getElementById("logo-img").onclick = function ()
+    {
         location.href = "home.php";
     };
 </script>
 
+<script type="text/javascript">
+
+    function like(post_id){
+
+        $.ajax({
+            type:"post",
+            url:"like_vid.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $('#left-col').load(document.URL +  ' #left-col');
+
+            }
+        });
+        return false;
+    }
+
+    function unlike(post_id){
+
+        $.ajax({
+            type:"post",
+            url:"unlike_vid.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $('#left-col').load(document.URL +  ' #left-col');
+            }
+        });
+        return false;
+    }
+
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+
+</script>
+
 </body>
+
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js" id="js_fun"></script>
 
 </html>
 

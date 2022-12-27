@@ -43,6 +43,8 @@ if(!isset($_SESSION['id']))
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1/assets/css/atcb.min.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
     <style>
         .post-source{
 
@@ -155,7 +157,7 @@ if(!isset($_SESSION['id']))
 
         <!-- Design for left column -->
 
-        <div class="left-col">
+        <div class="left-col" id="left-col">
 
             <!-- Wrapper for posting -->
             <?php
@@ -200,19 +202,19 @@ if(!isset($_SESSION['id']))
 
                             <?php if($reaction_status){?>
 
-                                <form action="unlike_event.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Event_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #fb3958;" class="icon fas fa-heart"></i>
+                                <form">
+                                    <input type="hidden" value="<?php echo $post['Event_ID'];?>" name="post_id" id="post_ids">
+                                    <button style="background: none; border: none;" type="submit">
+                                        <i style="color: #fb3958;" class="icon fas fa-heart" onclick="return unlike(<?php echo $post['Event_ID'];?>)"></i>
                                     </button>
                                 </form>
 
                             <?php } else{?>
 
-                                <form action="like_events.php" method="post">
-                                    <input type="hidden" value="<?php echo $post['Event_ID'];?>" name="post_id">
-                                    <button style="background: none; border: none;" type="submit" name="reaction">
-                                        <i style="color: #22262A;" class="icon fas fa-heart"></i>
+                                <form>
+                                    <input type="hidden" value="<?php echo $post['Event_ID'];?>" name="post_id" id="post_id">
+                                    <button style="background: none; border: none;" type="submit">
+                                        <i style="color: #22262A;" class="icon fas fa-heart" onclick="return like(<?php echo $post['Event_ID'];?>)"></i>
                                     </button>
                                 </form>
 
@@ -220,22 +222,15 @@ if(!isset($_SESSION['id']))
 
                             <a href="Single-Event.php?post_id=<?php echo $post["Event_ID"];?>" style="color: #22262A;"><i class="icon fas fa-comment"></i></a>
 
-                            <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="default-button"></i>
+                            <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="<?php echo 'button_'.$post["Event_ID"];?>"
 
-                            <script type="application/javascript">
-                                const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                                const config = {
-                                    name: "<?php echo $profile_name.' s Event';?>",
-                                    description: "<?php echo $post['Invite_Link'];?>",
-                                    startDate: "<?php echo date("Y-m-d", strtotime($post['Event_Date']));?>",
-                                    options: ["Google","Apple","Microsoft365", "MicrosoftTeams","Outlook.com","iCal"],
-                                    timeZone: timeZoneIANA,
-                                    trigger: "click",
-                                    iCalFileName: "Reminder-Event",
-                                };
-                                const button = document.getElementById('default-button');
-                                button.addEventListener('click', () => atcb_action(config, button));
-                            </script>
+                               onclick="calender_function('<?php echo $profile_name.' s Event';?>',
+
+                                       '<?php echo $post['Invite_Link'];?>',
+
+                                       '<?php echo date("Y-m-d", strtotime($post['Event_Date']));?>',
+
+                                       '<?php echo 'button_'.$post["Event_ID"];?>')"></i>
 
                         </div>
 
@@ -413,7 +408,6 @@ if(!isset($_SESSION['id']))
 </section>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1" async defer></script>
 
 <script src="notifast/notifast.min.js"></script>
 
@@ -424,6 +418,67 @@ if(!isset($_SESSION['id']))
         location.href = "home.php";
     };
 </script>
+
+<script type="text/javascript">
+
+    function like(post_id){
+
+        $.ajax({
+            type:"post",
+            url:"like_events.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $('#left-col').load(document.URL +  ' #left-col');
+            }
+        });
+        return false;
+    }
+
+    function unlike(post_id){
+
+        $.ajax({
+            type:"post",
+            url:"unlike_event.php",
+            data:
+                {
+                    'post_id' :post_id,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $('#left-col').load(document.URL +  ' #left-col');
+            }
+        });
+        return false;
+    }
+
+    function calender_function(event_name, invite_link, date, id_button)
+    {
+        const timeZoneIANA = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        const config =
+            {
+            name: event_name,
+            description: invite_link,
+            startDate: date,
+            options: ["Google","Apple","Microsoft365", "MicrosoftTeams","Outlook.com","iCal"],
+            timeZone: timeZoneIANA,
+            trigger: "click",
+            iCalFileName: "Reminder-Event",
+        };
+        const button = document.getElementById(id_button);
+
+        button.addEventListener('click', () => atcb_action(config, button));
+    }
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1" async defer></script>
 
 </html>
 

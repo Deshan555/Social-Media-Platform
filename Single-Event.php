@@ -234,29 +234,31 @@ $comments = $stmt->get_result();
 
                             <div class="reactions-wrapper">
 
-                                <?php
+                                <div id="likes">
+                                    <?php
 
-                                include('check_like_status_events.php');?>
+                                    include('check_like_status_events.php');?>
 
-                                <?php if($reaction_status){?>
+                                    <?php if($reaction_status){?>
 
-                                    <form">
+                                        <form">
                                         <input type="hidden" value="<?php echo $post['Event_ID'];?>" id="post_ids">
                                         <button style="background: none; border: none;" type="submit" name="reaction">
                                             <i style="color: #fb3958;" class="icon fas fa-heart" onclick="return unlike();"></i>
                                         </button>
-                                    </form>
+                                        </form>
 
-                                <?php } else{?>
+                                    <?php } else{?>
 
-                                    <form">
+                                        <form">
                                         <input type="hidden" value="<?php echo $post['Event_ID'];?>" id="post_id">
                                         <button style="background: none; border: none;" type="submit" name="reaction">
                                             <i style="color: #22262A;" class="icon fas fa-heart" onclick="return like();"></i>
                                         </button>
-                                    </form>
+                                        </form>
 
-                                <?php }?>
+                                    <?php }?>
+                                </div>
 
                                 <i class="icon fas fa-calendar-alt" style="color: #22262A;" id="default-button"></i>
 
@@ -277,7 +279,7 @@ $comments = $stmt->get_result();
 
                             </div>
 
-                            <p class="reactions"><?php echo $post['Likes'];?> Reactions</p>
+                            <p class="reactions" id="reactions_count"><?php echo $post['Likes'];?> Reactions</p>
 
                             <p class="description">
 
@@ -601,7 +603,9 @@ $comments = $stmt->get_result();
             cache:false,
             success: function (html)
             {
-                $("#post_info").load(window.location.href + " #post_info" );
+                $("#likes").load(window.location.href + " #likes" );
+
+                $("#reaction-counter").load(window.location.href + " #reaction-counter" );
             }
         });
         return false;
@@ -621,7 +625,9 @@ $comments = $stmt->get_result();
             cache:false,
             success: function (html)
             {
-                $("#post_info").load(window.location.href + " #post_info" );
+                $("#likes").load(window.location.href + " #likes" );
+
+                $("#reaction-counter").load(window.location.href + " #reaction-counter" );
             }
         });
         return false;
