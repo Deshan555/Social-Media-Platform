@@ -679,7 +679,7 @@ $comments = $stmt->get_result();
     {
         setInterval(function(){
             $("#comments").load(window.location.href + " #comments" );
-        }, 3000);
+        }, 10000);
     });
 </script>
 
