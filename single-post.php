@@ -165,7 +165,7 @@ $offest = ($page_no - 1) * $total_comments_per_page;
 
 $total_number_pages = ceil($total_comments/$total_comments_per_page);
 
-$stmt = $conn->prepare("SELECT * FROM comments WHERE POST_ID = $post_identification ORDER BY POST_ID DESC LIMIT $offest, $total_comments_per_page;");
+$stmt = $conn->prepare("SELECT * FROM comments WHERE POST_ID = $post_identification ORDER BY COMMENT_ID DESC LIMIT $offest, $total_comments_per_page;");
 
 $stmt->execute();
 
@@ -286,13 +286,15 @@ $comments = $stmt->get_result();
 
                                 <img src="<?php echo 'assets/images/profiles/'.$_SESSION['img_path']?>" class="icon" style="width: 45px; height: 45px;">
 
-                                <form method="post" action="comments_action.php" class="comments-section">
+                                <form class="comments-section" id="comments-section">
 
-                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
+                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment" id="comment">
 
-                                    <input type="hidden" name="post_id" value="<?php echo $post['Post_ID']?>">
+                                    <input type="hidden" name="post_id" value="<?php echo $post['Post_ID']?>" id="post_identity">
 
-                                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"></i></button>
+                                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"
+
+                                        onclick="return comment();"></i></button>
 
                                 </form>
 
@@ -353,7 +355,7 @@ $comments = $stmt->get_result();
 
                         <div class="card-body">
 
-                            <p><?php echo $comment['COMMENT']; ?></p>
+                            <p style="font-size: 15px;"><?php echo $comment['COMMENT']; ?></p>
 
                             <div class="d-flex justify-content-between">
 
@@ -581,6 +583,45 @@ $comments = $stmt->get_result();
         });
         return false;
     }
+
+    function comment(){
+
+        const post_id = document.getElementById('post_identity').value;
+
+        const comment = document.getElementById('comment').value;
+
+        $.ajax({
+            type:"post",
+            url:"comments_action.php",
+            data:
+                {
+                    'post_id' :post_id,
+
+                    'comment' : comment,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#here").load(window.location.href + " #here" );
+
+                clearInput();
+
+                notification_function("Success Message", "Your Opinion Successfully Shared With Community", "#0F73FA");
+            }
+        });
+
+        return false;
+    }
+
+    function clearInput()
+    {
+        const getValue = document.getElementById("comment");
+
+        if (getValue.value !="")
+        {
+            getValue.value = "";
+        }
+    }
 </script>
 
 <script>
@@ -588,7 +629,7 @@ $comments = $stmt->get_result();
     {
         setInterval(function(){
             $("#here").load(window.location.href + " #here");
-        }, 3000);
+        }, 10000);
     });
 </script>
 
