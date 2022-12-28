@@ -314,14 +314,15 @@ $comments = $stmt->get_result();
 
                                 <img src="<?php echo 'assets/images/profiles/'.$_SESSION['img_path']?>" class="icon" style="width: 40px; height: 40px;">
 
-                                <form method="post" action="comments_action_event.php" class="comments-section">
+                                <form class="comments-section">
 
-                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
+                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment" id="comment">
 
-                                    <input type="hidden" name="post_id" value="<?php echo $post['Event_ID']?>">
+                                    <input type="hidden" name="post_id" value="<?php echo $post['Event_ID']?>" id="post_identity">
 
-                                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"></i></button>
-
+                                    <button class="comment-button" type="submit" name="submit">
+                                        <i class="fa-regular fa-paper-plane fa-lg" onclick="return comment();"></i>
+                                    </button>
                                 </form>
 
                             </div>
@@ -381,15 +382,15 @@ $comments = $stmt->get_result();
 
                         <div class="card-body">
 
-                            <p><?php echo $comment['COMMENT']; ?></p>
+                            <p style="font-size: 15px;"><?php echo $comment['COMMENT']; ?></p>
 
                             <div class="d-flex justify-content-between">
 
                                 <div class="d-flex flex-row align-items-center">
 
-                                    <img src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
+                                    <img class="mr-3" src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="30" height="30" style="border-radius: 50%;"/>
 
-                                    <p class="small mb-0 ms-2 pl-3 ml-3">  <?php echo "  ".$data[0]; ?></p>
+                                    <p class="small mb-0 m-lg-2">  <?php echo "  ".$data[0]; ?></p>
 
                                 </div>
 
@@ -631,6 +632,45 @@ $comments = $stmt->get_result();
             }
         });
         return false;
+    }
+
+    function comment(){
+
+        const post_id = document.getElementById('post_identity').value;
+
+        const comment = document.getElementById('comment').value;
+
+        $.ajax({
+            type:"post",
+            url:"comments_action_event.php",
+            data:
+                {
+                    'post_id' :post_id,
+
+                    'comment' : comment,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#here").load(window.location.href + " #here" );
+
+                clearInput();
+
+                notification_function("Success Message", "Your Opinion Successfully Shared With Community", "#0F73FA");
+            }
+        });
+
+        return false;
+    }
+
+    function clearInput()
+    {
+        const getValue = document.getElementById("comment");
+
+        if (getValue.value !="")
+        {
+            getValue.value = "";
+        }
     }
 </script>
 
