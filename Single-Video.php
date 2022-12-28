@@ -186,7 +186,7 @@ $offest = ($page_no - 1) * $total_comments_per_page;
 
 $total_number_pages = ceil($total_comments/$total_comments_per_page);
 
-$Query = "SELECT * FROM comments_vid WHERE VIDEO_ID = $post_identification ORDER BY VIDEO_ID DESC LIMIT $offest, $total_comments_per_page;";
+$Query = "SELECT * FROM comments_vid WHERE VIDEO_ID = $post_identification ORDER BY COMMENT_ID DESC LIMIT $offest, $total_comments_per_page;";
 
 echo $Query;
 
@@ -324,13 +324,15 @@ $comments = $stmt->get_result();
 
                                 <img src="<?php echo 'assets/images/profiles/'.$_SESSION['img_path']?>" class="icon" style="width: 45px; height: 45px;">
 
-                                <form method="post" action="comments_actionVid.php" class="comments-section">
+                                <form class="comments-section">
 
-                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment">
+                                    <input type="text" class="comment-box" placeholder="Your Opinion" name="comment" id="comment">
 
-                                    <input type="hidden" name="post_id" value="<?php echo $post['Video_ID']?>">
+                                    <input type="hidden" name="post_id" value="<?php echo $post['Video_ID']?>" id="post_identity">
 
-                                    <button class="comment-button" type="submit" name="submit"><i class="fa-regular fa-paper-plane fa-lg"></i></button>
+                                    <button class="comment-button" type="submit" name="submit">
+                                        <i class="fa-regular fa-paper-plane fa-lg" onclick="return comment();"></i>
+                                    </button>
 
                                 </form>
 
@@ -391,15 +393,15 @@ $comments = $stmt->get_result();
 
                         <div class="card-body">
 
-                            <p><?php echo $comment['COMMENT']; ?></p>
+                            <p style="font-size: 15px;"><?php echo $comment['COMMENT']; ?></p>
 
                             <div class="d-flex justify-content-between">
 
                                 <div class="d-flex flex-row align-items-center">
 
-                                    <img src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="35" height="35" style="border-radius: 50%;"/>
+                                    <img class="mr-3" src="<?php echo "assets/images/profiles/" . $data[2]; ?>" alt="avatar" width="35" height="35" style="border-radius: 50%;"/>
 
-                                    <p class="small mb-0 ms-2 m-lg-2">  <?php echo "  ".$data[0]; ?></p>
+                                    <p class="small mb-0 m-lg-2">  <?php echo "  ".$data[0]; ?></p>
 
                                     <p class="text-muted small m-lg-2"><?php echo "Posted Date : ".$comment['DATE']; ?></p>
 
@@ -621,6 +623,45 @@ $comments = $stmt->get_result();
         });
         return false;
     }
+
+    function comment(){
+
+        const post_id = document.getElementById('post_identity').value;
+
+        const comment = document.getElementById('comment').value;
+
+        $.ajax({
+            type:"post",
+            url:"comments_actionVid.php",
+            data:
+                {
+                    'post_id' :post_id,
+
+                    'comment' : comment,
+                },
+            cache:false,
+            success: function (html)
+            {
+                $("#here").load(window.location.href + " #here" );
+
+                clearInput();
+
+                notification_function("Success Message", "Your Opinion Successfully Shared With Community", "#0F73FA");
+            }
+        });
+
+        return false;
+    }
+
+    function clearInput()
+    {
+        const getValue = document.getElementById("comment");
+
+        if (getValue.value !="")
+        {
+            getValue.value = "";
+        }
+    }
 </script>
 
 <script>
@@ -628,7 +669,7 @@ $comments = $stmt->get_result();
     {
         setInterval(function(){
             $("#comments").load(window.location.href + " #comments" );
-        }, 3000);
+        }, 10000);
     });
 </script>
 
