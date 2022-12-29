@@ -542,6 +542,11 @@ if(!isset($_SESSION['id']))
         return false;
     }
 
+    $(document).bind("contextmenu",function(e)
+    {
+        return false;
+    });
+
 </script>
 
 <script type="text/javascript">

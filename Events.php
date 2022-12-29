@@ -479,6 +479,10 @@ if(!isset($_SESSION['id']))
         button.addEventListener('click', () => atcb_action(config, button));
     }
 
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
+
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@1" async defer></script>

@@ -667,6 +667,10 @@ $comments = $stmt->get_result();
             getValue.value = "";
         }
     }
+
+    $(document).bind("contextmenu",function(e){
+        return false;
+    });
 </script>
 
 <script>
