@@ -20,15 +20,26 @@ if (isset($_POST['change-password']))
 
     $function_output_2 = strcmp($new_password, $retype_password);
 
+    $function_output_3 = strcmp($current_password, md5($new_password));
+
     if($function_output == 0)
     {
-        if($function_output_2 == 0)
+        if($function_output_3 == 0)
         {
-            Update_Password($new_password, $user_id);
+            if($function_output_2 == 0)
+            {
+                header('location: edit-profile.php?error_message=Retype Correctly New Password');
+
+                exit();
+            }
+            else
+            {
+                Update_Password($new_password, $user_id);
+            }
         }
         else
         {
-            header('location: edit-profile.php?error_message=Retype Correctly New Password');
+            header('location: edit-profile.php?error_message=You Can"t Use Old Password as your new password');
 
             exit();
         }
