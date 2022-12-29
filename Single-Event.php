@@ -1,3 +1,10 @@
+<?php
+
+require 'init.php';
+
+session_regenerate_id(true);
+
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -213,8 +220,6 @@ $comments = $stmt->get_result();
                         </div>
 
                         <?php
-
-                        session_start();
 
                         $id = $_SESSION['id'];
 

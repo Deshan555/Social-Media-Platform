@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+require 'init.php';
+
+session_regenerate_id(true);
 
 $function_out = strcmp($_SESSION['usertype'], '1');
 

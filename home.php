@@ -1,7 +1,9 @@
 
-<?php 
+<?php
 
-session_start();
+require 'init.php';
+
+session_regenerate_id(true);
 
 if(!isset($_SESSION['id']))
 {

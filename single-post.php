@@ -1,3 +1,11 @@
+<?php
+
+require 'init.php';
+
+session_regenerate_id(true);
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -207,8 +215,6 @@ $comments = $stmt->get_result();
 
                         <?php
 
-                        session_start();
-
                         $id = $_SESSION['id'];
 
                         if($post['User_ID'] == $id){?>
@@ -234,7 +240,7 @@ $comments = $stmt->get_result();
                                     <form>
                                         <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_ids" id="post_ids">
                                         <button style="background: none; border: none;" type="submit" name="reaction">
-                                            <i style="color: #fb3958;" class="icon fas fa-heart fa-lg" onclick="return unlike();" id="unlike"></i>
+                                            <i style="color: #fb3958;" class="icon fas fa-heart" onclick="return unlike();" id="unlike"></i>
                                         </button>
                                     </form>
 
@@ -243,7 +249,7 @@ $comments = $stmt->get_result();
                                     <form>
                                         <input type="hidden" value="<?php echo $post['Post_ID'];?>" name="post_id" id="post_id">
                                         <button style="background: none; border: none;" type="submit" name="reaction">
-                                            <i style="color: #22262A;" class="icon fas fa-heart fa-lg" onclick="return like();" id="like"></i>
+                                            <i style="color: #22262A;" class="icon fas fa-heart" onclick="return like();" id="like"></i>
                                         </button>
                                     </form>
 
