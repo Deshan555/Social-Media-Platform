@@ -1,7 +1,9 @@
 
 <?php
 
-session_start();
+require 'init.php';
+
+session_regenerate_id(true);
 
 include('config.php');
 
