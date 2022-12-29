@@ -4,12 +4,20 @@ require 'init.php';
 
 session_regenerate_id(true);
 
+$function_out = strcmp($_SESSION['usertype'], '1');
 
 if(!isset($_SESSION['id']))
 {
-  header('location: login.php');
+    header('location: login.php');
 
-  exit;
+    exit;
+}
+else
+{
+    if($function_out == 0)
+    {
+        header("location: home.php");
+    }
 }
 
 include('config.php');
