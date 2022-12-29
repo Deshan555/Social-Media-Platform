@@ -16,7 +16,7 @@ include('get_following.php');?>
                         <img onclick="document.getElementById('quick_access'+<?php echo $person['User_ID'];?>).submit();" src="<?php echo "assets/images/profiles/".$person['IMAGE']?>" name="quick_access">
                     </div>
 
-                    <p class="username"><?php echo $person['USER_NAME']?></p>
+                    <p class="username" style="color: gray; font-weight: bold;"><?php echo $person['USER_NAME']?></p>
 
                 </div>
 
