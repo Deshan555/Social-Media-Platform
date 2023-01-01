@@ -52,7 +52,11 @@
                     
                     <a href="login.php"><button class="btn btn-dark btn-lg btn-block btn-sm" type="button">Log In Section</button></a>
 
-                    <a href="login.php"><button class="btn btn-dark btn-lg btn-block btn-sm" type="button">Register Your Club Here</button></a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScCyIAQMMTg5kjGJvkZYtTR4E8qiUbtAIjK2ZcItzTOACV8dA/viewform?usp=sf_link">
+                        <button class="btn btn-dark btn-lg btn-block btn-sm" type="button">
+                            Register Your Club Here
+                        </button>
+                    </a>
                   
                   </div>
 
