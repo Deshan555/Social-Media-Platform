@@ -28,7 +28,7 @@ if (isset($_POST['change-password']))
         {
             if($function_output_2 == 0)
             {
-                header('location: edit-profile.php?error_message=Retype Correctly New Password');
+                header('location: edit-profile.php?error_message=You Can"t Use Old Password as your new password');
 
                 exit();
             }
@@ -39,7 +39,7 @@ if (isset($_POST['change-password']))
         }
         else
         {
-            header('location: edit-profile.php?error_message=You Can"t Use Old Password as your new password');
+            header('location: edit-profile.php?error_message=Retype Correctly New Password');
 
             exit();
         }
