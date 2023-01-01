@@ -209,3 +209,17 @@ CREATE TABLE Admin
     Password varchar(100) NOT NULL
 );
 
+CREATE TABLE Special_Events(
+
+    Event_ID int(11) PRIMARY KEY AUTO_INCREMENT,
+
+    Caption varchar(250) NOT NULL,
+
+    Event_Time time NOT NULL,
+
+    Event_Date DATETIME NOT NULL ,
+
+    Invite_Link text NOT NULL,
+
+    Date_Upload DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
