@@ -177,7 +177,7 @@ if(!isset($_SESSION['id']))
               }
               ?>
 
-              <i class="icon fas fa-calendar-alt fa-lg"></i>
+              <a href="Event-Calander/index.php" style="text-decoration: none; color: #1c1f23"><i class="icon fas fa-calendar-alt fa-lg"></i></a>
 
               <div class="icon user-profile">
 
