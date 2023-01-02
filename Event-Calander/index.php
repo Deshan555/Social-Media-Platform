@@ -1,11 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <?php
-$dbhost = "localhost";  $dbuser = "root";   $dbpass = "";   $dbname = "eventswave";
 
-if(!$con = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))
-{die("failed to connect database");}
+require '../config.php';
 
 //variables--------------------------------------------------------------------------------------------------------
 $todayIs = date("Y-m-d");
@@ -28,7 +27,8 @@ $numberofSpecialEvents=0;       $specialEvent_1=array("","","","","","");
 // selecting events for today---------------------------------------------------------------------------------------
 
 $sql = "SELECT * FROM events WHERE DATE(Event_Date) = '$todayIs'";
-$result = $con->query($sql);
+
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) 
 {
@@ -89,7 +89,7 @@ $nextYear=date("Y-m-d", strtotime('+1 year'));
 
 
 $sql = "SELECT * FROM events WHERE Event_Date BETWEEN '$nextday' AND '$nextYear'";
-$result = $con->query($sql);
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) 
 {
@@ -101,7 +101,7 @@ if ($result->num_rows > 0)
         {
             $nextdayEvent_1[0] = $row["Event_ID"];            
             $nextdayEvent_1[1] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Caption"]);
-            $nextdayEvent_1[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]);
+            //$nextdayEvent_1[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]);
             $nextdayEvent_1[3] = $row["Event_Date"];
             $nextdayEvent_1[4] = $row["Event_Time"];
             $nextdayEvent_1[5] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Invite_Link"]);
@@ -112,7 +112,7 @@ if ($result->num_rows > 0)
         {
             $nextdayEvent_2[0] = $row["Event_ID"];            
             $nextdayEvent_2[1] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Caption"]);
-            $nextdayEvent_2[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]) ;
+            //$nextdayEvent_2[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]) ;
             $nextdayEvent_2[3] = $row["Event_Date"];
             $nextdayEvent_2[4] = $row["Event_Time"];
             $nextdayEvent_2[5] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Invite_Link"]);
@@ -123,7 +123,7 @@ if ($result->num_rows > 0)
         {
             $nextdayEvent_3[0] = $row["Event_ID"];            
             $nextdayEvent_3[1] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Caption"]);
-            $nextdayEvent_3[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]);
+            //$nextdayEvent_3[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]);
             $nextdayEvent_3[3] = $row["Event_Date"];
             $nextdayEvent_3[4] = $row["Event_Time"];
             $nextdayEvent_3[5] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Invite_Link"]);
@@ -134,7 +134,7 @@ if ($result->num_rows > 0)
         {
             $nextdayEvent_4[0] = $row["Event_ID"];            
             $nextdayEvent_4[1] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Caption"]);
-            $nextdayEvent_4[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]);
+            //$nextdayEvent_4[2] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Event_Poster"]);
             $nextdayEvent_4[3] = $row["Event_Date"];
             $nextdayEvent_4[4] = $row["Event_Time"];
             $nextdayEvent_4[5] = str_replace( array( "\n", "\r" ), array( " ", " " ),$row["Invite_Link"]);
@@ -146,7 +146,7 @@ if ($result->num_rows > 0)
 // selecting special events--------------------------------------------------------------------------------------
 
 $sql = "SELECT * FROM special_events WHERE Event_Date BETWEEN '$todayIs' AND '$nextYear'";
-$result = $con->query($sql);
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) 
 {
@@ -209,6 +209,7 @@ if ($result->num_rows > 0)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -232,8 +233,8 @@ if ($result->num_rows > 0)
             border-radius: 20px;
             padding: 1rem;
 
-            background-color: rgb(240, 240, 240);
-            border: 2px solid rgb(255, 255, 255);
+            background-color: #F5F5F5;
+            border: 2px solid #F5F5F5;
             color: rgb(0, 0, 0);
         }
 
@@ -257,9 +258,17 @@ if ($result->num_rows > 0)
         [class="dates"] 
         {
             color: rgb(0, 130, 255);
-        } 
+        }
 
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,500&display=swap');
 
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body{
+            font-family: 'Open Sans', sans-serif;
+        }
         .button 
         {
             background-image: linear-gradient(to right, #0082FF 0%, #0082FF 51%,   #00bdff   100%);
@@ -272,7 +281,7 @@ if ($result->num_rows > 0)
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
-            border-radius: 15px;
+            border-radius: 40px;
         }
 
         #todayEventBox_1-1{font-weight:bold;}
@@ -294,19 +303,19 @@ if ($result->num_rows > 0)
     </style>
 </head>
 
-
-
 <body>
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <div class="eventCalendar"><h3>Event Calendar</h3></div>
+                <div class="eventCalendar">
+                    <a href="../home.php">
+                        <img src="../assets/images/black_logo.png" width="20%" id="logo-img" style="cursor: pointer; height: 50%; margin-top: 10px; margin-left: 30px">
+                    </a>
+                </div>
             </div>
             <div class="col">
                 <div class="homeIcon">
-                    <a href="www.google.lk">
-                        <img src="icon/home.png" alt="home" style="height: 30px; width: 30px;">
-                    </a>
+
                 </div>
             </div>
         </div>
@@ -316,7 +325,7 @@ if ($result->num_rows > 0)
         <div class="row">
             <div class="col-md">
                 <div class="today">
-                    <h5 style="display:inline;">Today </h5>
+                    <h6 style="display:inline; text-transform: uppercase">Today </h6>
                     <h6 style="display:inline;" id="dateToday" class="dates"></h6>
                     <div class="container-fluid">
                         <div class="row" class="rounded" id="todayEvent_1">
@@ -328,11 +337,9 @@ if ($result->num_rows > 0)
                                     <div id="todayEventBox_1-4"></div>
                                     
                                     <a href='<?= $todayEvent_1[5] ?>'>
-                                        <button type="button" class="button" id="todayEventBox_1-5" >Launch</button>
+                                        <button type="button" class="button" id="todayEventBox_1-5" >Invitation Link</button>
                                     </a>
-                                    
-                                    
-                                    
+
                                 </div>
                         </div>
                         <div class="row" id="todayEvent_2">
@@ -344,7 +351,7 @@ if ($result->num_rows > 0)
                                     <div id="todayEventBox_2-4"></div>
 
                                     <a href='<?= $todayEvent_2[5] ?>'>
-                                        <button type="button" class="button" id="todayEventBox_2-5" >Launch</button>
+                                        <button type="button" class="button" id="todayEventBox_2-5" >Invitation Link</button>
                                     </a>
                             </div>
                         </div>
@@ -357,7 +364,7 @@ if ($result->num_rows > 0)
                                     <div id="todayEventBox_3-4"></div>
 
                                     <a href='<?= $todayEvent_3[5] ?>'>
-                                        <button type="button" class="button" id="todayEventBox_3-5" >Launch</button>
+                                        <button type="button" class="button" id="todayEventBox_3-5" >Invitation Link</button>
                                     </a>
                             </div>
                         </div>
@@ -370,7 +377,7 @@ if ($result->num_rows > 0)
                                     <div id="todayEventBox_4-4"></div>
 
                                     <a href='<?= $todayEvent_4[5] ?>'>
-                                        <button type="button" class="button" id="todayEventBox_4-5" >Launch</button>
+                                        <button type="button" class="button" id="todayEventBox_4-5" >Invitation Link</button>
                                     </a>
                             </div>
                         </div>
@@ -380,7 +387,7 @@ if ($result->num_rows > 0)
 
             <div class="col-md">
                 <div class="nextDay">
-                    <h5>Next Day</h5>
+                    <h6 style="text-transform: uppercase">Next Day</h6>
                     <div class="container-fluid">
         
                             <div class="row" class="rounded" id="nextdayEvent_1">
@@ -392,7 +399,7 @@ if ($result->num_rows > 0)
                                     <div id="nextdayEventBox_1-4"></div>
 
                                     <a href='<?= $nextdayEvent_1[5] ?>'>
-                                        <button type="button" class="button" id="nextdayEventBox_1-5">Launch</button>
+                                        <button type="button" class="button" id="nextdayEventBox_1-5">Invitation Link</button>
                                     </a>  
                                 </div>
                             </div>
@@ -406,7 +413,7 @@ if ($result->num_rows > 0)
                                     <div id="nextdayEventBox_2-4"></div>
 
                                     <a href='<?= $nextdayEvent_2[5] ?>'>
-                                        <button type="button" class="button" id="nextdayEventBox_2-5">Launch</button>
+                                        <button type="button" class="button" id="nextdayEventBox_2-5">Invitation Link</button>
                                     </a> 
                                 </div>
                             </div>
@@ -420,7 +427,7 @@ if ($result->num_rows > 0)
                                     <div id="nextdayEventBox_3-4"></div>
 
                                     <a href='<?= $nextdayEvent_3[5] ?>'>
-                                        <button type="button" class="button" id="nextdayEventBox_3-5">Launch</button>
+                                        <button type="button" class="button" id="nextdayEventBox_3-5">Invitation Link</button>
                                     </a>  
                                 </div>
                             </div>
@@ -434,7 +441,7 @@ if ($result->num_rows > 0)
                                     <div id="nextdayEventBox_4-4"></div>
 
                                     <a href='<?= $nextdayEvent_4[5] ?>'>
-                                        <button type="button" class="button" id="nextdayEventBox_4-5">Launch</button>
+                                        <button type="button" class="button" id="nextdayEventBox_4-5">Invitation Link</button>
                                     </a>  
                                 </div>
                             </div>
@@ -447,11 +454,11 @@ if ($result->num_rows > 0)
             <div class="col-md">
                 <div class="specialEvents">
                     <div class="text-center">
-                        <img class="specialEventsImage" src="/images/dec1.jpg"  alt="Italian Trulli"" width="256" height="256">
+                        <img class="specialEventsImage" src="images/dec1.jpg"  alt="Italian Trulia"" width="100%" height="auto">
                     </div>
                     <br>
                     <div class="text-center">
-                        <h5>Special Events</h5>
+                        <h6 style="text-transform: uppercase">Special Events</h6>
                     </div>
                     
                     <div class="container-fluid">
