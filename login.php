@@ -87,7 +87,7 @@ if(isset($_SESSION['id']))
                     <button class="btn btn-dark btn-lg btn-block" type="submit" name="button">Login</button>
                   </div>
 
-                  <a class="small text-muted" href="#!">Forgot password?</a>
+                  <!--<a class="small text-muted" href="#!">Forgot password?</a>-->
 
                   <p class="mb-5 pb-lg-2" style="color: #19afd4;">Don't have an account? <a href="create-account.php" style="color: #2696ca;">Register here</a></p>
 
