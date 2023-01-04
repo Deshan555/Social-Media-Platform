@@ -8,6 +8,8 @@
 
     <title>EventsWave</title>
 
+    <link rel="icon" href="assets/images/event_accepted_50px.png" type="image/icon type">
+
     <link rel="stylesheet" href=https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>

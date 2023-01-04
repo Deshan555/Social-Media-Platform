@@ -8,6 +8,8 @@
 
     <title>EventsWave</title>
 
+    <link rel="icon" href="assets/images/event_accepted_50px.png" type="image/icon type">
+
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
