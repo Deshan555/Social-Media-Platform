@@ -4,3 +4,5 @@
 Name of the user :1081932242
 
 Password : W7lFwyRF
+
+Azura Hosting : https://eventswave-sltc.eastus.cloudapp.azure.com
