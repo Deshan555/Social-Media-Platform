@@ -173,25 +173,16 @@ if(!isset($_SESSION['id']))
 
                         </div>
 
-                        <video
-                                id="my-video"
-                                class="video-js vjs-theme-sea post-source"
-                                controls
-                                preload="none"
-                                data-setup="{}"
-                                poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>"
-                        >
-                            <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" />
-                            <p class="vjs-no-js">
-                                To view this video please enable JavaScript, and consider upgrading to a
-                                web browser that
-                                <a href="https://videojs.com/html5-video-support/" target="_blank"
-                                >supports HTML5 video</a
-                                >
-                            </p>
+
+                        <video preload="none" poster="<?php echo 'assets/videos/'. $post['Thumbnail_Path']; ?>" controls class="post-source">
+                            <source src="<?php echo 'assets/videos/'.$post['Video_Path'];?>" type="video/mp4" type="video/mp4">
                         </video>
 
-                        <div id="post-details">
+
+                        <?php $element_id = rand(10,1000000); ?>
+
+                        <div id="<?php echo $element_id ?>">
+
                             <div class="post-content">
 
                                 <div class="reactions-wrapper" id="reaction">
@@ -237,6 +228,7 @@ if(!isset($_SESSION['id']))
                                 <p class="post-time" style="color: #0b5ed7"><?php echo $post['HashTags'];?></p>
 
                             </div>
+
                         </div>
                     </div>
 
@@ -423,7 +415,7 @@ if(!isset($_SESSION['id']))
         return false;
     }
 
-    function unlike(post_id){
+    function unlike(post_id, div_id){
 
         $.ajax({
             type:"post",
@@ -441,15 +433,13 @@ if(!isset($_SESSION['id']))
         return false;
     }
 
-    $(document).bind("contextmenu",function(e){
+    /*$(document).bind("contextmenu",function(e){
         return false;
-    });
+    });*/
 
 </script>
 
 </body>
-
-<script src="https://vjs.zencdn.net/7.20.3/video.min.js" id="js_fun"></script>
 
 </html>
 
