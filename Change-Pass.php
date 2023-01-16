@@ -26,22 +26,22 @@ if (isset($_POST['change-password']))
     {
         if($function_output_3 == 0)
         {
-            if($function_output_2 == 0)
-            {
-                header('location: edit-profile.php?error_message=You Can"t Use Old Password as your new password');
+            header('location: edit-profile.php?error_message=You Can"t Use Old Password as your new password');
 
-                exit();
-            }
-            else
-            {
-                Update_Password($new_password, $user_id);
-            }
+            exit();
         }
         else
         {
-            header('location: edit-profile.php?error_message=Retype Correctly New Password');
+            if($function_output_2 == 0)
+            {
+                Update_Password($new_password, $user_id);
+            }
+            else
+            {
+                header('location: edit-profile.php?error_message=Retype Correctly New Password');
 
-            exit();
+                exit();
+            }
         }
     }
     else
