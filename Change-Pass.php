@@ -61,8 +61,6 @@ function Update_Password($new_password, $user_id)
 
     $SQL = "UPDATE users SET PASSWORD_S = '$secure_password' WHERE User_ID = $user_id;";
 
-    echo $SQL;
-
     $stmt = $conn->prepare($SQL);
 
     if ($stmt->execute()) {
