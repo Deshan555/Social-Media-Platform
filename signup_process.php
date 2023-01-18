@@ -222,7 +222,7 @@ function mailer($sending_address, $password, $user_name, $full_name)
 
     $mail->isHTML(true);
 
-    $mail->Subject = "Subject Text";
+    $mail->Subject = "New User Registration";
 
     $mail->Body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -493,7 +493,7 @@ function mailer($sending_address, $password, $user_name, $full_name)
     
     
                                             <div style="line-height: 26px;">
-                                                <a href="" style="color: #ffffff; text-decoration: none;">Visit</a>
+                                                <a href="https://eventswave-sltc.eastus.cloudapp.azure.com/" style="color: #ffffff; text-decoration: none;">Visit</a>
                                             </div>
                                         </td>
                                     </tr>
