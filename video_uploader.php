@@ -78,14 +78,14 @@ if(isset($_POST['posting']))
     }
     else
     {
-        header("location: video_upload.php?error_message=Error Occured, try again - ERROR #008");
+        header("location: video_upload.php?error_message=Error Occurred, try again - ERROR #008");
 
         exit;
     }
 }
 else
 {
-    header("location: video_upload.php?error_message=Error Occured, try again2 - ERROR #009");
+    header("location: video_upload.php?error_message=Error Occurred, try again2 - ERROR #009");
 
     exit;
 }

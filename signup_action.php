@@ -116,7 +116,7 @@ if(isset($_POST['signup_btn']))
 
         }else{
 
-            header("location: WelCome?error_message=error occured");
+            header("location: WelCome?error_message=error occurred");
 
             exit;
         }       
@@ -124,7 +124,7 @@ if(isset($_POST['signup_btn']))
 
 }else
 {
-    header("location: WelCome?error_message=error occured");
+    header("location: WelCome?error_message=error occurred");
 
     exit;
 }
