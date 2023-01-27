@@ -1,14 +1,14 @@
 <?php
 
-$user = 'r6h0dfofvz3dg6j1';
+$user = '#your database username';
 
-$password = 'wg9d7fuvswmwpzic';
+$password = '#password';
 
-$db = 'ckkmy15kvonrb0en';
+$db = '#database_name';
 
-$host = 'h1use0ulyws4lqr1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+$host = '#host_address';
 
-$port = 3306;
+$port = #port_number;
 
 $conn = mysqli_connect($host, $user, $password, $db,$port) ;
 
