@@ -3,7 +3,7 @@
 
 This is a social media application built using PHP, it allows  University Clubs and organizations to create profiles, connect with friends, upload posts ,events, and interact with a community of users.
 
-#### Tech Stack
+### Tech Stack
 
 - PHP
 - MySQL
@@ -12,15 +12,17 @@ This is a social media application built using PHP, it allows  University Clubs 
 - CSS
 - HTML
 
-#### Functionalities
+### Functionalities
 - User authentication and authorization
 - Profile creation and customization
 - Friend and Clubs, Organizations connections
 - Post creation and sharing
 - Comments and reactions
-- Search and discovery of other users
+- Search and discovery of other users, posts, videos and events
+- You can add events invitation links directly to your google calender, apple calander, teams or directly download i-cal file
+- Events calander show all upcomming events
 
-#### Installation
+### Installation
 - Clone or download the repository to your local machine
 - Configure the database settings in the `config.php` file
 - Import the `database.sql` file to your MySQL server
@@ -28,7 +30,7 @@ This is a social media application built using PHP, it allows  University Clubs 
 - Make sure that your server has the necessary PHP extensions such as GD Library and cURL for the image upload
 - Once the application is installed and configured, you can access it through a web browser. You can use the provided login credentials or create a new account to access the application's features.
 
-#### Contribution
+### Contribution
 We welcome any contributions to improve the application. Please submit a pull request with your changes, and we will review it as soon as possible.
 
 #### License
