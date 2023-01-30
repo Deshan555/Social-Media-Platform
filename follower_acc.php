@@ -191,11 +191,11 @@ else
 
                 <div class="p-4 rounded shadow-sm bg-light">
 
-                    <p class="mb-3 font-italic"><i class="bi bi-envelope fa-lg m-lg-2"></i>Email : <?php echo " ".$_array_user['email'] ?></p>
+                    <p class="mb-3 font-italic"><i class="bi bi-envelope fa-lg m-lg-2"></i>Email : <?php echo " ".$array_user['email'] ?></p>
 
-                    <p class="mb-3 font-italic"><i class="bi bi-box-arrow-up-right fa-lg m-lg-2"></i>FaceBook : <?php echo " ".$_array_user['facebook'] ?></p>
+                    <p class="mb-3 font-italic"><i class="bi bi-box-arrow-up-right fa-lg m-lg-2"></i>FaceBook : <?php echo " ".$array_user['facebook'] ?></p>
 
-                    <p class="mb-3 font-italic"><i class="bi bi-whatsapp fa-lg m-lg-2"></i>WhatsApp : <?php echo " ".$_array_user['whatsapp'] ?></p>
+                    <p class="mb-3 font-italic"><i class="bi bi-whatsapp fa-lg m-lg-2"></i>WhatsApp : <?php echo " ".$array_user['whatsapp'] ?></p>
 
                 </div>
         </div>
