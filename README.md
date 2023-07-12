@@ -1,7 +1,14 @@
 
 # Social Media Application
 
-This is a social media application built using PHP, it allows  University Clubs and organizations to create profiles, connect with friends, upload posts ,events, and interact with a community of users.
+This is a social media application built using PHP, it allows university clubs and organizations to create profiles, connect with friends, upload posts ,events, and interact with a community of users.
+
+![app](https://github.com/Deshan555/Social-Media-Platform/blob/master/app-Screenshots/Screenshot_11.png)
+![app](https://github.com/Deshan555/Social-Media-Platform/blob/master/app-Screenshots/Screenshot_12.png)
+![app](https://github.com/Deshan555/Social-Media-Platform/blob/master/app-Screenshots/Screenshot_13.png)
+![app](https://github.com/Deshan555/Social-Media-Platform/blob/master/app-Screenshots/Screenshot_14.png)
+![app](https://github.com/Deshan555/Social-Media-Platform/blob/master/app-Screenshots/Screenshot_10.png)
+![app](https://github.com/Deshan555/Social-Media-Platform/blob/master/app-Screenshots/Screenshot_09.png)
 
 ### Tech Stack
 
