@@ -1,7 +1,9 @@
 
 # Social Media Application
 
-This is a social media application built using PHP, it allows  University Clubs and organizations to create profiles, connect with friends, upload posts ,events, and interact with a community of users.
+The university clubs and organizations can utilize this social media application, which was created using PHP, to establish profiles, connect with friends, upload posts, announce events, and communicate with other users.
+
+
 
 ### Tech Stack
 
