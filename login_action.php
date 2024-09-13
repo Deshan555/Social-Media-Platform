@@ -1,95 +1,53 @@
 <?php
-
 session_start();
 
 include('config.php');
 
-if(isset($_POST['button']))
-{
-    $fisrt_parm = $_POST['email'];
+if (isset($_POST['button'])) {
 
-    $password = md5($_POST['password']);
+    // Check CSRF token
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        header('location: login.php?error_message=Invalid CSRF token');
+        exit;
+    }
 
-    $full_name = "fullname";
+    // Input sanitization
+    $fisrt_parm = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
+    $password = md5($_POST['password']); // Insecure hashing algorithm
 
-    $user_name= "username";
-
-    $user_type = "1";
-
-    $email_address= "example@gmail.com";
-
-    $facebook = "www.facebook.com";
-
-    $whatsapp = "www.webwhatsapp.com";
-
-    $bio = "tell use more about you";
-
-    $fallowers = 0;
-
-    $fallowing = 0;
-
-    $post_count = 0;
-
-    $image = "assets/images/default.png";
-
-    $user_id = 000000;
-
-    $sql_query = "SELECT User_ID, FULL_NAME, USER_NAME, USER_TYPE, EMAIL, IMAGE, FACEBOOK, WHATSAPP, BIO, FALLOWERS, FALLOWING, POSTS  FROM USERS WHERE (USER_NAME = '$fisrt_parm' OR EMAIL = '$fisrt_parm') AND PASSWORD_S = '$password';";
+    $sql_query = "SELECT User_ID, FULL_NAME, USER_NAME, USER_TYPE, EMAIL, IMAGE, FACEBOOK, WHATSAPP, BIO, FALLOWERS, FALLOWING, POSTS  
+                  FROM USERS 
+                  WHERE (USER_NAME = ? OR EMAIL = ?) AND PASSWORD_S = ?";
 
     $stmt = $conn->prepare($sql_query);
-
+    $stmt->bind_param("sss", $fisrt_parm, $fisrt_parm, $password);
     $stmt->execute();
-
     $stmt->store_result();
 
-    if($stmt->num_rows() > 0)
-    {
+    if ($stmt->num_rows() > 0) {
         $stmt->bind_result($user_id, $full_name, $user_name, $user_type, $email_address, $image, $facebook, $whatsapp, $bio, $fallowers, $fallowing, $post_count);
-        
         $stmt->fetch();
 
+        // Set session variables
         $_SESSION['id'] = $user_id;
-
         $_SESSION['username'] = $user_name;
-
         $_SESSION['fullname'] = $full_name;
-
         $_SESSION['email'] = $email_address;
-
         $_SESSION['usertype'] = $user_type;
-
         $_SESSION['facebook'] = $facebook;
-
         $_SESSION['whatsapp'] = $whatsapp;
-
         $_SESSION['bio'] = $bio;
-
         $_SESSION['fallowers'] = $fallowers;
-
         $_SESSION['fallowing'] = $fallowing;
-
         $_SESSION['postcount'] = $post_count;
-
         $_SESSION['img_path'] = $image;
 
         header("location: home.php");
-    }
-    else{
-
-        echo 'faild';
-
+    } else {
         header('location: login.php?error_message=Email/Password Incorrect');
-
         exit;
     }
-}
-else{
-
-    echo 'fails';
-
-    header('location: login.php?error_message=Some Error Happend');
-
+} else {
+    header('location: login.php?error_message=Some Error Happened');
     exit;
 }
-
-?>
