@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventsWave : Log In</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="assets/css/login.css"/>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="main-container">
+
+            <div class="main-content">
+                <div class="slide-container" style="background-image: url('assets/images/frame.jpg');">
+                    <div class="slide-content" id="slide-content">
+                        <img src="assets/images/screen1.jpg" class="active" alt="screen1">
+                        <img src="assets/images/screen2.jpg" alt="screen2">
+                        <img src="assets/images/screen3.png" alt="screen3">
+                        <img src="assets/images/screen4.png" alt="screen4">
+                    </div>
+                </div>
+    
+                <div class="form-container"></div>
+                    <div class="form-content box">
+                        <div class="logo">
+                            <img src="assets/images/logo.png" class="logo-img" alt="">
+                        </div>
+                        <form class="login-form" id="login-form">
+
+                            <p id="error_message" class="text-center alert-danger"></p>
+
+                            <div class="form-group">
+                                <div class="login-input">
+                                    <input type="text" name="email" placeholder="Type your email address" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="login-input">
+                                    <input type="password" name="password" id="password" placeholder="Type your password" required>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button class="login-btn" id="login_btn" type="submit">Log In</button>
+                            </div>
+                        </form>
+                        <div class="or">
+                            <hr/>
+                             <span>OR</span>
+                            <hr/>
+                        </div>
+                        <div class="goto">
+                            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                        </div>
+                        <div class="site-powered">
+                            <p>Powered By</p>
+                            <div class="logo-link">
+                                <a href="#">
+                                    <img src="assets/images/sltc.png" alt="SLTC">
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+    
+            </div>
+
+           
+        </div>
+
+        <div class="footer">
+            <div class="links" id="links">
+                <a href="#">About</a>
+                <a href="#">Bolg</a>
+                <a href="#">Volunteer</a>
+                <a href="#">Help</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Top Accounts</a>
+                <a href="#" id="dark-btn">Dark</a>
+            </div>
+            <div class="copyright">
+                @ 2022 EventsWave from SLTC
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+    setInterval(()=>{changeImage();}, 1000);
+
+            function changeImage(){
+
+                var imgs = document.getElementById('slide-content').getElementsByTagName('img');
+                
+                    var i = 0;
+                            
+                    for(i=0; i<imgs.length; i++){
+                                var image = imgs[i];
+                                if(image.classList.contains('active')){
+                                    // remove active class from this image
+                                    image.classList.remove('active');
+
+                                    //if we are at the last iteration, then go back to firat image
+                                    if(i == imgs.length-1){
+                                        var nextImage = imgs[0];
+                                        nextImage.classList.add('active');
+                                        break;
+                                    }
+
+                                        var nextImage = imgs[i+1];
+                                        nextImage.classList.add('active');
+                                        break;
+                                }
+                    }  
+
+            }
+
+            function changeMode(){
+                var body = document.getElementsByTagName('body')[0];
+                var footerLinks = document.getElementById('links').getElementsByTagName('a');
+
+                //if we arecurrently using dark mode
+                if(body.classList.contains('dark')){
+                    body.classList.remove('dark');
+
+                    for(let i=0; i<footerLinks.length; i++){
+                        footerLinks[i].classList.remove('dark-mode-link');
+                    }
+
+                }else{
+                    // we are currently using the light
+                    body.classList.add('dark');
+
+                    for(let i=0; i<footerLinks.length; i++){
+                        footerLinks[i].classList.add('dark-mode-link');
+                    }
+                }
+                    
+            }
+
+            function verifyForm(){
+
+                var password = document.getElementById('password').value;
+                var error_message = document.getElementById('error_message');
+
+                if(password.length < 6){
+                    error_message.innerHTML = "Password is too short";
+                    return false;
+                }
+
+                
+
+                return true;
+
+                }
+
+        document.getElementById('dark-btn').addEventListener('click',(e)=>{
+            e.preventDefault();
+            changeMode();
+        })
+        
+        document.getElementById('login-form').addEventListener('submit',(e)=>{
+            e.preventDefault();
+
+            verifyForm();
+        })
+
+    </script>
+    
+</body>
+</html>
